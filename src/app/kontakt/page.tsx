@@ -1,17 +1,66 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function KontaktPage() {
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+
+  const openMapModal = () => {
+    setIsMapModalOpen(true);
+  };
+
+  const closeMapModal = () => {
+    setIsMapModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen">
+      {/* Map Modal */}
+      {isMapModalOpen && (
+        <div className="fixed inset-0 backdrop-blur-md bg-white/30 flex items-center justify-center z-50 p-4">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden border border-gray-200/50">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-200/50">
+              <h2 className="text-2xl font-bold text-[#202325]">Lokalita - Finančný Poradca</h2>
+              <button
+                onClick={closeMapModal}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Modal Content */}
+            <div className="p-6">
+              <div className="h-96 w-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5!2d17.1067!3d48.1486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e7b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPopradsk%C3%A1%2023-3%2C%20821%2006%20Bratislava%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Finančný Poradca - Bratislava"
+                ></iframe>
+              </div>
+              
+              {/* Address Info */}
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-semibold text-[#202325] mb-2">Adresa:</h3>
+                <p className="text-[#202325]">Popradská 23-3, 821 06 Bratislava</p>
+                <p className="text-sm text-gray-600 mt-1">Slovakia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Banner Section */}
-      <section 
-        className="relative flex items-stretch"
-        style={{
-          width: '1951px',
-          height: '619px'
-        }}
-      >
+      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -21,37 +70,31 @@ export default function KontaktPage() {
             className="object-cover"
             priority
           />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Text Content with exact positioning */}
-        <div 
-          className="absolute z-20"
-          style={{
-            width: '673px',
-            height: '250px',
-            top: '200px',
-            left: '339px'
-          }}
-        >
-          <div className="flex flex-col justify-center h-full">
-            <h1 className="text-5xl md:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
-              KONTAKT
-            </h1>
-            <p className="text-xl text-white mb-8 max-w-2xl font-light drop-shadow-md">
-              Spojte sa s nami a získajte profesionálne finančné poradenstvo
-            </p>
-            <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg w-fit">
-              Bezplatná konzultácia
-            </button>
-          </div>
-        </div>
-        
-        {/* Right: Advisor Image */}
-        <div className="relative flex-1 flex items-end justify-end overflow-hidden z-20">
-          {/* Advisor image placeholder */}
-          <div className="relative z-20 flex items-end justify-end h-full w-full">
-            <div className="w-72 h-96 bg-gray-200 rounded-lg shadow-2xl flex items-end justify-center overflow-hidden mr-8 mb-8">
-              <span className="text-gray-500 text-lg mb-4">[Foto poradcu]</span>
+        {/* Text Content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-between min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+            {/* Left side - Text content */}
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+                KONTAKT
+              </h1>
+              <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+                Spojte sa s nami a získajte profesionálne finančné poradenstvo
+              </p>
+              <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
+                Bezplatná konzultácia
+              </button>
+            </div>
+            
+            {/* Right side - Advisor Image */}
+            <div className="flex-1 flex justify-center lg:justify-end">
+              <div className="w-64 md:w-72 h-80 md:h-96 bg-gray-200 rounded-lg shadow-2xl flex items-end justify-center overflow-hidden">
+                <span className="text-gray-500 text-lg mb-4">[Foto poradcu]</span>
+              </div>
             </div>
           </div>
         </div>
@@ -135,7 +178,7 @@ export default function KontaktPage() {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl shadow-lg p-8 h-fit">
                 <h3 className="text-2xl font-bold text-[#202325] mb-6">
-                  Kontaktujte ma aj na sociálnych sieťách
+                  Kontaktujte ma aj na sociálnych sieťach
                 </h3>
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
@@ -172,14 +215,34 @@ export default function KontaktPage() {
             {/* Map Section */}
             <div className="lg:col-span-3">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="h-96 bg-gray-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                <div className="relative h-96 w-full">
+                  {/* Clickable overlay */}
+                  <div 
+                    className="absolute inset-0 z-10 cursor-pointer hover:bg-black/5 transition-colors"
+                    onClick={openMapModal}
+                  ></div>
+                  
+                  {/* Map iframe */}
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5!2d17.1067!3d48.1486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e7b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPopradsk%C3%A1%2023-3%2C%20821%2006%20Bratislava%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Finančný Poradca - Bratislava"
+                  ></iframe>
+                </div>
+                
+                {/* Click indicator */}
+                <div className="p-4 text-center bg-gray-50 border-t border-gray-200">
+                  <p className="text-sm text-gray-600">
+                    <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
-                    <p className="text-gray-500 text-lg">Interaktívna mapa</p>
-                    <p className="text-gray-400 text-sm">Popradská 23-3, 821 06 Bratislava</p>
-                  </div>
+                    Kliknite pre zobrazenie väčšej mapy
+                  </p>
                 </div>
               </div>
             </div>

@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactModal from "../../components/ContactModal";
 
 export default function DomovPage() {
   const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const investmentPartners = [
     { 
@@ -74,8 +76,19 @@ export default function DomovPage() {
     setCurrentPartnerIndex((prev) => (prev - 1 + investmentPartners.length) % investmentPartners.length);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen">
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Banner Section */}
       <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
         {/* Banner background image */}
@@ -209,11 +222,12 @@ export default function DomovPage() {
             </div>
           </div>
           
-          <Link href="/kontakt">
-            <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
-              Chcem formulár
-            </button>
-          </Link>
+          <button 
+            onClick={openModal}
+            className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+          >
+            Chcem formulár
+          </button>
         </div>
       </section>
 
