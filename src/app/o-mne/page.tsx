@@ -1,37 +1,68 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import ContactModal from "../../components/ContactModal";
 
 export default function OMnePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen">
-      {/* Hero Section with Split Background */}
-      <section className="relative flex flex-col lg:flex-row items-stretch min-h-[500px] lg:min-h-[600px]">
-        {/* Left Side - Dark Grey */}
-        <div className="w-full lg:w-1/2 bg-[#202325] flex items-center justify-center relative py-12 lg:py-0">
-          <div className="text-center text-white px-4 sm:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-6">O MNE</h1>
-            <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-md mx-auto leading-relaxed">
-              Nie len o dalš klienta, Ste človek, ktorému pomáham postaviť zdravý finančný život.
-            </p>
-            <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
-              Bezplatná konzultácia
-            </button>
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Hero Banner Section */}
+      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
+        {/* Banner background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/banner.svg"
+            alt="Banner background"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/30"></div>
+          
+          {/* Advisor photo positioned on the right */}
+          <div className="absolute right-60 -bottom-24 z-10 w-[450px] h-[600px] md:w-[550px] md:h-[700px] lg:w-[600px] lg:h-[800px]">
+            <Image
+              src="/advisor-photo.png"
+              alt="Financial Advisor"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
-
-        {/* Right Side - Light Grey */}
-        <div className="w-full lg:w-1/2 bg-[#EBEBEB] flex items-center justify-center lg:justify-end relative py-12 lg:py-0">
-          {/* Diagonal Line Separator - hidden on mobile */}
-          <div 
-            className="absolute left-0 top-0 w-full h-full hidden lg:block"
-            style={{
-              background: 'linear-gradient(135deg, transparent 0%, transparent 40%, #202325 40%, #202325 100%)'
-            }}
-          ></div>
-          
-          {/* Advisor Image */}
-          <div className="relative z-10">
-            <div className="w-64 md:w-80 h-80 md:h-96 bg-gray-300 rounded-lg shadow-2xl flex items-center justify-center overflow-hidden">
-              <span className="text-gray-500 text-lg">[Foto poradcu]</span>
+        
+        {/* Text Content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col lg:flex-row items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+            {/* Left side - Text content */}
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+                O mne
+              </h1>
+              <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+                Nie ste len ďalší klient. Ste človek, ktorému pomôžem vybudovať zdravý finančný život.
+              </p>
+              <button 
+                onClick={openModal}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+              >
+                Bezplatná konzultácia
+              </button>
             </div>
           </div>
         </div>
@@ -39,210 +70,206 @@ export default function OMnePage() {
 
       {/* Moja cesta Section */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202325] text-center mb-6 md:mb-8">
-            Moja cesta
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+            MOJA CESTA
           </h2>
-          <div className="text-justify text-base md:text-lg text-[#202325] leading-relaxed">
-            <p>
-              Študoval som na gymnáziu v Bratislave, kde som získal základné vzdelanie. 
-              Počas svojho profesionálneho a aktívneho života som sa venoval financiám 
-              a pomáham klientom dosahovať ich finančné ciele. Po 28 rokoch v oblasti 
-              financií mám bohaté skúsenosti a pomáham ľuďom budovať zdravý finančný život.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Výhody našej spolupráce Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202325] text-center mb-8 md:mb-12">
-            Výhody našej spolupráce
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-              <div className="flex items-start space-x-3 md:space-x-4">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 md:w-6 h-5 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                    Komplexný pohľad - poistenie, úvery aj investície v jednom pláne.
-                  </h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-              <div className="flex items-start space-x-3 md:space-x-4">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 md:w-6 h-5 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                    Osobné poradenstvo - individuálny prístup ku každému klientovi.
-                  </h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-              <div className="flex items-start space-x-3 md:space-x-4">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 md:w-6 h-5 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                    Dlhodobá spolupráca - budujeme vzťahy na dôvere a výsledkoch.
-                  </h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-              <div className="flex items-start space-x-3 md:space-x-4">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 md:w-6 h-5 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                    Transparentnosť - jasné informácie o všetkých službách a poplatkoch.
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Moje úspechy Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202325] text-center mb-8 md:mb-12">
-            MOJE ÚSPECHY
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-[#5ECAD5]">15+</div>
-              <div className="text-sm md:text-lg">ROKOV NA TRHU</div>
-            </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-[#5ECAD5]">400</div>
-              <div className="text-sm md:text-lg">SPOKOJNÝCH KLIENTOV</div>
-            </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-[#5ECAD5]">98%</div>
-              <div className="text-sm md:text-lg">SPOKOJNOSŤ</div>
-            </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-[#5ECAD5]">50</div>
-              <div className="text-sm md:text-lg">SPOLUPRACOVNÍKOV</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Partneri Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202325] text-center mb-4 md:mb-6">
-            PARTNERI
-          </h2>
-          <p className="text-base md:text-lg text-gray-600 text-center mb-8 md:mb-12">
-            Spolupracujeme s najlepšími finančnými inštitúciami
-          </p>
-          
-          <div className="relative">
-            {/* Navigation arrows */}
-            <div className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-xl md:text-2xl cursor-pointer">
-              ‹
-            </div>
-            <div className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-xl md:text-2xl cursor-pointer">
-              ›
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            {/* Image */}
+            <div className="w-full lg:pl-8">
+              <Image
+                src="/O-mne-moja-cesta.jpeg"
+                alt="Moja cesta - Financial team"
+                width={320}
+                height={220}
+                className="rounded-lg shadow-lg object-cover w-full h-auto"
+              />
             </div>
             
-            {/* Partner logos */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-8 items-center">
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">365.bank</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">PRUDENTA</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">SLSP</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">CONSEQ</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">Union</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">OVB</span>
-              </div>
-              <div className="bg-gray-200 h-12 md:h-16 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 font-semibold text-sm md:text-base">Generali</span>
-              </div>
+            {/* Text Content */}
+            <div className="text-justify text-sm md:text-base text-[#202325] leading-tight space-y-3 lg:pl-2">
+              <p>
+                Volám sa Miňo, pochádzam z Malaciek a celý život sa pohybujem v prostredí, kde 
+                rozhodujú výkony, disciplína a zodpovednosť. Vyše 20 rokov som aktívne aj 
+                profesionálne športoval – hádzaná bola mojou srštou a zároveň školou života.
+              </p>
+              <p>
+                Objateľou kapitolou bolo aj 7 a pol roka v Nemecku, kde som intenzívne hrával hádzanú, 
+                ale zároveň pracoval v rámci finančných a poisťovacích spoločnostiach. Bola to skúka 
+                skúsenosť – pracovná aj ľudská. Získal som tam nádych jazyk, skúsenosti i nášky a 
+                schopnosti stávať, ktoré mi dnes umožňujú podávať kvalitné výkony.
+              </p>
+              <p>
+                Po návrate som sa zamestnai v DELL, kde som pôsobil 2,5 roka a v roku 2021 som sa 
+                začal menej YOCi o svojej finančnej život. Bola to intenzívna škola biznesu, komunikácie 
+                a IT.
+              </p>
+              <p>
+                V Finančníctve som vstúpil v januári 2020 napriek veku vystupu, no českému mi bolo 
+                jasné, že práve tu môžem skutočne pomáhať ľuďom s ich životom každ ako človek a 
+                profesionálne. Od marca 2024 sa tomu dívam venomm úkazne.
+              </p>
+              <p>
+                Mám aj najabe prvé výsledky – v roku 2025 dostanern 100 000 € AUM v osobnom 
+                výsledku (cca 350 000 € v kancelári).
+              </p>
+              <p>
+                Mám 35 rokov, vo finančnom svete som druhý rok, ale musíme sa k všetkým a 
+                pracujem na sebe. Stále vidím prestory na zlepšanie – a práve v tom je moja výhoda. 
+                Neuvažujem sa na výsledkoch, pracujem ďalej, učím sa každý den. Nezaspamujem a s 
+                výslepsom k všm ai k výsledkom, ktoré spoločne dosiahneme.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Moje certifikáty Section */}
+      {/* Statistics Section */}
+      <section className="py-12 md:py-16 bg-[#202325]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+            <div>
+              <div className="text-6xl md:text-8xl font-bold text-[#5ECAD5] mb-4">788</div>
+              <div className="text-xl md:text-2xl text-white font-light">Fil</div>
+            </div>
+            <div>
+              <div className="text-6xl md:text-8xl font-bold text-[#5ECAD5] mb-4">1187</div>
+              <div className="text-xl md:text-2xl text-white font-light">Dlg</div>
+            </div>
+          </div>
+          <div className="mt-8 text-white text-lg">
+            Najčas spokojných klientov
+          </div>
+        </div>
+      </section>
+
+      {/* Moje výsledky Section */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#202325] text-center mb-8 md:mb-12">
-            MOJE CERTIFIKÁTY
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+            MOJE VÝSLEDKY
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-48 md:w-64 h-60 md:h-80 bg-gray-200 rounded-lg shadow-lg mx-auto mb-4 flex items-center justify-center border-4 border-yellow-400">
-                <span className="text-gray-500 text-sm md:text-base">[Certifikát 1]</span>
-              </div>
-              <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                Toto je názov certifikátu
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                There are many variations of passages of Lorem Ipsum available...
-              </p>
+              <div className="text-5xl md:text-6xl font-bold text-[#5ECAD5] mb-2">98%</div>
+              <div className="text-lg text-[#202325]">SPOKOJNOSŤ</div>
             </div>
+            <div className="text-center">
+              <div className="text-5xl md:text-6xl font-bold text-[#5ECAD5] mb-2">500.000</div>
+              <div className="text-lg text-[#202325]">EUR</div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl md:text-6xl font-bold text-[#5ECAD5] mb-2">2.5</div>
+              <div className="text-lg text-[#202325]">ROČNE</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="text-center">
-              <div className="w-48 md:w-64 h-60 md:h-80 bg-gray-200 rounded-lg shadow-lg mx-auto mb-4 flex items-center justify-center border-4 border-yellow-400">
-                <span className="text-gray-500 text-sm md:text-base">[Certifikát 2]</span>
-              </div>
-              <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                Toto je názov certifikátu
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                There are many variations of passages of Lorem Ipsum available...
+      {/* Niekde tu sme Section */}
+      <section className="py-12 md:py-16 bg-[#202325]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-8">
+            NIEKDE TU SME
+          </h2>
+          <div className="text-white space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Individuálny prístup ku klientovi</h3>
+              <p className="text-gray-300">
+                Každý klient je pre nás jedinečný a preto si zaslúži individuálny prístup. 
+                Analyzujeme vašu situáciu a navrhneme riešenia šité na mieru.
               </p>
             </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Sme tu 24 hodín</h3>
+              <p className="text-gray-300">
+                Naša podpora je dostupná kedykoľvek potrebujete. Môžete sa na nás spoľahnúť 
+                v každej situácii.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Odbornosť na ktorú sa môžete spoľahnúť</h3>
+              <p className="text-gray-300">
+                Máme za sebou roky skúseností a neprestajne sa vzdelávame, aby sme vám 
+                poskytli najlepšie možné služby.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Komplexné služby s dlhodobou starostlivosťou</h3>
+              <p className="text-gray-300">
+                Poskytujeme komplexné finančné služby a dlhodobú starostlivosť o vašu 
+                finančnú budúcnosť.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Certifikáty Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+            CERTIFIKÁTY
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-48 md:w-64 h-60 md:h-80 bg-gray-200 rounded-lg shadow-lg mx-auto mb-4 flex items-center justify-center border-4 border-yellow-400">
-                <span className="text-gray-500 text-sm md:text-base">[Certifikát 3]</span>
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
+                <span className="text-gray-500 text-sm">CERTIFIKÁT 1</span>
               </div>
-              <h3 className="text-base md:text-lg font-semibold text-[#202325] mb-2">
-                Toto je názov certifikátu
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600">
-                There are many variations of passages of Lorem Ipsum available...
-              </p>
+              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
             </div>
+            <div className="text-center">
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
+                <span className="text-gray-500 text-sm">CERTIFIKÁT 2</span>
+              </div>
+              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+            </div>
+            <div className="text-center">
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
+                <span className="text-gray-500 text-sm">CERTIFIKÁT 3</span>
+              </div>
+              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+            </div>
+            <div className="text-center">
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
+                <span className="text-gray-500 text-sm">CERTIFIKÁT 4</span>
+              </div>
+              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Contact Section */}
+      <section className="py-8 bg-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            <div>
+              <h4 className="font-semibold text-[#202325] mb-2">TELEFÓN</h4>
+              <p className="text-gray-600">+421 XXX XXX XXX</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[#202325] mb-2">EMAIL</h4>
+              <p className="text-gray-600">info@example.com</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-[#202325] mb-2">ADRESA</h4>
+              <p className="text-gray-600">Bratislava, Slovensko</p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <button 
+              onClick={openModal}
+              className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+            >
+              Kontaktovať
+            </button>
           </div>
         </div>
       </section>
     </main>
   );
-} 
+}
