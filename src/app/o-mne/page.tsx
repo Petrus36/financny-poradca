@@ -76,18 +76,18 @@ export default function OMnePage() {
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             {/* Image */}
-            <div className="w-full lg:pl-8">
+            <div className="w-[448px] h-[448px] lg:-ml-55 lg:mt-5">
               <Image
                 src="/O-mne-moja-cesta.jpeg"
                 alt="Moja cesta - Financial team"
-                width={320}
-                height={220}
-                className="rounded-lg shadow-lg object-cover w-full h-auto"
+                width={448}
+                height={448}
+                className="rounded-lg shadow-lg object-cover w-full h-full"
               />
             </div>
             
             {/* Text Content */}
-            <div className="text-justify text-sm md:text-base text-[#202325] leading-tight space-y-3 lg:pl-2">
+            <div className="text-justify text-sm md:text-base text-[#202325] leading-tight space-y-3 lg:-ml-55 w-[736px] h-[456px] lg:mt-8">
               <p>
                 Volám sa Miňo, pochádzam z Malaciek a celý život sa pohybujem v prostredí, kde 
                 rozhodujú výkony, disciplína a zodpovednosť. Vyše 20 rokov som aktívne aj 
@@ -124,24 +124,46 @@ export default function OMnePage() {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="py-12 md:py-16 bg-[#202325]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            <div>
-              <div className="text-6xl md:text-8xl font-bold text-[#5ECAD5] mb-4">788</div>
-              <div className="text-xl md:text-2xl text-white font-light">Fil</div>
+      {/* Začiatok Section */}
+      <section className="bg-[#202325]">
+        <div className="w-[1440px] h-[628px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start h-full">
+            {/* Text Content */}
+            <div className="text-white space-y-6 text-left flex flex-col justify-center h-full w-[684px] h-[276px]">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4 font-monda">Začiatok</h3>
+                <p className="text-sm md:text-base leading-relaxed">
+                  Moje začiatky boli veľmi dynamické a troška iné ako štandardne pri nových ľuďoch. 
+                  Ja som bol už dlhšie rozhodnutý, že to robiť chcem a preto som len čakal, kým už 
+                  budem môcť na full-time. Absolvoval som veľké množstvo školení a, aj keď sa mi to 
+                  najskôr nepáčilo, dnes neľutujem ani jedno jediné. Posunul som sa osobnostne, 
+                  vzdelaním, ale aj odborne.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4 font-monda">Kariéra finančného poradcu</h3>
+                <p className="text-sm md:text-base leading-relaxed">
+                  Chcel som to robiť, robím to a dúfam, že dlho budem.
+                </p>
+              </div>
             </div>
-            <div>
-              <div className="text-6xl md:text-8xl font-bold text-[#5ECAD5] mb-4">1187</div>
-              <div className="text-xl md:text-2xl text-white font-light">Dlg</div>
-            </div>
-          </div>
-          <div className="mt-8 text-white text-lg">
-            Najčas spokojných klientov
+            
+                                                                                                                                                                                                               {/* Image */}
+               <div className="w-[500px] h-[500px] flex items-center justify-center mt-16 ml-20">
+               <Image
+                 src="/O-mne.jpeg"
+                 alt="Financial advisor career"
+                 width={500}
+                 height={500}
+                 className="rounded-lg shadow-lg object-cover"
+               />
+             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Moje výsledky Section */}
       <section className="py-12 md:py-16 bg-white">
