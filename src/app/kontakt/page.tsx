@@ -64,7 +64,7 @@ export default function KontaktPage() {
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.png"
+            src="/banner.svg"
             alt="Banner background"
             fill
             className="object-cover"

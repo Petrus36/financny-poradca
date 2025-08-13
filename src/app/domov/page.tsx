@@ -7,6 +7,7 @@ import ContactModal from "../../components/ContactModal";
 
 export default function DomovPage() {
   const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const investmentPartners = [
@@ -68,12 +69,51 @@ export default function DomovPage() {
     }
   ];
 
+  const testimonials = [
+    {
+      id: 1,
+      name: "Mária Kováčová",
+      location: "Bratislava",
+      text: "Výborný prístup a profesionálne poradenstvo. Pomohol mi vytvoriť finančný plán, ktorý mi umožnil dosiahnuť moje ciele.",
+      initial: "M"
+    },
+    {
+      id: 2,
+      name: "Peter Novák",
+      location: "Košice",
+      text: "Vďaka jeho poradenstvu som si zabezpečil výborné investičné príležitosti. Môžem len odporučiť jeho služby.",
+      initial: "P"
+    },
+    {
+      id: 3,
+      name: "Jana Svobodová",
+      location: "Trenčín",
+      text: "Profesionálny prístup, jasné vysvetlenie všetkých možností. Cítim sa teraz oveľa istejšie vo svojich finančných rozhodnutiach.",
+      initial: "J"
+    },
+    {
+      id: 4,
+      name: "Tomáš Dvorák",
+      location: "Nitra",
+      text: "Skvelé poradenstvo v oblasti investovania. Vďaka jeho návrhom sa mi podarilo výrazne zlepšiť moju finančnú situáciu.",
+      initial: "T"
+    }
+  ];
+
   const nextPartner = () => {
     setCurrentPartnerIndex((prev) => (prev + 1) % investmentPartners.length);
   };
 
   const prevPartner = () => {
     setCurrentPartnerIndex((prev) => (prev - 1 + investmentPartners.length) % investmentPartners.length);
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const openModal = () => {
@@ -119,12 +159,12 @@ export default function DomovPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16">
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16 lg:pl-0 lg:-ml-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
-                VÁŠ FINANČNÝ<br />PORADCA
+                Váš finančný poradca
               </h1>
-              <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
-                Vaše financie pod kontrolou, Vaše úspory v raste.
+              <p className="text-base md:text-lg text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+                Zhodnoťte svoj majetok medziročne až o 20% vďaka profesionálnemu prístupu k financiám.
               </p>
               <Link href="/kontakt">
                 <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
@@ -139,214 +179,279 @@ export default function DomovPage() {
       </section>
 
       {/* My Achievements Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-26 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            MOJE ÚSPECHY
+          <h2 className="text-4xl md:text-5xl font-medium text-[#202325] text-center mb-24 md:mb-32 -mt-10">
+            PRÁCA KANCELÁRIE V KOCKE
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center flex flex-col justify-center">
-              <div className="text-3xl md:text-5xl font-bold mb-2 text-[#5ECAD5]">3000+</div>
-              <div className="text-sm md:text-base">KLIENTOV</div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-32 md:gap-40 justify-start -ml-20">
+            {/* Certificate Card */}
+            <div className="bg-[#2A2C2D] rounded-lg px-28 py-8 text-center flex flex-col justify-center items-center h-80 hover:scale-105 transition-all duration-300 cursor-pointer">
+              {/* Certificate Document Icon */}
+              <svg className="w-24 h-24 text-white mb-6" fill="currentColor" viewBox="0 0 24 24">
+                {/* Document background */}
+                <rect x="6" y="4" width="10" height="14" rx="1" fill="currentColor"/>
+                {/* Horizontal lines on document */}
+                <line x1="8" y1="8" x2="13" y2="8" stroke="black" strokeWidth="0.8"/>
+                <line x1="8" y1="10" x2="13" y2="10" stroke="black" strokeWidth="0.8"/>
+                <line x1="8" y1="12" x2="11" y2="12" stroke="black" strokeWidth="0.8"/>
+                {/* Small bookmark tab */}
+                <rect x="16" y="6" width="1.5" height="6" fill="currentColor"/>
+                <path d="M16 12 L17.75 10.5 L17.5 12 Z" fill="currentColor"/>
+              </svg>
+              <div className="text-4xl font-bold text-[#7FE3DC] mb-4 -mt-2">6/6</div>
+              <div className="text-base font-semibold text-white uppercase tracking-wide">NBS LICENCIÍ</div>
             </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center flex flex-col justify-center">
-              <div className="text-2xl md:text-4xl font-bold mb-2 text-[#5ECAD5]">400tis.€</div>
-              <div className="text-sm md:text-base">OBSTARÁVAME</div>
+
+            {/* People Card */}
+            <div className="bg-[#2A2C2D] rounded-lg px-28 py-8 text-center flex flex-col justify-center items-center h-80 hover:scale-105 transition-all duration-300 cursor-pointer">
+              {/* Two People Icon */}
+              <svg className="w-20 h-20 text-white mb-6 -mt-4" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                <circle cx="16" cy="7" r="3"/>
+                <path d="M16 14a3 3 0 0 1 3 3v2"/>
+              </svg>
+              <div className="text-4xl font-bold text-[#7FE3DC] mb-4">3000+</div>
+              <div className="text-base font-semibold text-white uppercase tracking-wide">KLIENTOV</div>
             </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center flex flex-col justify-center">
-              <div className="text-3xl md:text-5xl font-bold mb-2 text-[#5ECAD5]">1mil.€</div>
-              <div className="text-sm md:text-base">V HYPOTÉKACH</div>
+
+            {/* Euro Card */}
+            <div className="bg-[#2A2C2D] rounded-lg px-28 py-8 text-center flex flex-col justify-center items-center h-80 hover:scale-105 transition-all duration-300 cursor-pointer">
+              {/* Euro Circle Icon */}
+              <svg className="w-56 h-56 text-white mb-6 mt-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                <path d="M15 8c-1.5-1-3.5-1-5 0-1.5 1-1.5 3-1.5 4s0 3 1.5 4c1.5 1 3.5 1 5 0M8 11h6M8 13h6" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              <div className="text-4xl font-bold text-[#7FE3DC] mb-8 mt-6">400&nbsp;000</div>
+              <div className="text-base font-semibold text-white uppercase tracking-wide leading-tight">POD<br/>SPRÁVOU<br/>KANCELÁRIE</div>
             </div>
-            <div className="bg-[#202325] text-white p-4 md:p-6 rounded-lg text-center flex flex-col justify-center">
-              <div className="text-4xl md:text-6xl font-bold mb-2 text-[#5ECAD5]">50</div>
-              <div className="text-sm md:text-base">SPOLUPRACOVNÍKOV</div>
+
+            {/* House Card */}
+            <div className="bg-[#2A2C2D] rounded-lg px-28 py-8 text-center flex flex-col justify-center items-center h-80 hover:scale-105 transition-all duration-300 cursor-pointer">
+              {/* House Icon */}
+              <svg className="w-20 h-20 text-white mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <div className="text-4xl font-bold text-[#7FE3DC] mb-4 leading-tight">1M+</div>
+              <div className="text-base font-semibold text-white uppercase tracking-wide leading-tight">V<br/>HYPOTÉKACH</div>
             </div>
+
+            {/* Experience Card */}
+            <div className="bg-[#2A2C2D] rounded-lg px-28 py-8 text-center flex flex-col justify-center items-center h-80 hover:scale-105 transition-all duration-300 cursor-pointer">
+              {/* Experience/Time Icon */}
+              <svg className="w-20 h-20 text-white mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                <polyline points="12,6 12,12 16,14" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              <div className="text-4xl font-bold text-[#7FE3DC] mb-4">20</div>
+              <div className="text-base font-semibold text-white uppercase tracking-wide">ROKOV<br/>PRAXE</div>
+            </div>
+          </div>
+          
+          {/* Concluding Statement */}
+          <div className="text-center mt-40">
+                          <p className="text-xl text-[#202325] font-bold">
+              Mojím poslaním je, aby moji klienti boli z roka na rok bohatší.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* References Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            REFERENCIE
-          </h2>
-          <div className="bg-[#EBEBEB] p-6 md:p-8 rounded-lg relative">
-            <div className="text-4xl md:text-6xl text-[#5ECAD5] absolute top-2 md:top-4 left-2 md:left-4">"</div>
-            <div className="text-4xl md:text-6xl text-[#5ECAD5] absolute bottom-2 md:bottom-4 right-2 md:right-4">"</div>
-            <div className="text-center px-4 md:px-8 py-4">
-              <p className="text-base md:text-lg text-[#202325] italic mb-6">
-                "Výborný prístup a profesionálne poradenstvo. Pomohol mi vytvoriť 
-                finančný plán, ktorý mi umožnil dosiahnuť moje ciele."
-              </p>
-              <div className="flex items-center justify-center">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-3 md:mr-4">
-                  M
-                </div>
-                <div>
-                  <div className="font-semibold text-[#202325] text-sm md:text-base">Martin Wolf</div>
-                  <div className="text-xs md:text-sm text-gray-600">Manager</div>
-                </div>
-              </div>
-            </div>
-            {/* Navigation arrows */}
-            <div className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-xl md:text-2xl cursor-pointer">
-              ‹
-            </div>
-            <div className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-xl md:text-2xl cursor-pointer">
-              ›
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Questions Section */}
       <section className="py-12 md:py-16 bg-[#202325]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4 md:mb-6">
-            MÁTE OTÁZKY O INVESTOVANÍ, POISTENÍ ČI ÚVEROCH?
+          <h2 className="text-3xl md:text-5xl font-medium text-[#5ECAD5] mb-8 md:mb-12">
+            MÁTE OTÁZKY?
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
-            Vyplňte krátky formulár a získajte bezplatnú analýzu a konkrétne riešenia
+          <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
+            Som tu, aby som vám pomohol nájsť riešenie, ktoré bude vyhovova' práve vám. Vyplň'te krátky formulár, ktorý vám zaberie menej než 2 minúty.
           </p>
           
-          <div className="mb-6 md:mb-8">
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">Ako to prebieha?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-              <div className="text-center">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl mx-auto mb-3 md:mb-4">1</div>
-                <p className="text-gray-300 text-sm md:text-base">Vyplníte formulár</p>
+          {/* Čo tým získate section */}
+          <div className="mb-8 md:mb-12 text-left max-w-4xl mx-auto ml-4">
+            <h3 className="text-2xl md:text-3xl font-normal text-white mb-6">Čo tým získate?</h3>
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">1.</span>
+                <p className="text-gray-300 text-base md:text-lg">Bezplatný vstupnú analýzu vašej aktuálnej finančnej situácie.</p>
               </div>
-              <div className="text-center">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl mx-auto mb-3 md:mb-4">2</div>
-                <p className="text-gray-300 text-sm md:text-base">Analyzujeme vašu situáciu</p>
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">2.</span>
+                <p className="text-gray-300 text-base md:text-lg">Konkrétne odporúčania prispôsobené vašim cieľom a možnostiam.</p>
               </div>
-              <div className="text-center">
-                <div className="w-10 md:w-12 h-10 md:h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl mx-auto mb-3 md:mb-4">3</div>
-                <p className="text-gray-300 text-sm md:text-base">Navrhneme riešenia</p>
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">3.</span>
+                <p className="text-gray-300 text-base md:text-lg">Nezáväzný návrh spolupráce - až po vašom súhlase podnikneme ďalšie kroky.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Ako to prebieha section */}
+          <div className="mb-8 md:mb-12 text-left max-w-4xl mx-auto ml-4">
+            <h3 className="text-2xl md:text-3xl font-normal text-white mb-6">Ako to prebieha?</h3>
+            <div className="space-y-2">
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">1.</span>
+                <p className="text-gray-300 text-base md:text-lg">Vyplníte formulár — základné údaje a vaše priority.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">2.</span>
+                <p className="text-gray-300 text-base md:text-lg">Do 24 hodín vás kontaktujem s prvou analýzou.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">3.</span>
+                <p className="text-gray-300 text-base md:text-lg">Dohodneme si konzultáciu (online alebo osobne), kde prejdeme všetky otázky.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-white font-normal mr-3">4.</span>
+                <p className="text-gray-300 text-base md:text-lg">Spoločne nastavíme plán, aby vaše financie pracovali pre vás.</p>
               </div>
             </div>
           </div>
           
           <button 
             onClick={openModal}
-            className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+            className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg"
           >
             Chcem formulár
           </button>
         </div>
       </section>
 
-      {/* Investment Partners Section */}
+      {/* Testimonials Section */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-[#202325]">
-              Investovanie...
-            </h2>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] mb-12 md:mb-16">
+            REFERENCIE
+          </h2>
           
-          <div className="relative">
-            {/* Navigation arrows */}
-            <button 
-              onClick={prevPartner}
-              className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-8 md:w-10 h-8 md:h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#5ECAD5] text-lg md:text-xl hover:bg-gray-50 transition-colors z-10"
-            >
-              ‹
-            </button>
-            <button 
-              onClick={nextPartner}
-              className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 md:w-10 h-8 md:h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#5ECAD5] text-lg md:text-xl hover:bg-gray-50 transition-colors z-10"
-            >
-              ›
-            </button>
+          <div className="relative max-w-2xl mx-auto">
+            {/* Main testimonial display */}
+            <div className="py-8">
+              {/* Avatar */}
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-20 h-20 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                  {testimonials[currentTestimonialIndex].initial}
+                </div>
+              </div>
+              
+              {/* Name */}
+              <h4 className="font-semibold text-[#202325] text-lg mb-8">
+                {testimonials[currentTestimonialIndex].name}
+              </h4>
+              
+              {/* Quote with quotation marks */}
+              <div className="relative mb-8">
+                {/* Opening quote */}
+                <div className="absolute -left-4 -top-2 text-4xl text-[#5ECAD5] font-bold leading-none">
+                  "
+                </div>
+                {/* Closing quote */}
+                <div className="absolute -right-4 -bottom-6 text-4xl text-[#5ECAD5] font-bold leading-none">
+                  "
+                </div>
+                
+                <blockquote className="text-base md:text-lg text-gray-700 leading-relaxed px-8">
+                  {testimonials[currentTestimonialIndex].text}
+                </blockquote>
+              </div>
+            </div>
             
-            {/* Partner logos carousel with featured center */}
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentPartnerIndex * 20}%)` }}
+            {/* Progress bar navigation */}
+            <div className="relative mt-8">
+              {/* Navigation arrows */}
+              <button 
+                onClick={prevTestimonial}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-2xl hover:text-[#4BB8C4] transition-colors z-10"
               >
-                {investmentPartners.map((partner, index) => {
-                  // Calculate if this is the center partner (index 2 in visible 5)
-                  const isCenter = (index - currentPartnerIndex) === 2;
-                  
-                  return (
-                    <div 
-                      key={index} 
-                      className="w-1/5 flex-shrink-0 px-1 md:px-2"
-                    >
-                      <div className={`bg-white border-2 rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300 p-2 md:p-3 ${
-                        isCenter 
-                          ? 'h-24 md:h-36 border-[#5ECAD5] shadow-xl scale-110 -mt-2 md:-mt-4 bg-gradient-to-b from-white to-gray-50' 
-                          : 'h-16 md:h-24 border-gray-200 opacity-60'
-                      }`}>
-                        <div className="text-center w-full">
-                          {/* 365 Invest special styling */}
-                          {partner.name === "365 Invest" ? (
-                            <div className="relative">
-                              <div className={`${isCenter ? 'w-12 md:w-20 h-12 md:h-20' : 'w-8 md:w-12 h-8 md:h-12'} bg-gray-100 rounded-full flex items-center justify-center mb-1 md:mb-2 mx-auto relative`}>
-                                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5ECAD5] to-blue-500 opacity-20"></div>
-                                <span className={`text-[#202325] font-bold relative z-10 ${isCenter ? 'text-lg md:text-2xl' : 'text-sm md:text-lg'}`}>365</span>
-                              </div>
-                              <div className="flex items-center justify-center space-x-1">
-                                <span className={`text-[#202325] font-semibold ${isCenter ? 'text-sm md:text-lg' : 'text-xs md:text-sm'}`}>365</span>
-                                <span className={`text-[#5ECAD5] font-medium ${isCenter ? 'text-xs md:text-base' : 'text-xs'}`}>Invest</span>
-                              </div>
-                            </div>
-                          ) : (
-                            <>
-                              <div className={`${isCenter ? 'w-12 md:w-20 h-12 md:h-20' : 'w-8 md:w-12 h-8 md:h-12'} ${partner.color} rounded-lg flex items-center justify-center mb-1 md:mb-2 mx-auto`}>
-                                <span className={`text-white font-bold ${isCenter ? 'text-lg md:text-2xl' : 'text-sm md:text-lg'}`}>
-                                  {partner.name.split(' ')[0].charAt(0)}
-                                </span>
-                              </div>
-                              <span className={`text-gray-700 font-medium leading-tight ${isCenter ? 'text-xs md:text-base' : 'text-xs'}`}>
-                                {partner.name}
-                              </span>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                ‹
+              </button>
+              <button 
+                onClick={nextTestimonial}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 text-[#5ECAD5] text-2xl hover:text-[#4BB8C4] transition-colors z-10"
+              >
+                ›
+              </button>
+              
+              {/* Progress bar */}
+              <div className="mx-8 bg-gray-200 h-1 rounded-full overflow-hidden">
+                <div 
+                  className="bg-[#5ECAD5] h-full rounded-full transition-all duration-300 ease-in-out"
+                  style={{
+                    width: `${((currentTestimonialIndex + 1) / testimonials.length) * 100}%`
+                  }}
+                />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] mb-12 md:mb-16">
+            PARTNERI
+          </h2>
+          
+          {/* Partner logos */}
+          <div className="flex items-center justify-center gap-16 md:gap-20 lg:gap-24">
+            <div className="flex items-center justify-center h-20 md:h-24">
+              <Image
+                src="/Kooperativa.jpg"
+                alt="Kooperativa"
+                width={160}
+                height={80}
+                className="max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+              />
+            </div>
+            
+            <div className="flex items-center justify-center h-20 md:h-24">
+              <Image
+                src="/mBank.jpg"
+                alt="mBank"
+                width={160}
+                height={80}
+                className="max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+              />
+            </div>
+            
+            <div className="flex items-center justify-center h-20 md:h-24">
+              <Image
+                src="/Alianz.png"
+                alt="Allianz"
+                width={400}
+                height={200}
+                className="h-20 md:h-24 w-auto object-contain hover:scale-[1.65] transition-all duration-300 scale-150"
+              />
+            </div>
+            
+            <div className="flex items-center justify-center h-20 md:h-24">
+              <Image
+                src="/Conseq.png"
+                alt="CONSEQ"
+                width={160}
+                height={80}
+                className="max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+              />
+            </div>
+            
+            <div className="flex items-center justify-center h-20 md:h-24">
+              <Image
+                src="/Generali.jpg"
+                alt="Generali"
+                width={400}
+                height={200}
+                className="h-20 md:h-24 w-auto object-contain hover:scale-[1.65] transition-all duration-300 scale-150"
+              />
             </div>
           </div>
           
-          {/* Investment categories */}
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center p-4 md:p-6 bg-gray-50 rounded-lg">
-              <div className="w-12 md:w-16 h-12 md:h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <svg className="w-6 md:w-8 h-6 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#202325] mb-2">Investičné fondy</h3>
-              <p className="text-gray-600 text-sm md:text-base">Dlhodobé investovanie</p>
-            </div>
-            
-            <div className="text-center p-4 md:p-6 bg-gray-50 rounded-lg">
-              <div className="w-12 md:w-16 h-12 md:h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <svg className="w-6 md:w-8 h-6 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#202325] mb-2">Robo advisory</h3>
-              <p className="text-gray-600 text-sm md:text-base">Automatizované investovanie</p>
-            </div>
-            
-            <div className="text-center p-4 md:p-6 bg-gray-50 rounded-lg">
-              <div className="w-12 md:w-16 h-12 md:h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <svg className="w-6 md:w-8 h-6 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#202325] mb-2">Poistenie</h3>
-              <p className="text-gray-600 text-sm md:text-base">Životné a úrazové</p>
-            </div>
-          </div>
+          <p className="text-gray-600 mt-8 md:mt-12 text-base md:text-lg">
+            Kompletný zoznam partnerov nájdete <Link href="/spoluprace" className="text-[#5ECAD5] hover:text-[#4BB8C4] underline">tu</Link>.
+          </p>
         </div>
       </section>
     </main>

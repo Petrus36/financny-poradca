@@ -50,7 +50,7 @@ export default function OMnePage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16">
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16 lg:-ml-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
                 O mne
               </h1>
@@ -100,7 +100,7 @@ export default function OMnePage() {
                 schopnosti stávať, ktoré mi dnes umožňujú podávať kvalitné výkony.
               </p>
               <p>
-                Po návrate som sa zamestnai v DELL, kde som pôsobil 2,5 roka a v roku 2021 som sa 
+                Po návrate som sa zamestnal v DELL, kde som pôsobil 2,5 roka a v roku 2021 som sa 
                 začal menej YOCi o svojej finančnej život. Bola to intenzívna škola biznesu, komunikácie 
                 a IT.
               </p>
