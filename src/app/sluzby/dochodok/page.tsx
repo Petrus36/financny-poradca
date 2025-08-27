@@ -62,7 +62,7 @@ export default function DochodokPage() {
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.png"
+            src="/banner.svg"
             alt="Banner background"
             fill
             className="object-cover"
@@ -72,13 +72,24 @@ export default function DochodokPage() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
+        {/* Advisor photo positioned on the right */}
+        <div className="absolute right-60 -bottom-24 z-10 w-[450px] h-[600px] md:w-[550px] md:h-[700px] lg:w-[600px] lg:h-[800px]">
+          <Image
+            src="/advisor-photo.png"
+            alt="Financial Advisor"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+        
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center justify-between min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0">
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-4 lg:-ml-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
-                DÔCHODOK
+                Dôchodok
               </h1>
               <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Zabezpečte si dôstojný dôchodok a finančnú nezávislosť v seniorskom veku
@@ -87,15 +98,8 @@ export default function DochodokPage() {
                 onClick={openModal}
                 className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
               >
-                Naplánovať dôchodok
+                Chcem sa zabezpečiť
               </button>
-            </div>
-            
-            {/* Right side - Retirement Image */}
-            <div className="flex-1 flex justify-center lg:justify-end">
-              <div className="w-64 md:w-72 h-80 md:h-96 bg-gray-200 rounded-lg shadow-2xl flex items-end justify-center overflow-hidden">
-                <span className="text-gray-500 text-lg mb-4">[Retirement Image]</span>
-              </div>
             </div>
           </div>
         </div>
@@ -235,52 +239,6 @@ export default function DochodokPage() {
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">4</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Sledovanie</h3>
               <p className="text-gray-600 text-sm">Pravidelne sledujeme a optimalizujeme výkonnosť</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Retirement Calculator Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8">
-            DÔCHODKOVÁ KALKULAČKA
-          </h2>
-          <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-lg">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-[#202325] font-medium mb-2">Váš vek</label>
-                <input 
-                  type="number" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                  placeholder="30"
-                />
-              </div>
-              <div>
-                <label className="block text-[#202325] font-medium mb-2">Mesačný príspevok (€)</label>
-                <input 
-                  type="number" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                  placeholder="100"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-[#202325] font-medium mb-2">Očakávaný ročný výnos (%)</label>
-                <input 
-                  type="number" 
-                  step="0.1"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                  placeholder="4.5"
-                />
-              </div>
-            </div>
-            <div className="text-center">
-              <button 
-                onClick={openModal}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg w-full md:w-auto"
-              >
-                Vypočítať dôchodok
-              </button>
             </div>
           </div>
         </div>

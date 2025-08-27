@@ -74,11 +74,22 @@ export default function KontaktPage() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
+        {/* Advisor photo positioned on the right */}
+        <div className="absolute right-60 -bottom-24 z-10 w-[450px] h-[600px] md:w-[550px] md:h-[700px] lg:w-[600px] lg:h-[800px]">
+          <Image
+            src="/advisor-photo.png"
+            alt="Financial Advisor"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+        
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center justify-between min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0">
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-4 lg:-ml-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
                 KONTAKT
               </h1>
@@ -89,16 +100,10 @@ export default function KontaktPage() {
                 Bezplatná konzultácia
               </button>
             </div>
-            
-            {/* Right side - Advisor Image */}
-            <div className="flex-1 flex justify-center lg:justify-end">
-              <div className="w-64 md:w-72 h-80 md:h-96 bg-gray-200 rounded-lg shadow-2xl flex items-end justify-center overflow-hidden">
-                <span className="text-gray-500 text-lg mb-4">[Foto poradcu]</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
 
       {/* Contact Information Section */}
       <section className="bg-white py-16 shadow-sm">

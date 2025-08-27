@@ -61,7 +61,7 @@ export default function SluzbyPage() {
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.png"
+            src="/banner.svg"
             alt="Banner background"
             fill
             className="object-cover"
@@ -86,7 +86,7 @@ export default function SluzbyPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-16">
+            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-4 lg:-ml-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
                 Služby
               </h1>
@@ -181,7 +181,7 @@ export default function SluzbyPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-[#202325] mb-2">
-                    28+ rokov skúseností
+                    20+ rokov skúseností
                   </h3>
                   <p className="text-gray-600 text-sm">
                     Dlhoročné skúsenosti a tisíce spokojných klientov
