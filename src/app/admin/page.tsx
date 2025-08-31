@@ -20,6 +20,15 @@ interface FormSubmission {
   createdAt: string;
 }
 
+interface BlogPost {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  imageUrl: string;
+  createdAt: string;
+}
+
 export default function AdminPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
@@ -30,6 +39,22 @@ export default function AdminPage() {
   const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // Blog management state
+  const [activeTab, setActiveTab] = useState<'submissions' | 'blog'>('submissions');
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [showBlogModal, setShowBlogModal] = useState(false);
+  const [blogForm, setBlogForm] = useState({
+    title: '',
+    description: '',
+    url: '',
+    imageUrl: ''
+  });
+  const [blogLoading, setBlogLoading] = useState(false);
+  const [blogError, setBlogError] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>('');
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -38,6 +63,7 @@ export default function AdminPage() {
     if (loggedIn) {
       setIsLoggedIn(true);
       fetchSubmissions();
+      fetchBlogPosts();
     }
   }, []);
 
@@ -49,6 +75,7 @@ export default function AdminPage() {
       setIsLoggedIn(true);
       sessionStorage.setItem('adminLoggedIn', 'true');
       fetchSubmissions();
+      fetchBlogPosts();
     } else {
       setError('Nesprávne prihlasovacie údaje');
     }
@@ -82,6 +109,163 @@ export default function AdminPage() {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString('sk-SK');
+  };
+
+  // Blog management functions
+  const fetchBlogPosts = async () => {
+    setBlogLoading(true);
+    try {
+      const response = await fetch('/api/blog');
+      if (response.ok) {
+        const data = await response.json();
+        setBlogPosts(data);
+      } else {
+        setBlogError('Chyba pri načítavaní blog príspevkov');
+      }
+    } catch (error) {
+      setBlogError('Chyba pri načítavaní blog príspevkov');
+      console.error('Error fetching blog posts:', error);
+    } finally {
+      setBlogLoading(false);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to upload image');
+    }
+
+    const data = await response.json();
+    return data.imageUrl;
+  };
+
+  const handleBlogSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Blog form submitted:', blogForm);
+    console.log('Selected file:', selectedFile);
+    setBlogLoading(true);
+    
+    try {
+      let imageUrl = blogForm.imageUrl;
+
+      // If a file was selected, upload it first
+      if (selectedFile) {
+        imageUrl = await uploadImage(selectedFile);
+      }
+
+      // Validate that we have an image URL
+      if (!imageUrl) {
+        console.log('No image URL provided');
+        setBlogError('Musíte nahrať obrázok alebo zadať URL obrázka');
+        setBlogLoading(false);
+        return;
+      }
+
+      // Validate other required fields
+      if (!blogForm.title || !blogForm.description || !blogForm.url) {
+        console.log('Missing required fields:', { title: blogForm.title, description: blogForm.description, url: blogForm.url });
+        setBlogError('Všetky polia sú povinné');
+        setBlogLoading(false);
+        return;
+      }
+
+      const response = await fetch('/api/blog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...blogForm,
+          imageUrl
+        }),
+      });
+
+      if (response.ok) {
+        setShowBlogModal(false);
+        setBlogForm({ title: '', description: '', url: '', imageUrl: '' });
+        setSelectedFile(null);
+        setImagePreview('');
+        fetchBlogPosts();
+        setBlogError('');
+      } else {
+        setBlogError('Chyba pri vytváraní blog príspevku');
+      }
+    } catch (error) {
+      console.error('Error creating blog post:', error);
+      setBlogError(error instanceof Error ? error.message : 'Chyba pri vytváraní blog príspevku');
+    } finally {
+      setBlogLoading(false);
+    }
+  };
+
+  const deleteBlogPost = async (id: string) => {
+    if (!confirm('Ste si istý, že chcete vymazať tento blog príspevok?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/blog?id=${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        fetchBlogPosts();
+      } else {
+        setBlogError('Chyba pri mazaní blog príspevku');
+      }
+    } catch (error) {
+      setBlogError('Chyba pri mazaní blog príspevku');
+      console.error('Error deleting blog post:', error);
+    }
+  };
+
+  const cleanupOrphanedImages = async () => {
+    if (!confirm('Ste si istý, že chcete vymazať nepoužívané obrázky? Táto akcia je nevratná.')) {
+      return;
+    }
+
+    setBlogLoading(true);
+    try {
+      const response = await fetch('/api/cleanup-images', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert(result.message);
+        setBlogError('');
+      } else {
+        setBlogError('Chyba pri čistení obrázkov');
+      }
+    } catch (error) {
+      setBlogError('Chyba pri čistení obrázkov');
+      console.error('Error cleaning up images:', error);
+    } finally {
+      setBlogLoading(false);
+    }
   };
 
   const openModal = (submission: FormSubmission) => {
@@ -174,18 +358,18 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-3 sm:p-6">
       {/* Blur overlay when modal is open */}
-      <div className={`${showModal ? 'blur-sm' : ''} transition-all duration-300`}>
+      <div className={`${showModal || showBlogModal ? 'blur-sm' : ''} transition-all duration-300`}>
         {/* Header */}
         <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 space-y-4 sm:space-y-0">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Admin Dashboard</h1>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
             <button
-              onClick={fetchSubmissions}
-              disabled={loading}
+              onClick={activeTab === 'submissions' ? fetchSubmissions : fetchBlogPosts}
+              disabled={loading || blogLoading}
               className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 disabled:opacity-50"
             >
-              {loading ? 'Načítavam...' : 'Obnoviť'}
+              {(loading || blogLoading) ? 'Načítavam...' : 'Obnoviť'}
             </button>
             <button
               onClick={handleLogout}
@@ -196,38 +380,69 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Tab Navigation */}
         <div className="mb-6">
-          <div className="relative max-w-full sm:max-w-md">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              placeholder="Hľadať podľa mena..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 text-gray-900 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-            />
-            {searchTerm && (
+          <div className="border-b border-gray-200">
+            <nav className="-mb-px flex space-x-8">
               <button
-                onClick={() => setSearchTerm('')}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                onClick={() => setActiveTab('submissions')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'submissions'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
               >
-                <svg className="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                Formuláre ({submissions.length})
               </button>
-            )}
+              <button
+                onClick={() => setActiveTab('blog')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'blog'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Blog ({blogPosts.length})
+              </button>
+            </nav>
           </div>
-          {searchTerm && (
-            <p className="mt-2 text-sm text-gray-600">
-              Zobrazené: {filteredSubmissions.length} z {submissions.length} formulárov
-            </p>
-          )}
         </div>
+
+        {/* Content based on active tab */}
+        {activeTab === 'submissions' && (
+          <>
+            {/* Search Bar */}
+            <div className="mb-6">
+              <div className="relative max-w-full sm:max-w-md">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Hľadať podľa mena..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 text-gray-900 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <svg className="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              {searchTerm && (
+                <p className="mt-2 text-sm text-gray-600">
+                  Zobrazené: {filteredSubmissions.length} z {submissions.length} formulárov
+                </p>
+              )}
+            </div>
 
         {/* Submissions Table */}
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -237,7 +452,7 @@ export default function AdminPage() {
             </h2>
           </div>
 
-          {error && (
+          {error && activeTab === 'submissions' && (
             <div className="px-3 sm:px-6 py-4 bg-red-50 border-l-4 border-red-400">
               <p className="text-red-800">{error}</p>
             </div>
@@ -328,8 +543,255 @@ export default function AdminPage() {
             </div>
           )}
         </div>
+          </>
+        )}
+
+        {/* Blog Management Section */}
+        {activeTab === 'blog' && (
+          <div className="space-y-6">
+            {/* Blog Header with Add Button */}
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-gray-800">
+                Blog príspevky ({blogPosts.length})
+              </h2>
+              <div className="flex space-x-3">
+                <button
+                  onClick={cleanupOrphanedImages}
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 flex items-center space-x-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  <span>Vyčistiť obrázky</span>
+                </button>
+                <button
+                  onClick={() => setShowBlogModal(true)}
+                  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 flex items-center space-x-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  <span>Pridať príspevok</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Error Display */}
+            {blogError && (
+              <div className="bg-red-50 border-l-4 border-red-400 p-4">
+                <p className="text-red-800">{blogError}</p>
+              </div>
+            )}
+
+            {/* Blog Posts Grid */}
+            {blogLoading ? (
+              <div className="text-center py-12">
+                <div className="text-gray-500">Načítavam blog príspevky...</div>
+              </div>
+            ) : blogPosts.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-gray-500">Zatiaľ žiadne blog príspevky.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {blogPosts.map((post) => (
+                  <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div className="relative h-48">
+                      <img
+                        src={post.imageUrl}
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg mb-2 line-clamp-2">{post.title}</h3>
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-3">{post.description}</p>
+                      <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
+                        <span>{formatDate(post.createdAt)}</span>
+                        <a 
+                          href={post.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          Otvoriť link
+                        </a>
+                      </div>
+                      <button
+                        onClick={() => deleteBlogPost(post.id)}
+                        className="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded transition duration-200"
+                      >
+                        Vymazať
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
       </div>
+
+      {/* Blog Modal - Outside blur overlay */}
+      {showBlogModal && (
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-[60] bg-black bg-opacity-60">
+          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full relative z-[70] border border-gray-200">
+            <div className="flex justify-between items-center p-6 border-b bg-gray-50">
+              <h3 className="text-lg font-semibold text-gray-900">Pridať nový blog príspevok</h3>
+              <button
+                onClick={() => {
+                  setShowBlogModal(false);
+                  setBlogForm({ title: '', description: '', url: '', imageUrl: '' });
+                  setSelectedFile(null);
+                  setImagePreview('');
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <form onSubmit={handleBlogSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Nadpis
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={blogForm.title}
+                  onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-500"
+                  placeholder="Zadajte nadpis článku..."
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Popis
+                </label>
+                <textarea
+                  required
+                  rows={3}
+                  value={blogForm.description}
+                  onChange={(e) => setBlogForm({ ...blogForm, description: e.target.value })}
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-500"
+                  placeholder="Zadajte popis článku..."
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  URL link
+                </label>
+                <input
+                  type="url"
+                  required
+                  value={blogForm.url}
+                  onChange={(e) => setBlogForm({ ...blogForm, url: e.target.value })}
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-500"
+                  placeholder="https://example.com/clanok"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Obrázok
+                </label>
+                
+                {/* File Upload */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center w-full">
+                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg className="w-8 h-8 mb-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <p className="mb-2 text-sm text-gray-500">
+                          <span className="font-semibold">Kliknite pre nahranie</span> alebo pretiahnite obrázok
+                        </p>
+                        <p className="text-xs text-gray-500">PNG, JPG, GIF (max. 5MB)</p>
+                      </div>
+                      <input
+                        type="file"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleFileSelect}
+                      />
+                    </label>
+                  </div>
+
+                  {/* Image Preview */}
+                  {imagePreview && (
+                    <div className="relative">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-32 object-cover rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedFile(null);
+                          setImagePreview('');
+                        }}
+                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+
+                  {/* URL Alternative */}
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-gray-300" />
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                      <span className="px-2 bg-white text-gray-500">alebo</span>
+                    </div>
+                  </div>
+
+                  <input
+                    type="url"
+                    value={blogForm.imageUrl}
+                    onChange={(e) => setBlogForm({ ...blogForm, imageUrl: e.target.value })}
+                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-500"
+                    placeholder="Zadajte URL obrázka (voliteľné)"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex space-x-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowBlogModal(false);
+                    setBlogForm({ title: '', description: '', url: '', imageUrl: '' });
+                    setSelectedFile(null);
+                    setImagePreview('');
+                  }}
+                  className="flex-1 px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition duration-200"
+                >
+                  Zrušiť
+                </button>
+                <button
+                  type="submit"
+                  disabled={blogLoading}
+                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 disabled:opacity-50"
+                >
+                  {blogLoading ? 'Ukladám...' : 'Uložiť'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Detailed View Modal */}
       {showModal && selectedSubmission && (
