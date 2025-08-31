@@ -1,17 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { put } from '@vercel/blob';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
-    // In production (Vercel), file uploads to local filesystem won't work
-    // Return an error message suggesting to use URL instead
-    if (process.env.NODE_ENV === 'production') {
-      return NextResponse.json(
-        { error: 'File upload not available in production. Please use image URL instead.' },
-        { status: 400 }
-      );
-    }
 
     const data = await request.formData();
     const file: File | null = data.get('file') as unknown as File;
@@ -47,26 +40,39 @@ export async function POST(request: NextRequest) {
     const extension = path.extname(file.name);
     const filename = `blog-${timestamp}-${randomString}${extension}`;
 
-    // Save to public/blog-images directory
-    const uploadDir = path.join(process.cwd(), 'public', 'blog-images');
-    const filePath = path.join(uploadDir, filename);
+    if (process.env.NODE_ENV === 'production') {
+      // Use Vercel Blob storage in production
+      const blob = await put(filename, file, {
+        access: 'public',
+      });
 
-    // Create directory if it doesn't exist
-    const fs = await import('fs');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+      return NextResponse.json({ 
+        success: true, 
+        imageUrl: blob.url,
+        filename 
+      });
+    } else {
+      // Use local filesystem in development
+      const uploadDir = path.join(process.cwd(), 'public', 'blog-images');
+      const filePath = path.join(uploadDir, filename);
+
+      // Create directory if it doesn't exist
+      const fs = await import('fs');
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      await writeFile(filePath, buffer);
+
+      // Return the public URL
+      const imageUrl = `/blog-images/${filename}`;
+
+      return NextResponse.json({ 
+        success: true, 
+        imageUrl,
+        filename 
+      });
     }
-
-    await writeFile(filePath, buffer);
-
-    // Return the public URL
-    const imageUrl = `/blog-images/${filename}`;
-
-    return NextResponse.json({ 
-      success: true, 
-      imageUrl,
-      filename 
-    });
 
   } catch (error) {
     console.error('Error uploading file:', error);

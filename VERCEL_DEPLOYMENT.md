@@ -1,3 +1,4 @@
+
 # Vercel Deployment Guide
 
 ## Blog Image Management
@@ -7,9 +8,23 @@
 - ✅ **Images stored locally** in `/public/blog-images/` folder
 - ✅ **Automatic cleanup** when deleting blog posts
 
-### Production (Vercel)
-- ❌ **File uploads disabled** - Vercel serverless functions cannot write permanent files
-- ✅ **URL-based images** - Use image URLs instead
+### Production (Vercel) - UPDATED WITH VERCEL BLOB
+- ✅ **File uploads now work!** - Using Vercel Blob storage
+- ✅ **Drag & drop supported** - Same experience as local development
+- ✅ **Automatic cloud storage** - Files stored securely in Vercel Blob
+
+## Setup Required for File Uploads on Vercel
+
+### Step 1: Enable Vercel Blob Storage
+1. **Go to your Vercel Dashboard** (vercel.com)
+2. **Select your project**
+3. **Go to Settings → Storage**
+4. **Click "Create Database"**
+5. **Choose "Blob" storage**
+6. **Follow the setup instructions**
+
+### Step 2: Deploy Updated Code
+After enabling Blob storage, your file uploads will work automatically on Vercel!
 
 ## How to Add Images in Production
 
