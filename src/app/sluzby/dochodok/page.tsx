@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ContactModal from "../../../components/ContactModal";
 
 export default function DochodokPage() {
@@ -95,12 +96,11 @@ export default function DochodokPage() {
               <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Zabezpečte si dôstojný dôchodok a finančnú nezávislosť v seniorskom veku
               </p>
-              <button 
-                onClick={openModal}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
-              >
-                Chcem sa zabezpečiť
-              </button>
+              <Link href="/formular">
+                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
+                  Chcem sa zabezpečiť
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -37,21 +37,21 @@ export default function Footer() {
             <div className="p-6">
               <div className="h-96 w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5!2d17.1067!3d48.1486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8e7b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPopradsk%C3%A1%2023-3%2C%20821%2006%20Bratislava%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20hrdinov%205%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Finančný Poradca - Bratislava"
+                  title="Finančný Poradca - Malacky"
                 ></iframe>
               </div>
               
               {/* Address Info */}
               <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="font-semibold text-[#202325] mb-2">Adresa:</h3>
-                <p className="text-[#202325]">Popradská 23-3, 821 06 Bratislava</p>
+                <p className="text-[#202325]">Duklianskych hrdinov 5, 90101 Malacky</p>
                 <p className="text-sm text-gray-600 mt-1">Slovakia</p>
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function Footer() {
                   <svg className="w-5 md:w-6 h-5 md:h-6 text-[#202325]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
-                  <span className="text-[#202325] text-sm md:text-base">Popradská 23-3, 821 06 Bratislava</span>
+                  <span className="text-[#202325] text-sm md:text-base">Duklianskych hrdinov 5, 90101 Malacky</span>
                 </button>
               </div>
             </div>

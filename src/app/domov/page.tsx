@@ -346,12 +346,11 @@ export default function DomovPage() {
             </div>
           </div>
           
-          <button 
-            onClick={openModal}
-            className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg"
-          >
-            Chcem formulár
-          </button>
+          <Link href="/formular">
+            <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg">
+              Chcem formulár
+            </button>
+          </Link>
         </div>
       </section>
 

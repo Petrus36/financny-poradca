@@ -94,12 +94,11 @@ export default function SluzbyPage() {
               <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Vyberte si zo širokej ponuky služieb, ktoré naša kancelária ponúka. Či už sa chcete poradiť ohľadom hypotéky, poistenia či dôchodku. Sme tu pre vás
               </p>
-              <button 
-                onClick={openModal}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
-              >
-                Objednať službu
-              </button>
+              <Link href="/formular">
+                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
+                  Využiť službu
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -269,12 +268,11 @@ export default function SluzbyPage() {
           <p className="text-lg text-gray-600 mb-8">
             Získajte bezplatnú analýzu vašej finančnej situácie a osobný finančný plán
           </p>
-          <button 
-            onClick={openModal}
-            className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
-          >
-            Chcem bezplatnú konzultáciu
-          </button>
+          <Link href="/formular">
+            <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg">
+              Chcem bezplatnú konzultáciu
+            </button>
+          </Link>
         </div>
       </section>
     </main>
