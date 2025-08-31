@@ -140,10 +140,6 @@ export default function DomovPage() {
     setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };

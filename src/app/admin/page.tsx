@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 // Hardcoded admin credentials
 const ADMIN_USERNAME = 'admin';
@@ -593,14 +594,15 @@ export default function AdminPage() {
                 <p className="text-gray-500">Zatiaľ žiadne blog príspevky.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
                   <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                     <div className="relative h-48">
-                      <img
+                      <Image
                         src={post.imageUrl}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     </div>
                     <div className="p-4">
@@ -727,11 +729,14 @@ export default function AdminPage() {
                   {/* Image Preview */}
                   {imagePreview && (
                     <div className="relative">
-                      <img
-                        src={imagePreview}
-                        alt="Preview"
-                        className="w-full h-32 object-cover rounded-lg"
-                      />
+                      <div className="relative w-full h-32 rounded-lg overflow-hidden">
+                        <Image
+                          src={imagePreview}
+                          alt="Preview"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                       <button
                         type="button"
                         onClick={() => {

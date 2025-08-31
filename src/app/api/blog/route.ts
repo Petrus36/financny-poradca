@@ -82,8 +82,8 @@ export async function DELETE(request: NextRequest) {
     // Delete the image file if it's stored locally
     if (blogPost.imageUrl && blogPost.imageUrl.startsWith('/blog-images/')) {
       try {
-        const fs = require('fs');
-        const path = require('path');
+        const fs = await import('fs');
+        const path = await import('path');
         const imagePath = path.join(process.cwd(), 'public', blogPost.imageUrl);
         
         // Check if file exists before trying to delete

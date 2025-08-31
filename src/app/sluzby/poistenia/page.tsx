@@ -8,10 +8,6 @@ import ContactModal from "../../../components/ContactModal";
 export default function PoistieniaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
