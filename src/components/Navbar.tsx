@@ -187,7 +187,7 @@ export default function Navbar() {
         <div className="p-6 border-t border-gray-200/50">
           <div className="text-center">
             <p className="text-sm text-gray-500 mb-2">Finančný poradca</p>
-            <p className="text-lg font-semibold text-[#202325]">Michal Kurko</p>
+            <p className="text-lg font-semibold text-[#202325]">Michal Kurka</p>
           </div>
         </div>
       </div>

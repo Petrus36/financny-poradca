@@ -164,7 +164,7 @@ export default function DomovPage() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
+      <section className="relative min-h-[750px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -178,7 +178,7 @@ export default function DomovPage() {
           <div className="absolute inset-0 bg-black/30"></div>
           
           {/* Advisor photo positioned on the right */}
-          <div className="absolute right-4 sm:right-20 md:right-40 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 z-10 w-[280px] h-[380px] sm:w-[350px] sm:h-[480px] md:w-[450px] md:h-[600px] lg:w-[550px] lg:h-[700px] xl:w-[600px] xl:h-[800px]">
+          <div className="absolute right-4 sm:right-20 md:right-40 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 z-10 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[500px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
             <Image
               src="/advisor-photo.png"
               alt="Financial Advisor"
@@ -191,23 +191,24 @@ export default function DomovPage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-center min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+          <div className="flex flex-col lg:flex-row items-center justify-center min-h-[750px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-12 sm:pt-16 md:pt-20 lg:pt-0">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-4 sm:mb-6 drop-shadow-lg">
-                Váš finančný poradca
+            <div className="flex-1 text-left md:text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-16 sm:pt-12 md:pt-20 lg:pt-0">
+              <h1 className="text-5xl sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6 sm:mb-6 drop-shadow-lg">
+                <span className="block md:hidden">Váš</span>
+                <span className="block md:hidden">finančný</span>
+                <span className="block md:hidden">poradca</span>
+                <span className="hidden md:block">Váš finančný poradca</span>
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-white mb-6 sm:mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-lg text-white mb-6 sm:mb-6 md:mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Zhodnoťte svoj majetok medziročne až o 20% vďaka profesionálnemu prístupu k financiám.
               </p>
               <Link href="/kontakt">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg transition-colors shadow-lg text-sm sm:text-base md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
+                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
                   Kontaktujte ma
                 </button>
               </Link>
             </div>
-            
-
           </div>
         </div>
       </section>

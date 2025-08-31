@@ -58,7 +58,7 @@ export default function DochodokPage() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
+      <section className="relative min-h-[750px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -73,7 +73,7 @@ export default function DochodokPage() {
         </div>
         
         {/* Advisor photo positioned on the right */}
-        <div className="absolute right-60 -bottom-24 z-10 w-[450px] h-[600px] md:w-[550px] md:h-[700px] lg:w-[600px] lg:h-[800px]">
+        <div className="absolute right-4 sm:right-20 md:right-40 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 z-10 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[500px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
           <Image
             src="/advisor-photo.png"
             alt="Financial Advisor"
@@ -85,18 +85,19 @@ export default function DochodokPage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-between min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+          <div className="flex flex-col lg:flex-row items-center justify-center min-h-[750px] md:min-h-[600px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-4 lg:-ml-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
-                Dôchodok
+            <div className="flex-1 text-left md:text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-20 lg:pt-0">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+                <span className="block md:hidden">Dôchodok</span>
+                <span className="hidden md:block">Dôchodok</span>
               </h1>
-              <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Zabezpečte si dôstojný dôchodok a finančnú nezávislosť v seniorskom veku
               </p>
               <button 
                 onClick={openModal}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
               >
                 Chcem sa zabezpečiť
               </button>
@@ -111,21 +112,21 @@ export default function DochodokPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             MOŽNOSTI DÔCHODKOVÉHO SPORENIA
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {retirementOptions.map((option, index) => (
               <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-4xl mb-4 text-center">{option.icon}</div>
-                <h3 className="text-xl md:text-2xl font-semibold text-[#202325] mb-4 text-center">
+                <div className="text-3xl sm:text-4xl mb-4 text-center">{option.icon}</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#202325] mb-4 text-center">
                   {option.title}
                 </h3>
-                <p className="text-gray-600 mb-6 text-center">
+                <p className="text-gray-600 mb-6 text-center text-sm md:text-base leading-relaxed">
                   {option.description}
                 </p>
                 <ul className="space-y-2">
                   {option.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <div className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-3"></div>
-                      <span className="text-[#202325]">{feature}</span>
+                      <div className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="text-[#202325] text-sm md:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -141,26 +142,26 @@ export default function DochodokPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
             PREČO ZAČAŤ SKORO?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 mb-12">
             <div className="bg-white/10 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#5ECAD5] mb-4">Zložené úročenie</h3>
-              <p className="text-gray-300">Čím skôr začnete, tým viac zarobíte na úrokoch z úrokov</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#5ECAD5] mb-4">Zložené úročenie</h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">Čím skôr začnete, tým viac zarobíte na úrokoch z úrokov</p>
             </div>
             <div className="bg-white/10 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#5ECAD5] mb-4">Nižšie príspevky</h3>
-              <p className="text-gray-300">Mladší začiatok znamená nižšie mesačné príspevky</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#5ECAD5] mb-4">Nižšie príspevky</h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">Mladší začiatok znamená nižšie mesačné príspevky</p>
             </div>
           </div>
           
           {/* Age comparison table */}
           <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-2xl font-semibold text-white mb-6">Porovnanie podľa veku</h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">Porovnanie podľa veku</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {ageGroups.map((group, index) => (
                 <div key={index} className="bg-white/10 p-4 rounded-lg">
-                  <div className="text-[#5ECAD5] font-bold text-lg mb-2">{group.age} rokov</div>
-                  <div className="text-sm text-gray-300 mb-1">Mesačne: {group.monthlyContribution}</div>
-                  <div className="text-sm text-gray-300">Celkom: {group.totalSavings}</div>
+                  <div className="text-[#5ECAD5] font-bold text-base sm:text-lg mb-2">{group.age} rokov</div>
+                  <div className="text-xs sm:text-sm text-gray-300 mb-1">Mesačne: {group.monthlyContribution}</div>
+                  <div className="text-xs sm:text-sm text-gray-300">Celkom: {group.totalSavings}</div>
                 </div>
               ))}
             </div>
@@ -192,22 +193,22 @@ export default function DochodokPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             VÝHODY DÔCHODKOVÉHO SPORENIA
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#202325] mb-4">💰 Daňové úľavy</h3>
-              <p className="text-gray-600">Až 180€ ročne na daniach + úľavy za príspevky</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">💰 Daňové úľavy</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Až 180€ ročne na daniach + úľavy za príspevky</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#202325] mb-4">🎁 Štátny príspevok</h3>
-              <p className="text-gray-600">Štát prispieva k vašim úsporám dodatočnými peniazmi</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">🎁 Štátny príspevok</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Štát prispieva k vašim úsporám dodatočnými peniazmi</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#202325] mb-4">🔒 Garancia</h3>
-              <p className="text-gray-600">Garantované výnosy a ochrana vložených prostriedkov</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">🔒 Garancia</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Garantované výnosy a ochrana vložených prostriedkov</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-[#202325] mb-4">🔄 Flexibilita</h3>
-              <p className="text-gray-600">Možnosť zmeny príspevkov a prevodov medzi spoločnosťami</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">🔄 Flexibilita</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Možnosť zmeny príspevkov a prevodov medzi spoločnosťami</p>
             </div>
           </div>
         </div>
@@ -215,30 +216,30 @@ export default function DochodokPage() {
 
       {/* Process Section */}
       <section className="py-12 md:py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             AKO TO PREBIEHA?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">1</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Analýza cieľov</h3>
-              <p className="text-gray-600 text-sm">Zistíme vaše dôchodkové ciele a možnosti</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Zistíme vaše dôchodkové ciele a možnosti</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">2</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Výber stratégie</h3>
-              <p className="text-gray-600 text-sm">Navrhneme optimálnu dôchodkovú stratégiu</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Navrhneme optimálnu dôchodkovú stratégiu</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">3</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Spustenie</h3>
-              <p className="text-gray-600 text-sm">Spustíme dôchodkové sporenie podľa plánu</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Spustíme dôchodkové sporenie podľa plánu</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">4</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Sledovanie</h3>
-              <p className="text-gray-600 text-sm">Pravidelne sledujeme a optimalizujeme výkonnosť</p>
+              <p className="text-gray-600 text-sm leading-relaxed">Pravidelne sledujeme a optimalizujeme výkonnosť</p>
             </div>
           </div>
         </div>
