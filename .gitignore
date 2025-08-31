@@ -91,6 +91,10 @@ out/
 # Project specific
 /src/generated/prisma
 
+# Database files (keep local only)
+*.db
+prisma/dev.db
+
 # Local directories to exclude
 next/
 node/
