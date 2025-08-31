@@ -5,12 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactModal from "../../components/ContactModal";
 
+interface Testimonial {
+  id: number;
+  name: string;
+  location: string;
+  text: string;
+  shortText: string;
+  initial: string;
+}
+
 export default function DomovPage() {
   // const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTestimonialModalOpen, setIsTestimonialModalOpen] = useState(false);
-  const [selectedTestimonial, setSelectedTestimonial] = useState<any>(null);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
 
   /* 
   const investmentPartners = [
@@ -139,7 +148,7 @@ export default function DomovPage() {
     setIsModalOpen(false);
   };
 
-  const openTestimonialModal = (testimonial: any) => {
+  const openTestimonialModal = (testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial);
     setIsTestimonialModalOpen(true);
   };
