@@ -10,7 +10,7 @@ export default function DomovPage() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTestimonialModalOpen, setIsTestimonialModalOpen] = useState(false);
-  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<any>(null);
 
   /* 
   const investmentPartners = [
@@ -139,7 +139,7 @@ export default function DomovPage() {
     setIsModalOpen(false);
   };
 
-  const openTestimonialModal = (testimonial) => {
+  const openTestimonialModal = (testimonial: any) => {
     setSelectedTestimonial(testimonial);
     setIsTestimonialModalOpen(true);
   };
