@@ -6,10 +6,11 @@ import Link from "next/link";
 import ContactModal from "../../components/ContactModal";
 
 export default function DomovPage() {
-  const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
+  // const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  /* 
   const investmentPartners = [
     { 
       name: "365 Invest", 
@@ -67,7 +68,7 @@ export default function DomovPage() {
       category: "Banking Services",
       color: "bg-green-600"
     }
-  ];
+  ]; */
 
   const testimonials = [
     {
@@ -100,13 +101,13 @@ export default function DomovPage() {
     }
   ];
 
-  const nextPartner = () => {
-    setCurrentPartnerIndex((prev) => (prev + 1) % investmentPartners.length);
-  };
+  // const nextPartner = () => {
+  //   setCurrentPartnerIndex((prev) => (prev + 1) % investmentPartners.length);
+  // };
 
-  const prevPartner = () => {
-    setCurrentPartnerIndex((prev) => (prev - 1 + investmentPartners.length) % investmentPartners.length);
-  };
+  // const prevPartner = () => {
+  //   setCurrentPartnerIndex((prev) => (prev - 1 + investmentPartners.length) % investmentPartners.length);
+  // };
 
   const nextTestimonial = () => {
     setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
@@ -266,7 +267,7 @@ export default function DomovPage() {
             MÁTE OTÁZKY?
           </h2>
           <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
-            Som tu, aby som vám pomohol nájsť riešenie, ktoré bude vyhovova' práve vám. Vyplň'te krátky formulár, ktorý vám zaberie menej než 2 minúty.
+            Som tu, aby som vám pomohol nájsť riešenie, ktoré bude vyhovova&apos; práve vám. Vyplň&apos;te krátky formulár, ktorý vám zaberie menej než 2 minúty.
           </p>
           
           {/* Čo tým získate section */}
@@ -346,11 +347,11 @@ export default function DomovPage() {
               <div className="relative mb-8">
                 {/* Opening quote */}
                 <div className="absolute -left-4 -top-2 text-4xl text-[#5ECAD5] font-bold leading-none">
-                  "
+                  &quot;
                 </div>
                 {/* Closing quote */}
                 <div className="absolute -right-4 -bottom-6 text-4xl text-[#5ECAD5] font-bold leading-none">
-                  "
+                  &quot;
                 </div>
                 
                 <blockquote className="text-base md:text-lg text-gray-700 leading-relaxed px-8">

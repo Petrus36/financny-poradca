@@ -49,7 +49,7 @@ export default function Navbar() {
                 {/* Dropdown Menu */}
                 <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
-                    {link.subLinks?.map((subLink, subIndex) => (
+                    {link.subLinks?.map((subLink) => (
                       <Link
                         key={subLink.href}
                         href={subLink.href}

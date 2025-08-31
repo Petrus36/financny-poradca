@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link"; // Unused import
 import ContactModal from "../../components/ContactModal";
 
 export default function SpolupracePage() {
