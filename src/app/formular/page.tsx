@@ -59,6 +59,8 @@ export default function FormularPage() {
     }
 
     try {
+      console.log('Submitting form data:', formData);
+      
       const response = await fetch('/api/form-submission', {
         method: 'POST',
         headers: {
@@ -67,7 +69,12 @@ export default function FormularPage() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
       if (response.ok) {
+        const result = await response.json();
+        console.log('Success response:', result);
         alert('Formulár bol úspešne odoslaný! Ďakujeme za váš čas.');
         // Reset form
         setFormData({
@@ -81,7 +88,9 @@ export default function FormularPage() {
           email: ''
         });
       } else {
-        throw new Error('Chyba pri odosielaní formulára');
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Server error:', errorData);
+        throw new Error(`Server error: ${response.status} - ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
