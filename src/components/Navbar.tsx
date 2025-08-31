@@ -17,7 +17,6 @@ const navLinks = [
     ]
   },
   { href: "/spoluprace", label: "Spolupráca" },
-  { href: "/referencie", label: "Referencie" },
   { href: "/blog", label: "Blog" },
   { href: "/kontakt", label: "Kontakt" },
 ];
