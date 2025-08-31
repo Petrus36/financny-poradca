@@ -4,6 +4,15 @@ import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
+    // In production (Vercel), file uploads to local filesystem won't work
+    // Return an error message suggesting to use URL instead
+    if (process.env.NODE_ENV === 'production') {
+      return NextResponse.json(
+        { error: 'File upload not available in production. Please use image URL instead.' },
+        { status: 400 }
+      );
+    }
+
     const data = await request.formData();
     const file: File | null = data.get('file') as unknown as File;
 

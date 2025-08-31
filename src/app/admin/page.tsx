@@ -706,25 +706,34 @@ export default function AdminPage() {
                 
                 {/* File Upload */}
                 <div className="space-y-3">
-                  <div className="flex items-center justify-center w-full">
-                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <svg className="w-8 h-8 mb-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                        </svg>
-                        <p className="mb-2 text-sm text-gray-500">
-                          <span className="font-semibold">Kliknite pre nahranie</span> alebo pretiahnite obrázok
-                        </p>
-                        <p className="text-xs text-gray-500">PNG, JPG, GIF (max. 5MB)</p>
-                      </div>
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept="image/*"
-                        onChange={handleFileSelect}
-                      />
-                    </label>
-                  </div>
+                  {process.env.NODE_ENV === 'production' ? (
+                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-sm text-yellow-800">
+                        <strong>Poznámka:</strong> V produkcii použite prosím URL obrázka namiesto nahrávania súborov.
+                        Môžete použiť služby ako imgur.com, cloudinary.com alebo iné.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center w-full">
+                      <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg className="w-8 h-8 mb-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                          </svg>
+                          <p className="mb-2 text-sm text-gray-500">
+                            <span className="font-semibold">Kliknite pre nahranie</span> alebo pretiahnite obrázok
+                          </p>
+                          <p className="text-xs text-gray-500">PNG, JPG, GIF (max. 5MB)</p>
+                        </div>
+                        <input
+                          type="file"
+                          className="hidden"
+                          accept="image/*"
+                          onChange={handleFileSelect}
+                        />
+                      </label>
+                    </div>
+                  )}
 
                   {/* Image Preview */}
                   {imagePreview && (
@@ -767,7 +776,8 @@ export default function AdminPage() {
                     value={blogForm.imageUrl}
                     onChange={(e) => setBlogForm({ ...blogForm, imageUrl: e.target.value })}
                     className="w-full px-3 py-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 placeholder-gray-500"
-                    placeholder="Zadajte URL obrázka (voliteľné)"
+                    placeholder={process.env.NODE_ENV === 'production' ? "Zadajte URL obrázka (povinné v produkcii)" : "Zadajte URL obrázka (voliteľné)"}
+                    required={process.env.NODE_ENV === 'production'}
                   />
                 </div>
               </div>
