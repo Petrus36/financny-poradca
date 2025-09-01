@@ -37,59 +37,63 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop/Tablet Navbar */}
-      <nav className="absolute top-4 left-75 z-50 hidden md:block">
-      <ul className="flex items-center space-x-4">
-        {navLinks.map((link, index) => (
-          <li 
-            key={link.href} 
-            className="flex items-center relative"
-          >
-            {link.hasDropdown ? (
-              <div className="relative group">
-                <Link
-                  href={link.href}
-                  className="text-white hover:text-[#5ECAD5] transition-colors px-2 py-1 text-base font-medium flex items-center"
+      <nav className="absolute top-0 left-0 right-0 z-50 hidden md:block">
+        <div className="w-full bg-transparent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ul className="flex items-center justify-center space-x-1 md:space-x-2 lg:space-x-4 py-4 md:py-6 lg:py-4">
+              {navLinks.map((link, index) => (
+                <li 
+                  key={link.href} 
+                  className="flex items-center relative"
                 >
-                  {link.label}
-                  <svg 
-                    className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180"
-                    fill="currentColor" 
-                    viewBox="0 0 20 20"
-                  >
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-                
-                {/* Dropdown Menu */}
-                <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
-                    {link.subLinks?.map((subLink) => (
+                  {link.hasDropdown ? (
+                    <div className="relative group">
                       <Link
-                        key={subLink.href}
-                        href={subLink.href}
-                        className="block px-4 py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-sm font-medium border-b border-gray-100 last:border-b-0"
+                        href={link.href}
+                        className="text-white hover:text-[#5ECAD5] transition-colors px-2 md:px-3 lg:px-2 py-1 md:py-2 lg:py-1 text-sm md:text-base lg:text-base font-medium flex items-center"
                       >
-                        {subLink.label}
+                        {link.label}
+                        <svg 
+                          className="w-3 h-3 md:w-4 md:h-4 lg:w-4 lg:h-4 ml-1 transition-transform duration-200 group-hover:rotate-180"
+                          fill="currentColor" 
+                          viewBox="0 0 20 20"
+                        >
+                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
                       </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                href={link.href}
-                className="text-white hover:text-[#5ECAD5] transition-colors px-2 py-1 text-base font-medium"
-              >
-                {link.label}
-              </Link>
-            )}
-            {index < navLinks.length - 1 && (
-              <div className="w-px h-4 bg-white/60 mx-2"></div>
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
+                      
+                      {/* Dropdown Menu */}
+                      <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="w-40 md:w-44 lg:w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
+                          {link.subLinks?.map((subLink) => (
+                            <Link
+                              key={subLink.href}
+                              href={subLink.href}
+                              className="block px-3 md:px-4 lg:px-4 py-2.5 md:py-3 lg:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm lg:text-sm font-medium border-b border-gray-100 last:border-b-0"
+                            >
+                              {subLink.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-white hover:text-[#5ECAD5] transition-colors px-2 md:px-3 lg:px-2 py-1 md:py-2 lg:py-1 text-sm md:text-base lg:text-base font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                  {index < navLinks.length - 1 && (
+                    <div className="w-px h-3 md:h-4 lg:h-4 bg-white/60 mx-1 md:mx-1.5 lg:mx-2"></div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
 
     {/* Mobile Hamburger Button */}
     <div className="absolute top-4 right-4 z-50 md:hidden">

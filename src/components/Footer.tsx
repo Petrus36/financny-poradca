@@ -2,9 +2,18 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import CookiesModal from "./CookiesModal";
+import GDPRModal from "./GDPRModal";
 
 export default function Footer() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [isCookiesModalOpen, setIsCookiesModalOpen] = useState(false);
+  const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
+
+  const openCookiesModal = () => setIsCookiesModalOpen(true);
+  const closeCookiesModal = () => setIsCookiesModalOpen(false);
+  const openGDPRModal = () => setIsGDPRModalOpen(true);
+  const closeGDPRModal = () => setIsGDPRModalOpen(false);
 
   const openMapModal = () => {
     setIsMapModalOpen(true);
@@ -164,13 +173,22 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* GDPR */}
+            {/* GDPR & Cookies */}
             <div>
-              <h3 className="text-[#202325] font-semibold text-base md:text-lg mb-3 md:mb-4">GDPR</h3>
-              <div>
-                <Link href="/cookies" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">
-                  cookies
-                </Link>
+              <h3 className="text-[#202325] font-semibold text-base md:text-lg mb-3 md:mb-4">GDPR & Cookies</h3>
+              <div className="space-y-2">
+                <button 
+                  onClick={openCookiesModal}
+                  className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base block text-left"
+                >
+                  🍪 Nastavenia cookies
+                </button>
+                <button 
+                  onClick={openGDPRModal}
+                  className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base block text-left"
+                >
+                  🔒 Ochrana údajov (GDPR)
+                </button>
               </div>
             </div>
           </div>
@@ -183,6 +201,12 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
+      {/* Cookies Modal */}
+      <CookiesModal isOpen={isCookiesModalOpen} onClose={closeCookiesModal} />
+
+      {/* GDPR Modal */}
+      <GDPRModal isOpen={isGDPRModalOpen} onClose={closeGDPRModal} />
     </>
   );
 } 

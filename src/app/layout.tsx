@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import CookieConsent from "@/components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <CookieConsent />
         </ConditionalLayout>
       </body>
     </html>

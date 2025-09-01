@@ -101,33 +101,33 @@ export default function SluzbyPage() {
       </section>
 
       {/* Services Overview Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-20 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12 lg:mb-12">
             ČO VÁM PONÚKAME
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-8">
             {services.map((service, index) => (
               <Link key={index} href={service.href}>
-                <div className={`${service.color} p-6 md:p-8 rounded-xl shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:shadow-xl`}>
+                <div className={`${service.color} p-6 md:p-8 lg:p-8 rounded-xl shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:shadow-xl`}>
                   <div className="flex items-start space-x-4">
-                    <div className="text-3xl sm:text-4xl md:text-5xl">{service.icon}</div>
+                    <div className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl">{service.icon}</div>
                     <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#202325] mb-3">
+                      <h3 className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold text-[#202325] mb-3">
                         {service.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 text-sm md:text-base leading-relaxed">
+                      <p className="text-gray-600 mb-4 text-sm md:text-base lg:text-base leading-relaxed">
                         {service.description}
                       </p>
                       <ul className="space-y-2">
                         {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-xs sm:text-sm">
+                          <li key={featureIndex} className="flex items-center text-xs sm:text-sm md:text-sm lg:text-sm">
                             <div className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-3 flex-shrink-0"></div>
                             <span className="text-[#202325]">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-4 text-[#5ECAD5] font-medium text-xs sm:text-sm flex items-center">
+                      <div className="mt-4 text-[#5ECAD5] font-medium text-xs sm:text-sm md:text-sm lg:text-sm flex items-center">
                         Zistiť viac 
                         <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -143,70 +143,70 @@ export default function SluzbyPage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section className="py-12 md:py-20 lg:py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12 lg:mb-12">
             PREČO SI VYBRAŤ NÁS?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-8">
+            <div className="bg-white p-6 md:p-8 lg:p-8 rounded-lg shadow-lg">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-[#202325] mb-2">
+                  <h3 className="text-lg md:text-xl lg:text-lg font-semibold text-[#202325] mb-2">
                     Komplexný prístup
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm md:text-base lg:text-sm">
                     Riešime všetky vaše finančné potreby pod jednou strechou
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <div className="bg-white p-6 md:p-8 lg:p-8 rounded-lg shadow-lg">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-[#202325] mb-2">
+                  <h3 className="text-lg md:text-xl lg:text-lg font-semibold text-[#202325] mb-2">
                     20+ rokov skúseností
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm md:text-base lg:text-sm">
                     Dlhoročné skúsenosti a tisíce spokojných klientov
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <div className="bg-white p-6 md:p-8 lg:p-8 rounded-lg shadow-lg">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-[#202325] mb-2">
+                  <h3 className="text-lg md:text-xl lg:text-lg font-semibold text-[#202325] mb-2">
                     Bezplatné poradenstvo
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm md:text-base lg:text-sm">
                     Všetky naše služby a poradenstvo poskytujeme bez poplatkov
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+            <div className="bg-white p-6 md:p-8 lg:p-8 rounded-lg shadow-lg">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 bg-[#5ECAD5] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                   </svg>
                 </div>
