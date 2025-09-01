@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { put } from '@vercel/blob';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
-
     const data = await request.formData();
     const file: File | null = data.get('file') as unknown as File;
 
@@ -41,15 +39,19 @@ export async function POST(request: NextRequest) {
     const filename = `blog-${timestamp}-${randomString}${extension}`;
 
     if (process.env.NODE_ENV === 'production') {
-      // Use Vercel Blob storage in production
-      const blob = await put(filename, file, {
-        access: 'public',
-      });
+      // For production on Vercel, convert image to base64 data URL
+      // This stores the image directly in your database without needing separate blob storage
+      const base64 = buffer.toString('base64');
+      const mimeType = file.type;
+      const dataUrl = `data:${mimeType};base64,${base64}`;
+
+      console.log('Converted image to base64 data URL for Vercel production');
 
       return NextResponse.json({ 
         success: true, 
-        imageUrl: blob.url,
-        filename 
+        imageUrl: dataUrl,
+        filename,
+        method: 'base64-dataurl'
       });
     } else {
       // Use local filesystem in development
@@ -67,17 +69,20 @@ export async function POST(request: NextRequest) {
       // Return the public URL
       const imageUrl = `/blog-images/${filename}`;
 
+      console.log('Saved image to local filesystem:', imageUrl);
+
       return NextResponse.json({ 
         success: true, 
         imageUrl,
-        filename 
+        filename,
+        method: 'local-filesystem'
       });
     }
 
   } catch (error) {
     console.error('Error uploading file:', error);
     return NextResponse.json(
-      { error: 'Failed to upload file' },
+      { error: 'Failed to upload file', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

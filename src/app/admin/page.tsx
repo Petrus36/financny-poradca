@@ -149,6 +149,8 @@ export default function AdminPage() {
     const formData = new FormData();
     formData.append('file', file);
 
+    console.log('Uploading file:', file.name, file.size, 'bytes');
+
     const response = await fetch('/api/upload', {
       method: 'POST',
       body: formData,
@@ -156,10 +158,17 @@ export default function AdminPage() {
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.error('Upload failed:', errorData);
+      
+      // Show more specific error messages
+      if (errorData.details) {
+        throw new Error(`${errorData.error}\n\nDetaily: ${errorData.details}`);
+      }
       throw new Error(errorData.error || 'Failed to upload image');
     }
 
     const data = await response.json();
+    console.log('Upload successful:', data);
     return data.imageUrl;
   };
 
