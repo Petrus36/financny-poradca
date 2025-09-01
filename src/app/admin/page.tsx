@@ -367,8 +367,8 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-3 sm:p-6">
-      {/* Blur overlay when modal is open */}
-      <div className={`${showModal || showBlogModal ? 'blur-sm' : ''} transition-all duration-300`}>
+      {/* Main content - blur when modal is open */}
+      <div className={`${showModal || showBlogModal ? 'blur-md' : ''} transition-all duration-300`}>
         {/* Header */}
         <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 space-y-4 sm:space-y-0">
@@ -644,9 +644,9 @@ export default function AdminPage() {
       </div>
       </div>
 
-      {/* Blog Modal - Outside blur overlay */}
+      {/* Blog Modal - Transparent overlay */}
       {showBlogModal && (
-        <div className="fixed inset-0 flex items-center justify-center p-4 z-[60] bg-gray-900 bg-opacity-30 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-[60]">
           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full relative z-[70] border border-gray-200">
             <div className="flex justify-between items-center p-6 border-b bg-gray-50">
               <h3 className="text-lg font-semibold text-gray-900">Pridať nový blog príspevok</h3>
