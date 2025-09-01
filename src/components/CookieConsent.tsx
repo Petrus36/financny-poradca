@@ -67,7 +67,7 @@ export default function CookieConsent() {
               </h3>
               <p className="text-sm text-gray-600">
                 Používame súbory cookie na zlepšenie vášho zážitku na našej webovej stránke. 
-                Kliknutím na "Povoliť všetky" súhlasíte s používaním všetkých typov súborov cookie.
+                Kliknutím na &quot;Povoliť všetky&quot; súhlasíte s používaním všetkých typov súborov cookie.
               </p>
             </div>
           </div>

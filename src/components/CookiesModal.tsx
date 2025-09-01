@@ -25,7 +25,7 @@ export default function CookiesModal({ isOpen, onClose }: { isOpen: boolean; onC
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setPreferences({ ...preferences, ...parsed });
+        setPreferences(prev => ({ ...prev, ...parsed }));
       } catch (e) {
         console.error('Error loading cookie preferences:', e);
       }
