@@ -605,7 +605,7 @@ export default function AdminPage() {
             ) : (
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
-                  <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
                     <div className="relative h-48">
                       <Image
                         src={post.imageUrl}
@@ -614,23 +614,23 @@ export default function AdminPage() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-2 line-clamp-2">{post.title}</h3>
+                    <div className="p-4 bg-white">
+                      <h3 className="font-semibold text-lg mb-2 line-clamp-2 text-gray-900">{post.title}</h3>
                       <p className="text-gray-600 text-sm mb-3 line-clamp-3">{post.description}</p>
                       <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
-                        <span>{formatDate(post.createdAt)}</span>
+                        <span className="text-gray-500">{formatDate(post.createdAt)}</span>
                         <a 
                           href={post.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline"
+                          className="text-blue-600 hover:text-blue-800 hover:underline font-medium"
                         >
                           Otvoriť link
                         </a>
                       </div>
                       <button
                         onClick={() => deleteBlogPost(post.id)}
-                        className="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded transition duration-200"
+                        className="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded transition duration-200 font-medium"
                       >
                         Vymazať
                       </button>
