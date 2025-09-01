@@ -18,7 +18,7 @@ export default function OMnePage() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[750px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
+      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -32,7 +32,7 @@ export default function OMnePage() {
           <div className="absolute inset-0 bg-black/30"></div>
           
           {/* Advisor photo positioned on the right */}
-          <div className="absolute right-4 sm:right-20 md:right-40 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 z-10 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[500px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
+          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
             <Image
               src="/advisor-photo.png"
               alt="Financial Advisor"
@@ -45,14 +45,14 @@ export default function OMnePage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-center min-h-[750px] md:min-h-[600px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-20 lg:pt-0">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-32 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
                 <span className="block md:hidden">O mne</span>
                 <span className="hidden md:block">O mne</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Nie ste len ďalší klient. Ste človek, ktorému pomôžem vybudovať zdravý finančný život.
               </p>
               <Link href="/formular">
@@ -71,9 +71,9 @@ export default function OMnePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             MOJA CESTA
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
             {/* Image */}
-            <div className="w-full max-w-lg mx-auto lg:mx-0">
+            <div className="w-full max-w-lg mx-auto md:mx-0 lg:mx-0">
               <Image
                 src="/O-mne-moja-cesta.jpeg"
                 alt="Moja cesta - Financial team"
@@ -124,15 +124,15 @@ export default function OMnePage() {
       {/* Začiatok Section */}
       <section className="bg-[#202325] py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Text Content */}
-            <div className="text-white space-y-6 text-left order-2 lg:order-1">
+            <div className="text-white space-y-6 text-left order-2 md:order-1 lg:order-1">
               <div>
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4">Začiatok</h3>
                 <p className="text-sm md:text-base leading-relaxed">
                   Moje začiatky boli veľmi dynamické a troška iné ako štandardne pri nových ľuďoch. 
-                  Ja som bol už dlhšie rozhodnutý, že to robiť chcem a preto som len čakal, kým už 
-                  budem môcť na full-time. Absolvoval som veľké množstvo školení a, aj keď sa mi to 
+                  Ja som bol už dlhšie rozhodnutý, že to robiť chcem a preto som len čakal, kým už  
+                  budem môcť na full-time. Absolvoval som veľké množstvo školení a, aj keď sa mi to  
                   najskôr nepáčilo, dnes neľutujem ani jedno jediné. Posunul som sa osobnostne, 
                   vzdelaním, ale aj odborne.
                 </p>
@@ -147,7 +147,7 @@ export default function OMnePage() {
             </div>
             
             {/* Image */}
-            <div className="w-full max-w-md mx-auto lg:mx-0 order-1 lg:order-2">
+            <div className="w-full max-w-md mx-auto md:mx-0 lg:mx-0 order-1 md:order-2 lg:order-2">
               <Image
                 src="/O-mne.jpeg"
                 alt="Financial advisor career"
@@ -160,8 +160,6 @@ export default function OMnePage() {
         </div>
       </section>
 
-
-
       {/* Moje výsledky Section */}
       <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,21 +167,21 @@ export default function OMnePage() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202325] text-center mb-8 md:mb-12 lg:mb-16 uppercase tracking-normal">
               MOJE VÝSLEDKY
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-8 lg:gap-12 w-full max-w-6xl">
               <div className="text-center">
-                <div className="bg-[#202325] text-white p-8 md:p-12 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-56 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
+                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
                   <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#5ECAD5]">50+</div>
                 </div>
                 <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">KLIENTOV ZA ROK</div>
               </div>
               <div className="text-center">
-                <div className="bg-[#202325] text-white p-8 md:p-12 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-56 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
+                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
                   <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#5ECAD5]">300k €</div>
                 </div>
                 <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">AUM</div>
               </div>
-              <div className="text-center md:col-span-2 lg:col-span-1">
-                <div className="bg-[#202325] text-white p-8 md:p-12 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-56 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
+              <div className="text-center">
+                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
                   <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5]">2,5 milióna</div>
                 </div>
                 <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">SPRACOVANÝCH HYPOTÉK</div>
@@ -193,62 +191,60 @@ export default function OMnePage() {
         </div>
       </section>
 
-       {/* Robím to inak Section */}
-       <section className="bg-[#202325] py-12 md:py-16 lg:py-20">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="flex flex-col items-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#5ECAD5] text-center mb-8 md:mb-12 lg:mb-16 uppercase">
-                ROBÍM TO INAK
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full">
-               <div className="text-left">
-                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                    Individuálny prístup pre klienta
-                  </h3>
-                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                   Nemám nikdy 2 rovnakých klientov. Každý klient má iné potreby, ciele, očakávania a finančné možnosti. 
-                   Preto je potrebné sa spoznať, aby som pochopil ako funguje. Na základe informácii pripravím finančný plán na mieru.
-                 </p>
-               </div>
-               
-               <div className="text-left">
-                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                    Šetrím čas aj peniaze
-                  </h3>
-                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                   Okrem nosenia zložky do banky vám ušetrím čas pri splatení hypotéky o 10 až 15 rokov skôr.
-                 </p>
-               </div>
-               
-               <div className="text-left">
-                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                    Odbornosť, na ktorú sa môžete spoľahnúť
-                  </h3>
-                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                   Vo svete plnom ponúk a sľubov dávam dôraz na to podstatné - reálne výsledky a férový prístup. 
-                   Prinášam prehľad a zodpovednosť, ktoré vám pomôžu robiť správne rozhodnutia dnes aj zajtra. 
-                   Pracujem tak, aby ste presne vedeli, čo robím, prečo to robím a aký to má pre vás zmysel. 
-                   Nehrám sa na dokonalosť, ale pracujem na tom, aby ste sa na mňa mohli s istotou spoľahnúť. 
-                   Som tu preto, aby som vám pomohol zorientovať sa, rozhodovať sa s rozumom a cítiť sa pri tom dobre.
-                 </p>
-               </div>
-               
-               <div className="text-left">
-                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                    Komplexná ponuka a doživotný servis
-                  </h3>
-                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                   Moja práca nekončí podpisom zmluvy. Budujem s vami dlhodobý vzťah. Budem vás informovať o aktuálnych 
-                   možnostiach a produktových novinkách. Vždy sa môžete spoľahnúť, že vo financiách budete mať pri sebe 
-                   človeka, ktorý myslí niekoľko krokov dopredu a vie sa postarať aj o to, čo zatiaľ nepotrebujete.
-                 </p>
-               </div>
-             </div>
-           </div>
-         </div>
-       </section>
-
-
+      {/* Robím to inak Section */}
+      <section className="bg-[#202325] py-12 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#5ECAD5] text-center mb-8 md:mb-12 lg:mb-16 uppercase">
+              ROBÍM TO INAK
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 w-full">
+              <div className="text-left">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  Individuálny prístup pre klienta
+                </h3>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Nemám nikdy 2 rovnakých klientov. Každý klient má iné potreby, ciele, očakávania a finančné možnosti. 
+                  Preto je potrebné sa spoznať, aby som pochopil ako funguje. Na základe informácii pripravím finančný plán na mieru.
+                </p>
+              </div>
+              
+              <div className="text-left">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  Šetrím čas aj peniaze
+                </h3>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Okrem nosenia zložky do banky vám ušetrím čas pri splatení hypotéky o 10 až 15 rokov skôr.
+                </p>
+              </div>
+              
+              <div className="text-left">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  Odbornosť, na ktorú sa môžete spoľahnúť
+                </h3>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Vo svete plnom ponúk a sľubov dávam dôraz na to podstatné - reálne výsledky a férový prístup. 
+                  Prinášam prehľad a zodpovednosť, ktoré vám pomôžu robiť správne rozhodnutia dnes aj zajtra. 
+                  Pracujem tak, aby ste presne vedeli, čo robím, prečo to robím a aký to má pre vás zmysel. 
+                  Nehrám sa na dokonalosť, ale pracujem na tom, aby ste sa na mňa mohli s istotou spoľahnúť. 
+                  Som tu preto, aby som vám pomohol zorientovať sa, rozhodovať sa s rozumom a cítiť sa pri tom dobre.
+                </p>
+              </div>
+              
+              <div className="text-left">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  Komplexná ponuka a doživotný servis
+                </h3>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Moja práca nekončí podpisom zmluvy. Budujem s vami dlhodobý vzťah. Budem vás informovať o aktuálnych 
+                  možnostiach a produktových novinkách. Vždy sa môžete spoľahnúť, že vo financiách budete mať pri sebe 
+                  človeka, ktorý myslí niekoľko krokov dopredu a vie sa postarať aj o to, čo zatiaľ nepotrebujete.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Certifikáty Section */}
       <section className="py-12 md:py-16 bg-white">
@@ -284,9 +280,6 @@ export default function OMnePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer Contact Section */}
-      
     </main>
   );
 }

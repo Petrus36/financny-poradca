@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/domov", label: "Domov" },
@@ -25,6 +25,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -34,12 +35,37 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleDropdown = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveDropdown(activeDropdown === href ? null : href);
+  };
+
+  const closeDropdown = () => {
+    setActiveDropdown(null);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (!target.closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       {/* Desktop/Tablet Navbar */}
       <nav className="absolute top-0 left-0 right-0 z-50 hidden md:block">
         <div className="w-full bg-transparent">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:ml-65">
             <ul className="flex items-center justify-center space-x-1 md:space-x-2 lg:space-x-4 py-4 md:py-6 lg:py-4">
               {navLinks.map((link, index) => (
                 <li 
@@ -47,28 +73,53 @@ export default function Navbar() {
                   className="flex items-center relative"
                 >
                   {link.hasDropdown ? (
-                    <div className="relative group">
+                    <div className="relative group dropdown-container flex items-center">
+                      {/* Main link to Služby page */}
                       <Link
                         href={link.href}
-                        className="text-white hover:text-[#5ECAD5] transition-colors px-2 md:px-3 lg:px-2 py-1 md:py-2 lg:py-1 text-sm md:text-base lg:text-base font-medium flex items-center"
+                        className="text-white hover:text-[#5ECAD5] transition-colors px-2 md:px-3 lg:px-2 py-1 md:py-2 lg:py-1 text-sm md:text-base lg:text-base font-medium"
                       >
                         {link.label}
+                      </Link>
+                      
+                      {/* Dropdown toggle button for tablet/touch devices */}
+                      <button
+                        onClick={(e) => toggleDropdown(link.href, e)}
+                        className="text-white hover:text-[#5ECAD5] transition-colors px-1 py-1 ml-1 hidden md:block lg:hidden"
+                        aria-label="Toggle dropdown"
+                      >
                         <svg 
-                          className="w-3 h-3 md:w-4 md:h-4 lg:w-4 lg:h-4 ml-1 transition-transform duration-200 group-hover:rotate-180"
+                          className={`w-3 h-3 transition-transform duration-200 ${
+                            activeDropdown === link.href ? 'rotate-180' : ''
+                          }`}
                           fill="currentColor" 
                           viewBox="0 0 20 20"
                         >
                           <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>
-                      </Link>
+                      </button>
+                      
+                      {/* Arrow for desktop hover */}
+                      <svg 
+                        className="w-3 h-3 md:w-4 md:h-4 lg:w-4 lg:h-4 ml-1 transition-transform duration-200 group-hover:rotate-180 text-white hidden lg:block"
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
                       
                       {/* Dropdown Menu */}
-                      <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className={`absolute top-full left-0 pt-1 transition-all duration-200 z-50 ${
+                        activeDropdown === link.href 
+                          ? 'opacity-100 visible' 
+                          : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
+                      }`}>
                         <div className="w-40 md:w-44 lg:w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
                           {link.subLinks?.map((subLink) => (
                             <Link
                               key={subLink.href}
                               href={subLink.href}
+                              onClick={closeDropdown}
                               className="block px-3 md:px-4 lg:px-4 py-2.5 md:py-3 lg:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm lg:text-sm font-medium border-b border-gray-100 last:border-b-0"
                             >
                               {subLink.label}

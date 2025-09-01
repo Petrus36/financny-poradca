@@ -39,7 +39,7 @@ export default function InvestovaniePage() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[750px] md:min-h-[600px] lg:min-h-[700px] flex items-center">
+      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -54,7 +54,7 @@ export default function InvestovaniePage() {
         </div>
         
         {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:right-40 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 z-10 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[500px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
+        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
           <Image
             src="/advisor-photo.png"
             alt="Financial Advisor"
@@ -66,14 +66,14 @@ export default function InvestovaniePage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-center min-h-[750px] md:min-h-[600px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-20 lg:pt-0">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
                 <span className="block md:hidden">Investovanie</span>
                 <span className="hidden md:block">Investovanie</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Rozmnožte svoje úspory inteligentným investovaním s profesionálnym poradenstvom
               </p>
               <Link href="/formular">
@@ -92,7 +92,7 @@ export default function InvestovaniePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             TYPY INVESTOVANIA
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-8">
             {investmentOptions.map((option, index) => (
               <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                 <div className="text-3xl sm:text-4xl mb-4 text-center">{option.icon}</div>
@@ -122,7 +122,7 @@ export default function InvestovaniePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
             PREČO INVESTOVAŤ?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-8">
             <div className="bg-white/10 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-[#5ECAD5] mb-4">Ochrana pred infláciou</h3>
               <p className="text-gray-300">Vaše peniaze si zachovajú a zvýšia svoju hodnotu v čase</p>
@@ -149,7 +149,7 @@ export default function InvestovaniePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             AKO TO PREBIEHA?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">1</div>
               <h3 className="text-lg font-semibold text-[#202325] mb-2">Konzultácia</h3>
