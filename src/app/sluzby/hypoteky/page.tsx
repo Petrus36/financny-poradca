@@ -34,12 +34,12 @@ export default function HypotekyPage() {
   ];
 
   const banks = [
-    { name: "VÚB Banka", logo: "🏦", rate: "od 3,2%" },
-    { name: "Tatra Banka", logo: "🏛️", rate: "od 3,1%" },
-    { name: "SLSP", logo: "🏪", rate: "od 3,3%" },
-    { name: "Poštová Banka", logo: "📮", rate: "od 3,4%" },
-    { name: "UniCredit Bank", logo: "🏢", rate: "od 3,0%" },
-    { name: "Prima Banka", logo: "💼", rate: "od 3,2%" }
+    { name: "VÚB Banka", logo: "/VÚB.webp", rate: "od 3,2%", isImage: true },
+    { name: "Tatra Banka", logo: "/TatraBanka.webp", rate: "od 3,1%", isImage: true },
+    { name: "SLSP", logo: "/slovenskáSporitelna.webp", rate: "od 3,3%", isImage: true },
+    { name: "Poštová Banka", logo: "/POSTOVA_BANKA_LOGO_RGB.jpg", rate: "od 3,4%", isImage: true },
+    { name: "UniCredit Bank", logo: "/UniCredit-Logo.jpg", rate: "od 3,0%", isImage: true },
+    { name: "Prima Banka", logo: "/PrimaBanka.jpg", rate: "od 3,2%", isImage: true, customSize: true }
   ];
 
   return (
@@ -95,6 +95,118 @@ export default function HypotekyPage() {
         </div>
       </section>
 
+      {/* Expert Insights Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Main Question - Magazine Style */}
+          <div className="text-center mb-16">
+            <div className="inline-block bg-[#5ECAD5] text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              HYPOTÉKY
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#202325] mb-8 max-w-3xl mx-auto leading-tight">
+              Vedeli ste, že aj dnes sa dá získať financovanie až do 90% hodnoty nehnuteľnosti?
+            </h2>
+            <div className="w-20 h-1 bg-[#5ECAD5] mx-auto mb-8"></div>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Ak sa správne nastavia podmienky a zvolí vhodný postup, dá sa vyhnúť chybám, ktoré by inak mohli stáť čas, peniaze či zbytočný stres. Celý proces sa dá zvládnuť prehľadne s riešením, ktoré bude pre vás najvýhodnejší a bude vám dávať dlhodobo zmysel, musíte máť správne informácie a vyhladať hypošpecialistu.
+            </p>
+          </div>
+
+          {/* Quote Style Section */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
+            <div className="flex items-start">
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div>
+                <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
+                  Ak sú správne nastavené podmienky a zvolený vhodný postup, dá sa vyhnúť chybám, ktoré často stoja zbytočne veľa – času, peňazí aj nervov. Celý proces sa dá zvládnuť prehľadne, s riešením, ktoré vám bude dávať dlhodobý zmysel a reálnu výhodu – nie len na papieri, ale aj v praxi.
+                </p>
+                <p className="text-lg text-gray-700 italic leading-relaxed">
+                  Nie vždy je najlacnejšia ponuka tou najlepšou. Rozhoduje celkový kontext, detailné porovnanie a správne informácie. A práve tu prichádza na rad hypošpecialista – človek, ktorý vám pomôže zorientovať sa, vybrať múdro a bez zbytočných kompromisov.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Two Column Article Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            {/* Left Column */}
+            <article className="space-y-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-[#5ECAD5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">1</span>
+                </div>
+                <h3 className="text-2xl font-bold text-[#202325]">
+                  Ako hypotéku splatiť skôr?
+                </h3>
+              </div>
+              
+              <p className="text-gray-600 leading-relaxed">
+                Mnohí ľudia sa pri hypotéke zameriavajú len na to, ako ju vôbec získať. Menej často však riešia to, ako ju splatiť čo najrýchlejšie a s čo najmenším preplatením a pritom práve to môže výrazne ovplyvniť ich budúce financie.
+              </p>
+
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h4 className="font-semibold text-green-800 mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-green-500 rounded-full mr-2"></span>
+                  Kľúčové fakty:
+                </h4>
+                <p className="text-green-700 text-sm leading-relaxed">
+                  Jednou z možností je už na začiatku hypotéky (alebo aj počas jej splácania) nastaviť vhodnú stratégiu, ktorá zohľadní príjmy, výdavky a ďalšie ciele. Vďaka nej je možné skrátiť splatnosť hypotéky aj o 10 až 15 rokov a ušetriť tisíce eur.
+                </p>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed">
+                Ak si na takéto nastavenie netrúfate sami, je rozumné poradiť sa s niekým, kto má skúsenosti a vie vám ukázať rôzne cesty. V tomto viem pomôcť aj ja – pripravím vám bezplatne osobný finančný plán a stratégiu splácania, vďaka ktorej môžete hypotéku zvládnuť rýchlejšie a efektívnejšie.
+              </p>
+            </article>
+
+            {/* Right Column */}
+            <article className="space-y-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-[#5ECAD5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">2</span>
+                </div>
+                <h3 className="text-2xl font-bold text-[#202325]">
+                  Ako si mám vybaviť hypotéku?
+                </h3>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed">
+                Hypotéka nie je len o tom, ktorá banka dá najnižší úrok. Každý človek má inú situáciu, iné plány a inú predstavu o budúcnosti – a preto by aj hypotéka mala byť nastavená individuálne na mieru.
+              </p>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                <h4 className="font-semibold text-amber-800 mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-amber-500 rounded-full mr-2"></span>
+                  Dôležité upozornenie:
+                </h4>
+                <p className="text-amber-700 text-sm leading-relaxed">
+                  Pri výbere hypotéky sa oplatí pozerať nielen na úrok, ale aj na to, aké sú podmienky, možnosti predčasného splatenia, poplatky a dlhodobý vplyv na rozpočet. Kto si to zistí dopredu a porovná viac možností, vyhne sa nepríjemným prekvapeniam.
+                </p>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed">
+                Nie vždy to však človek zvládne sám. Niekedy pomôže konzultácia s odborníkom – stretnutie, na ktorom preberiete celú vašu situáciu a pripraví sa finančná analýza a plán, podľa ktorého si hypotéku vybavíte pokojne, bez stresu a s istotou, že ste sa rozhodli správne.
+              </p>
+            </article>
+          </div>
+
+          {/* Simple CTA */}
+          <div className="text-center mt-16 pt-8 border-t border-gray-200">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
+            >
+              Bezplatná konzultácia
+            </button>
+            <p className="text-gray-500 text-sm mt-3">
+              Bez záväzkov • Individuálny prístup
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Mortgage Types Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -126,17 +238,25 @@ export default function HypotekyPage() {
       </section>
 
       {/* Bank Partners Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             NAŠI BANKOVÍ PARTNERI
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-32">
             {banks.map((bank, index) => (
-              <div key={index} className="bg-white p-4 md:p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                <div className="text-3xl mb-2">{bank.logo}</div>
-                <h3 className="font-semibold text-[#202325] text-sm mb-1">{bank.name}</h3>
-                <p className="text-[#5ECAD5] font-bold text-sm">{bank.rate}</p>
+              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+                {bank.isImage ? (
+                  <Image
+                    src={bank.logo}
+                    alt={`${bank.name} logo`}
+                    width={400}
+                    height={200}
+                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                  />
+                ) : (
+                  <span className="text-3xl">{bank.logo}</span>
+                )}
               </div>
             ))}
           </div>

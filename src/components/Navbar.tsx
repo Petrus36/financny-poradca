@@ -14,7 +14,15 @@ const navLinks = [
     subLinks: [
       { href: "/sluzby/investovanie", label: "Investovanie" },
       { href: "/sluzby/hypoteky", label: "Hypotéky" },
-      { href: "/sluzby/poistenia", label: "Poistenia" },
+      { 
+        href: "/sluzby/poistenia", 
+        label: "Poistenia",
+        hasDropdown: true,
+        subLinks: [
+          { href: "/sluzby/poistenia/zivotne", label: "Životné poistenie" },
+          { href: "/sluzby/poistenia/nezivotne", label: "Neživotné poistenie" },
+        ]
+      },
       { href: "/sluzby/dochodok", label: "Dôchodok" },
     ]
   },
@@ -116,14 +124,47 @@ export default function Navbar() {
                       }`}>
                         <div className="w-40 md:w-44 lg:w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
                           {link.subLinks?.map((subLink) => (
-                            <Link
-                              key={subLink.href}
-                              href={subLink.href}
-                              onClick={closeDropdown}
-                              className="block px-3 md:px-4 lg:px-4 py-2.5 md:py-3 lg:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm lg:text-sm font-medium border-b border-gray-100 last:border-b-0"
-                            >
-                              {subLink.label}
-                            </Link>
+                            <div key={subLink.href} className="relative">
+                              {subLink.hasDropdown ? (
+                                <div className="group/poistenia relative">
+                                  <div className="flex items-center justify-between px-3 md:px-4 lg:px-4 py-2.5 md:py-3 lg:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm lg:text-sm font-medium border-b border-gray-100 cursor-pointer">
+                                    <Link
+                                      href={subLink.href}
+                                      onClick={closeDropdown}
+                                      className="flex-1"
+                                    >
+                                      {subLink.label}
+                                    </Link>
+                                    <svg className="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  </div>
+                                  {/* Sub-dropdown with simple CSS hover */}
+                                  <div className="absolute left-full top-0 ml-1 opacity-0 invisible group-hover/poistenia:opacity-100 group-hover/poistenia:visible transition-all duration-300 z-[60]">
+                                    <div className="w-44 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
+                                      {subLink.subLinks?.map((subSubLink) => (
+                                        <Link
+                                          key={subSubLink.href}
+                                          href={subSubLink.href}
+                                          onClick={closeDropdown}
+                                          className="block px-4 py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-sm font-medium border-b border-gray-100 last:border-b-0"
+                                        >
+                                          {subSubLink.label}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <Link
+                                  href={subLink.href}
+                                  onClick={closeDropdown}
+                                  className="block px-3 md:px-4 lg:px-4 py-2.5 md:py-3 lg:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm lg:text-sm font-medium border-b border-gray-100 last:border-b-0"
+                                >
+                                  {subLink.label}
+                                </Link>
+                              )}
+                            </div>
                           ))}
                         </div>
                       </div>
@@ -214,14 +255,30 @@ export default function Navbar() {
                   {/* Submenu */}
                   <div className="ml-4 mt-2 space-y-1">
                     {link.subLinks?.map((subLink) => (
-                      <Link
-                        key={subLink.href}
-                        href={subLink.href}
-                        onClick={closeMobileMenu}
-                        className="block py-2 pl-4 pr-2 text-gray-600 hover:text-[#5ECAD5] hover:bg-gray-50/50 rounded-lg transition-colors text-sm"
-                      >
-                        {subLink.label}
-                      </Link>
+                      <div key={subLink.href}>
+                        <Link
+                          href={subLink.href}
+                          onClick={closeMobileMenu}
+                          className="block py-2 pl-4 pr-2 text-gray-600 hover:text-[#5ECAD5] hover:bg-gray-50/50 rounded-lg transition-colors text-sm"
+                        >
+                          {subLink.label}
+                        </Link>
+                        {/* Sub-submenu for nested dropdowns */}
+                        {subLink.hasDropdown && subLink.subLinks && (
+                          <div className="ml-4 mt-1 space-y-1">
+                            {subLink.subLinks.map((subSubLink) => (
+                              <Link
+                                key={subSubLink.href}
+                                href={subSubLink.href}
+                                onClick={closeMobileMenu}
+                                className="block py-1.5 pl-4 pr-2 text-gray-500 hover:text-[#5ECAD5] hover:bg-gray-50/50 rounded-lg transition-colors text-xs"
+                              >
+                                {subSubLink.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>

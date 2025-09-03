@@ -86,6 +86,151 @@ export default function InvestovaniePage() {
         </div>
       </section>
 
+      {/* Expert Insights Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Main Question - Magazine Style */}
+          <div className="text-center mb-16">
+            <div className="inline-block bg-[#5ECAD5] text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              INVESTOVANIE
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#202325] mb-8 max-w-3xl mx-auto leading-tight">
+              Každý deň bez investovania vás stojí peniaze.
+            </h2>
+            <div className="w-20 h-1 bg-[#5ECAD5] mx-auto mb-8"></div>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Dlhodobé držanie peňazí na bežných účtoch alebo v hotovosti vedie k strate hodnoty peňazí vďaka infláciu. Pravidelne a rozumne investujte čo i len malú sumu a zhodnocujte svoje peniaze a tvorte si finančnú rezervu. Investovanie dávno nie je výsadou len pre bohatých či veľké firmy, so správnymi informáciami, nástrojmi a vedením sa k nemu môže dostať každý, kto chce mať svoje financie a budúcnosť pod kontrolou.
+            </p>
+          </div>
+
+          {/* Quote Style Section */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
+            <div className="flex items-start">
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div>
+                <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
+                  Peniaze, ktoré si sporíme tak "ODPOČÍVAJÚ" a peniaze, ktoré investujem tak "PRACUJÚ". Investovanie má zmysel, pretože peniaze časom strácajú hodnotu. Na rozdiel od bežného sporenia vám investície umožňujú zhodnocovať úspory a budovať kapitál na dôležité ciele bývanie, vzdelanie detí či finančnú slobodu.
+                </p>
+                <p className="text-lg text-gray-700 italic leading-relaxed">
+                  Začať sa dá aj s menšími sumami, dôležité je nečakať. Čím skôr začnete, tým viac času majú peniaze rásť. Investovanie je vhodné pre každého, kto chce aktívne ovplyvniť svoju budúcnosť. Kľúčom k úspechu je spoľahlivý partner.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Three Column Article Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-24 max-w-7xl mx-auto lg:justify-start">
+            
+            {/* Left Column */}
+            <article className="space-y-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-[#5ECAD5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">1</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#202325]">
+                  Oplatí sa riskovať investovaním keď môžem jednoducho sporiť?
+                </h3>
+              </div>
+              
+              <p className="text-gray-600 leading-relaxed text-base">
+                Mnohí si myslia, že investovanie je len pre bohatých. Pravda je však iná, začať sa dá aj s 20 či 50 eurami mesačne. Pravidelné investovanie malých súm má často väčší efekt než čakanie na „správny čas" s veľkým vkladom.
+              </p>
+
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h4 className="font-semibold text-green-800 mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+                  Kľúčové fakty:
+                </h4>
+                <p className="text-green-700 text-sm leading-relaxed">
+                  Kto investuje, dáva peniazom šancu rásť. Kto ich nechá ležať na účte, stráca, pretože inflácia každý rok znižuje ich hodnotu. Čím skôr začnete, tým viac získate.
+                </p>
+              </div>
+            </article>
+
+            {/* Middle Column */}
+            <article className="space-y-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-[#5ECAD5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">2</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#202325]">
+                  Je investovanie bezpečné? Môžem prísť o peniaze?
+                </h3>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed text-base">
+                Hodnota investícií kolíše, raz stúpa, inokedy klesá. Je to prirodzená súčasť trhu, ovplyvnená politikou, ekonomikou či správaním investorov. Dôležité je nepanikáriť, ale pozerať sa na investovanie dlhodobo.
+              </p>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <h4 className="font-semibold text-amber-800 mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-amber-500 rounded-full mr-2"></span>
+                  Dôležité upozornenie:
+                </h4>
+                <p className="text-amber-700 text-sm leading-relaxed">
+                  Trhy sa v čase zvyknú zotaviť a rásť, najmä ak máte dobre alokované portfólio. Bezpečnosť zvyšuje aj priebežný záujem, sledovanie diania a správne načasovanie krokov.
+                </p>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed text-base">
+                Nemusíte byť odborník, ale mať po boku skúseného sprostredkovateľa ktorý všetko čo je potrebné sledovať a sprostredkovať rieši za vás s pravidelným vzdelávaním a skúsenosťami.
+              </p>
+            </article>
+
+            {/* Right Column */}
+            <article className="space-y-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-[#5ECAD5] rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">3</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#202325]">
+                  Ako môžem investovať?
+                </h3>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed text-base">
+                Na túto otázku sa nedá odpovedať univerzálne, pretože každý človek má iné ciele, skúsenosti a finančné možnosti. Ku každému klientovi je treba pristupovať individuálne a vždy sa najskôr zisťuje jeho investičný profil, očakávania a mieru ochoty podstúpiť riziko.
+              </p>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-800 mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+                  Náš prístup:
+                </h4>
+                <p className="text-blue-700 text-sm leading-relaxed">
+                  Máme dlhoročné skúsenosti, pod správou desiatky miliónov eur a stovky spokojných klientov. Radi vám spravíme analýzu a stratégiu – zrozumiteľne, odborne a zdarma.
+                </p>
+              </div>
+
+              <p className="text-gray-600 leading-relaxed text-base">
+                Investovať môže prakticky každý – aj s menšou sumou a bez hlbokých znalostí finančných trhov. Dôležité je vedieť, aké sú tvoje ciele, ako dlho chceš investovať a aké riziko ti vyhovuje.
+              </p>
+            </article>
+          </div>
+
+          {/* Bottom Quote */}
+          <div className="bg-gradient-to-r from-[#5ECAD5]/5 to-blue-50/50 rounded-xl p-6 border-l-4 border-[#5ECAD5] mt-12">
+            <p className="text-gray-800 leading-relaxed text-center">
+              Investovanie nie je hazard, ale ani zaručená istota. Pravdou je, že každý typ investície nesie určité riziko – preto je dôležité vedieť, kam, kedy a ako investovať. Nestrkáš peniaze naslepo, ale s plánom, ktorý zohľadňuje tvoje ciele, čas a ochotu riskovať. So správnym nastavením môžeš svoje peniaze zhodnocovať dlhodobo a rozumne, nie nechať ich ležať a strácať hodnotu.
+            </p>
+          </div>
+
+          {/* Simple CTA */}
+          <div className="text-center mt-16 pt-8 border-t border-gray-200">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
+            >
+              Bezplatná konzultácia
+            </button>
+            <p className="text-gray-500 text-sm mt-3">
+              Bez záväzkov • Individuálny prístup
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Investment Options Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
