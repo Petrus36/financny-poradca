@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 import ContactModal from "../../../../components/ContactModal";
 
 export default function NezivotnePoisteniePage() {
@@ -106,7 +106,7 @@ export default function NezivotnePoisteniePage() {
           {/* Quote Style Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
             <div className="flex items-start">
-              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
                   Veľa nehnuteľností na Slovensku je podpoistených, pretože ich hodnota za posledné roky vzrástla, no poistné sumy ostali nezmenené. Pri škode tak poisťovňa vyplatí len časť nákladov a zvyšok hradí majiteľ.

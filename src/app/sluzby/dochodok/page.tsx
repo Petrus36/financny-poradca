@@ -121,13 +121,13 @@ export default function DochodokPage() {
           {/* Quote Style Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
             <div className="flex items-start">
-              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
                   Čas je najväčší spojenec investora. Čím skôr začneš, tým viac môžeš využiť efekt zloženého úročenia, ktorý výrazne zvyšuje výsledok aj pri menších sumách. Dlhší horizont zároveň umožňuje lepšie zvládnuť výkyvy trhu a znížiť riziko.
                 </p>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
-                  Skorý štart znamená aj menší tlak na výšku mesačných vkladov – nemusíš odkladať veľa, ale pravidelne a dlhodobo. Odsúvanie rozhodnutia „na neskôr" sa pri investovaní často rovná stratenej príležitosti.
+                  Skorý štart znamená aj menší tlak na výšku mesačných vkladov – nemusíš odkladať veľa, ale pravidelne a dlhodobo. Odsúvanie rozhodnutia &ldquo;na neskôr&rdquo; sa pri investovaní často rovná stratenej príležitosti.
                 </p>
               </div>
             </div>

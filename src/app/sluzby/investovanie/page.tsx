@@ -107,10 +107,10 @@ export default function InvestovaniePage() {
           {/* Quote Style Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
             <div className="flex items-start">
-              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                  Peniaze, ktoré si sporíme tak "ODPOČÍVAJÚ" a peniaze, ktoré investujem tak "PRACUJÚ". Investovanie má zmysel, pretože peniaze časom strácajú hodnotu. Na rozdiel od bežného sporenia vám investície umožňujú zhodnocovať úspory a budovať kapitál na dôležité ciele bývanie, vzdelanie detí či finančnú slobodu.
+                  Peniaze, ktoré si sporíme tak &ldquo;ODPOČÍVAJÚ&rdquo; a peniaze, ktoré investujem tak &ldquo;PRACUJÚ&rdquo;. Investovanie má zmysel, pretože peniaze časom strácajú hodnotu. Na rozdiel od bežného sporenia vám investície umožňujú zhodnocovať úspory a budovať kapitál na dôležité ciele bývanie, vzdelanie detí či finančnú slobodu.
                 </p>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
                   Začať sa dá aj s menšími sumami, dôležité je nečakať. Čím skôr začnete, tým viac času majú peniaze rásť. Investovanie je vhodné pre každého, kto chce aktívne ovplyvniť svoju budúcnosť. Kľúčom k úspechu je spoľahlivý partner.
@@ -134,7 +134,7 @@ export default function InvestovaniePage() {
               </div>
               
               <p className="text-gray-600 leading-relaxed text-base">
-                Mnohí si myslia, že investovanie je len pre bohatých. Pravda je však iná, začať sa dá aj s 20 či 50 eurami mesačne. Pravidelné investovanie malých súm má často väčší efekt než čakanie na „správny čas" s veľkým vkladom.
+                Mnohí si myslia, že investovanie je len pre bohatých. Pravda je však iná, začať sa dá aj s 20 či 50 eurami mesačne. Pravidelné investovanie malých súm má často väčší efekt než čakanie na &ldquo;správny čas&rdquo; s veľkým vkladom.
               </p>
 
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">

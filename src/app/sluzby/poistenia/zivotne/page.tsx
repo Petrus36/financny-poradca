@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 import ContactModal from "../../../../components/ContactModal";
 
 export default function ZivotnePoisteniePage() {
@@ -100,7 +100,7 @@ export default function ZivotnePoisteniePage() {
           {/* Quote Style Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
             <div className="flex items-start">
-              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
                   Možno si to hovoríš aj ty, veď čo ak sa mi nikdy nič nestane? Pravda však je, že život prináša aj nečakané a ťažké momenty, úmrtie živiteľa rodiny, vážna choroba, úraz či trvalá invalidita. V takýchto chvíľach nejde len o zdravie či emócie, často príde aj náhly výpadok príjmu a zvýšené výdavky.
@@ -162,7 +162,7 @@ export default function ZivotnePoisteniePage() {
                   Praktický príklad:
                 </h4>
                 <p className="text-amber-700 text-sm leading-relaxed">
-                  Veľa ľudí si myslí, že kvalitné poistenie musí byť automaticky drahé. V skutočnosti sa však dá nastaviť tak, aby bolo finančne dostupné a zároveň poskytovalo reálnu ochranu. Dôležité je vedieť, čo má poistenie riešiť, a nespoliehať sa len na „najlacnejšiu ponuku".
+                  Veľa ľudí si myslí, že kvalitné poistenie musí byť automaticky drahé. V skutočnosti sa však dá nastaviť tak, aby bolo finančne dostupné a zároveň poskytovalo reálnu ochranu. Dôležité je vedieť, čo má poistenie riešiť, a nespoliehať sa len na &ldquo;najlacnejšiu ponuku&rdquo;.
                 </p>
               </div>
 

@@ -116,7 +116,7 @@ export default function HypotekyPage() {
           {/* Quote Style Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12 border-l-4 border-[#5ECAD5]">
             <div className="flex items-start">
-              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">"</div>
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
                   Ak sú správne nastavené podmienky a zvolený vhodný postup, dá sa vyhnúť chybám, ktoré často stoja zbytočne veľa – času, peňazí aj nervov. Celý proces sa dá zvládnuť prehľadne, s riešením, ktoré vám bude dávať dlhodobý zmysel a reálnu výhodu – nie len na papieri, ale aj v praxi.
