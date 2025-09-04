@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormModal from "../../components/ContactFormModal";
 
 export default function KontaktPage() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openMapModal = () => {
     setIsMapModalOpen(true);
@@ -15,8 +17,15 @@ export default function KontaktPage() {
     setIsMapModalOpen(false);
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="min-h-screen">
+      {/* Contact Modal */}
+      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Map Modal */}
       {isMapModalOpen && (
         <div className="fixed inset-0 backdrop-blur-md bg-white/30 flex items-center justify-center z-50 p-4">
@@ -97,11 +106,12 @@ export default function KontaktPage() {
               <p className="text-lg md:text-xl text-white mb-8 max-w-2xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Spojte sa s nami a získajte profesionálne finančné poradenstvo
               </p>
-              <Link href="/formular">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
-                  Bezplatná konzultácia
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+              >
+                Bezplatná konzultácia
+              </button>
             </div>
           </div>
         </div>

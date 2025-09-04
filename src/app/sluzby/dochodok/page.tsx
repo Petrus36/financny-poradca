@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactModal from "../../../components/ContactModal";
+import ContactFormModal from "../../../components/ContactFormModal";
 
 export default function DochodokPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +50,7 @@ export default function DochodokPage() {
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -90,11 +90,12 @@ export default function DochodokPage() {
               <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Zabezpečte si dôstojný dôchodok a finančnú nezávislosť v seniorskom veku
               </p>
-              <Link href="/formular">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
-                  Chcem sa zabezpečiť
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
+              >
+                Chcem sa zabezpečiť
+              </button>
             </div>
           </div>
         </div>

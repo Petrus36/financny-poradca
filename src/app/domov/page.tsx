@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactModal from "../../components/ContactModal";
+import ContactFormModal from "../../components/ContactFormModal";
 
 interface Testimonial {
   id: number;
@@ -157,7 +157,7 @@ export default function DomovPage() {
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[800px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -201,11 +201,12 @@ export default function DomovPage() {
               <p className="text-lg sm:text-xl md:text-lg lg:text-lg text-white mb-6 sm:mb-6 md:mb-10 lg:mb-8 max-w-xl md:max-w-lg lg:max-w-2xl mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md">
                 Zhodnoťte svoj majetok medziročne až o 20% vďaka profesionálnemu prístupu k financiám.
               </p>
-              <Link href="/kontakt">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 lg:px-8 py-3 sm:py-3 md:py-4 lg:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg lg:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0 lg:mx-0 block sm:inline-block">
-                  Kontaktujte ma
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 lg:px-8 py-3 sm:py-3 md:py-4 lg:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg lg:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0 lg:mx-0 block sm:inline-block"
+              >
+                Kontaktujte ma
+              </button>
             </div>
           </div>
         </div>

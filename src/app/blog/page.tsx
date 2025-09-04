@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormModal from "../../components/ContactFormModal";
 
 interface BlogPost {
   id: string;
@@ -16,6 +17,11 @@ interface BlogPost {
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     fetchBlogPosts();
@@ -37,6 +43,9 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen">
+      {/* Contact Modal */}
+      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+
       {/* Hero Banner Section */}
       <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
@@ -74,11 +83,12 @@ export default function BlogPage() {
               <p className="text-lg md:text-xl text-white mb-8 max-w-2xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
                 Najnovšie články a poznatky zo sveta financií
               </p>
-              <Link href="/kontakt">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto">
-                  Kontaktujte ma
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+              >
+                Kontaktujte ma
+              </button>
             </div>
           </div>
         </div>

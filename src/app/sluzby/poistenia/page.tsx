@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactModal from "../../../components/ContactModal";
+import ContactFormModal from "../../../components/ContactFormModal";
 
 export default function PoistieniaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function PoistieniaPage() {
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">

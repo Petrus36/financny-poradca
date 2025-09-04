@@ -30,6 +30,16 @@ interface BlogPost {
   createdAt: string;
 }
 
+interface ContactSubmission {
+  id: string;
+  name: string;
+  surname: string;
+  phone: string | null;
+  email: string;
+  message: string | null;
+  createdAt: string;
+}
+
 export default function AdminPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
@@ -42,7 +52,7 @@ export default function AdminPage() {
   const [searchTerm, setSearchTerm] = useState('');
   
   // Blog management state
-  const [activeTab, setActiveTab] = useState<'submissions' | 'blog'>('submissions');
+  const [activeTab, setActiveTab] = useState<'submissions' | 'blog' | 'contact'>('submissions');
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [showBlogModal, setShowBlogModal] = useState(false);
   const [blogForm, setBlogForm] = useState({
@@ -56,6 +66,13 @@ export default function AdminPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
   
+  // Contact submissions state
+  const [contactSubmissions, setContactSubmissions] = useState<ContactSubmission[]>([]);
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactError, setContactError] = useState('');
+  const [selectedContactSubmission, setSelectedContactSubmission] = useState<ContactSubmission | null>(null);
+  const [showContactModal, setShowContactModal] = useState(false);
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -65,6 +82,7 @@ export default function AdminPage() {
       setIsLoggedIn(true);
       fetchSubmissions();
       fetchBlogPosts();
+      fetchContactSubmissions();
     }
   }, []);
 
@@ -77,6 +95,7 @@ export default function AdminPage() {
       sessionStorage.setItem('adminLoggedIn', 'true');
       fetchSubmissions();
       fetchBlogPosts();
+      fetchContactSubmissions();
     } else {
       setError('Nesprávne prihlasovacie údaje');
     }
@@ -278,6 +297,35 @@ export default function AdminPage() {
     }
   };
 
+  // Contact submissions functions
+  const fetchContactSubmissions = async () => {
+    setContactLoading(true);
+    try {
+      const response = await fetch('/api/contact');
+      if (response.ok) {
+        const data = await response.json();
+        setContactSubmissions(data);
+      } else {
+        setContactError('Chyba pri načítavaní kontaktných formulárov');
+      }
+    } catch (error) {
+      setContactError('Chyba pri načítavaní kontaktných formulárov');
+      console.error('Error fetching contact submissions:', error);
+    } finally {
+      setContactLoading(false);
+    }
+  };
+
+  const openContactModal = (submission: ContactSubmission) => {
+    setSelectedContactSubmission(submission);
+    setShowContactModal(true);
+  };
+
+  const closeContactModal = () => {
+    setSelectedContactSubmission(null);
+    setShowContactModal(false);
+  };
+
   const openModal = (submission: FormSubmission) => {
     setSelectedSubmission(submission);
     setShowModal(true);
@@ -375,11 +423,15 @@ export default function AdminPage() {
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Admin Dashboard</h1>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
             <button
-              onClick={activeTab === 'submissions' ? fetchSubmissions : fetchBlogPosts}
-              disabled={loading || blogLoading}
+              onClick={
+                activeTab === 'submissions' ? fetchSubmissions : 
+                activeTab === 'blog' ? fetchBlogPosts : 
+                fetchContactSubmissions
+              }
+              disabled={loading || blogLoading || contactLoading}
               className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 disabled:opacity-50"
             >
-              {(loading || blogLoading) ? 'Načítavam...' : 'Obnoviť'}
+              {(loading || blogLoading || contactLoading) ? 'Načítavam...' : 'Obnoviť'}
             </button>
             <button
               onClick={handleLogout}
@@ -413,6 +465,16 @@ export default function AdminPage() {
                 }`}
               >
                 Blog ({blogPosts.length})
+              </button>
+              <button
+                onClick={() => setActiveTab('contact')}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'contact'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Kontakt ({contactSubmissions.length})
               </button>
             </nav>
           </div>
@@ -639,6 +701,106 @@ export default function AdminPage() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Contact Submissions Section */}
+        {activeTab === 'contact' && (
+          <div className="space-y-6">
+            {/* Contact Header */}
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-gray-800">
+                Kontaktné formuláre ({contactSubmissions.length})
+              </h2>
+            </div>
+
+            {/* Error Display */}
+            {contactError && (
+              <div className="bg-red-50 border-l-4 border-red-400 p-4">
+                <p className="text-red-800">{contactError}</p>
+              </div>
+            )}
+
+            {/* Contact Submissions Table */}
+            <div className="bg-white shadow-md rounded-lg overflow-hidden">
+              <div className="px-3 sm:px-6 py-4 border-b border-gray-200">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                  Kontaktné formuláre ({contactSubmissions.length})
+                </h2>
+              </div>
+
+              {contactLoading ? (
+                <div className="px-3 sm:px-6 py-12 text-center">
+                  <div className="text-gray-500">Načítavam kontaktné formuláre...</div>
+                </div>
+              ) : contactSubmissions.length === 0 ? (
+                <div className="px-3 sm:px-6 py-12 text-center">
+                  <p className="text-gray-500">Zatiaľ žiadne kontaktné formuláre.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Meno
+                        </th>
+                        <th className="hidden sm:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Kontakt
+                        </th>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Správa
+                        </th>
+                        <th className="hidden lg:table-cell px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Dátum
+                        </th>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Akcie
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {contactSubmissions.map((submission) => (
+                        <tr key={submission.id} className="hover:bg-gray-50">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm font-medium text-gray-900">
+                              {submission.name} {submission.surname}
+                            </div>
+                            <div className="sm:hidden text-xs text-gray-500 mt-1">
+                              {submission.phone && <div>📞 {submission.phone}</div>}
+                              <div>📧 {submission.email}</div>
+                            </div>
+                          </td>
+                          <td className="hidden sm:table-cell px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm text-gray-900">
+                              {submission.phone && <div>📞 {submission.phone}</div>}
+                              <div>📧 {submission.email}</div>
+                            </div>
+                          </td>
+                          <td className="px-3 sm:px-6 py-4">
+                            <div className="text-sm text-gray-900 max-w-xs truncate">
+                              {submission.message || 'Žiadna správa'}
+                            </div>
+                          </td>
+                          <td className="hidden lg:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {formatDate(submission.createdAt)}
+                          </td>
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button
+                              onClick={() => openContactModal(submission)}
+                              className="text-blue-600 hover:text-blue-900 text-xs sm:text-sm"
+                            >
+                              <span className="hidden sm:inline">Zobraziť detaily</span>
+                              <span className="sm:hidden">Detaily</span>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -965,6 +1127,94 @@ export default function AdminPage() {
                   const contactInfo = [
                     selectedSubmission.phone && `Telefón: ${selectedSubmission.phone}`,
                     selectedSubmission.email && `E-mail: ${selectedSubmission.email}`
+                  ].filter(Boolean).join('\n');
+                  
+                  navigator.clipboard.writeText(contactInfo);
+                  alert('Kontaktné údaje boli skopírované do schránky!');
+                }}
+                className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200"
+              >
+                Kopírovať kontakt
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Submission Modal */}
+      {showContactModal && selectedContactSubmission && (
+        <div className="fixed inset-0 backdrop-blur-lg bg-black/20 flex items-center justify-center p-2 sm:p-4 z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+            {/* Modal Header */}
+            <div className="flex justify-between items-start p-3 sm:p-6 border-b border-gray-200">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 pr-4">
+                Kontaktný formulár - {selectedContactSubmission.name} {selectedContactSubmission.surname}
+              </h3>
+              <button
+                onClick={closeContactModal}
+                className="text-gray-400 hover:text-gray-600 text-2xl font-bold flex-shrink-0"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+              {/* Personal Information */}
+              <div className="bg-blue-50 rounded-lg p-3 sm:p-4">
+                <h4 className="text-base sm:text-lg font-semibold text-blue-900 mb-3">👤 Osobné údaje</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <span className="text-sm font-medium text-gray-600">Meno:</span>
+                    <p className="text-gray-900 font-medium">{selectedContactSubmission.name}</p>
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-gray-600">Priezvisko:</span>
+                    <p className="text-gray-900 font-medium">{selectedContactSubmission.surname}</p>
+                  </div>
+                  {selectedContactSubmission.phone && (
+                    <div>
+                      <span className="text-sm font-medium text-gray-600">Telefón:</span>
+                      <p className="text-gray-900 font-medium">📞 {selectedContactSubmission.phone}</p>
+                    </div>
+                  )}
+                  <div>
+                    <span className="text-sm font-medium text-gray-600">E-mail:</span>
+                    <p className="text-gray-900 font-medium">📧 {selectedContactSubmission.email}</p>
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-gray-600">Dátum odoslania:</span>
+                    <p className="text-gray-900 font-medium">📅 {formatDate(selectedContactSubmission.createdAt)}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Message */}
+              {selectedContactSubmission.message && (
+                <div className="bg-green-50 rounded-lg p-4">
+                  <h4 className="text-lg font-semibold text-green-900 mb-3">💬 Správa</h4>
+                  <div className="bg-white p-3 rounded border-l-4 border-green-400">
+                    <p className="text-gray-900 font-medium whitespace-pre-wrap">{selectedContactSubmission.message}</p>
+                  </div>
+                </div>
+              )}
+
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 p-3 sm:p-6 border-t border-gray-200 bg-gray-50">
+              <button
+                onClick={closeContactModal}
+                className="w-full sm:w-auto px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition duration-200"
+              >
+                Zavrieť
+              </button>
+              <button
+                onClick={() => {
+                  const contactInfo = [
+                    `Meno: ${selectedContactSubmission.name} ${selectedContactSubmission.surname}`,
+                    selectedContactSubmission.phone && `Telefón: ${selectedContactSubmission.phone}`,
+                    `E-mail: ${selectedContactSubmission.email}`
                   ].filter(Boolean).join('\n');
                   
                   navigator.clipboard.writeText(contactInfo);
