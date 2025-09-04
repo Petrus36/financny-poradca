@@ -34,10 +34,10 @@ export default function ZivotnePoisteniePage() {
   ];
 
   const insuranceCompanies = [
-    { name: "UNIQA", logo: "/Uniqa.webp", specialty: "Životné poistenie", isImage: true },
-    { name: "Allianz", logo: "/Alianz.png", specialty: "Úrazové poistenie", isImage: true },
-    { name: "Generali", logo: "/Generali.jpg", specialty: "Kritické choroby", isImage: true },
-    { name: "Kooperativa", logo: "/Kooperativa.jpg", specialty: "Komplexné poistenie", isImage: true }
+    { name: "UNIQA", logo: "/Uniqa.webp", specialty: "Životné poistenie", isImage: true, isSmaller: false },
+    { name: "Allianz", logo: "/Alianz.png", specialty: "Úrazové poistenie", isImage: true, isSmaller: false },
+    { name: "Generali", logo: "/Generali.jpg", specialty: "Kritické choroby", isImage: true, isSmaller: false },
+    { name: "Kooperativa", logo: "/Kooperativa.jpg", specialty: "Komplexné poistenie", isImage: true, isSmaller: true }
   ];
 
   return (
@@ -232,7 +232,10 @@ export default function ZivotnePoisteniePage() {
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                    className={company.isSmaller 
+                      ? "h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] transition-all duration-300 scale-100 sm:scale-110 md:scale-120"
+                      : "h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                    }
                   />
                 ) : (
                   <span className="text-3xl">{company.logo}</span>

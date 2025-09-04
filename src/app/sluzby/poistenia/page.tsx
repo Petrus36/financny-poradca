@@ -273,7 +273,7 @@ export default function PoistieniaPage() {
                 alt="Kooperativa logo"
                 width={400}
                 height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] transition-all duration-300 scale-100 sm:scale-110 md:scale-120"
               />
             </div>
           </div>
