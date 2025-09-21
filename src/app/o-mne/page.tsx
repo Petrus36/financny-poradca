@@ -235,14 +235,14 @@ export default function OMnePage() {
             <div className="text-center">
               <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
                 <Image
-                  src="/certifikat-2.png"
-                  alt="Certifikát 2"
+                  src="/certifikat-Poistenie.png"
+                  alt="Certifikát Poistenie"
                   width={300}
                   height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT 2</div>
+              <div className="text-sm font-semibold text-[#202325]">POISTENIE</div>
             </div>
             <div className="text-center">
               <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
