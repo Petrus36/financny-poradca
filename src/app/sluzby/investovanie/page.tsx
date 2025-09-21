@@ -39,45 +39,35 @@ export default function InvestovaniePage() {
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
-            alt="Banner background"
+            src="/Investovanie.svg"
+            alt="Investovanie background"
             fill
-            className="object-cover"
+            className="object-cover object-right md:object-right"
             priority
           />
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
-          <Image
-            src="/advisor-photo.png"
-            alt="Financial Advisor"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 -ml-16 sm:-ml-20 pt-52 sm:pt-64 md:pt-0 lg:pt-0 md:pl-20 lg:pl-16 md:max-w-[50%] md:mr-auto max-w-[70%] sm:max-w-[65%]">
+              <h1 className="text-5xl sm:text-5xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-4 sm:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Investovanie</span>
                 <span className="hidden md:block">Investovanie</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md leading-relaxed">
                 Rozmnožte svoje úspory inteligentným investovaním s profesionálnym poradenstvom
               </p>
               <Link href="/formular">
-                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
+                <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-sm sm:text-base md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block">
                   Bezplatná konzultácia
                 </button>
               </Link>
@@ -137,12 +127,12 @@ export default function InvestovaniePage() {
                 Mnohí si myslia, že investovanie je len pre bohatých. Pravda je však iná, začať sa dá aj s 20 či 50 eurami mesačne. Pravidelné investovanie malých súm má často väčší efekt než čakanie na &ldquo;správny čas&rdquo; s veľkým vkladom.
               </p>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h4 className="font-semibold text-green-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Kľúčové fakty:
                 </h4>
-                <p className="text-green-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Kto investuje, dáva peniazom šancu rásť. Kto ich nechá ležať na účte, stráca, pretože inflácia každý rok znižuje ich hodnotu. Čím skôr začnete, tým viac získate.
                 </p>
               </div>
@@ -163,12 +153,12 @@ export default function InvestovaniePage() {
                 Hodnota investícií kolíše, raz stúpa, inokedy klesá. Je to prirodzená súčasť trhu, ovplyvnená politikou, ekonomikou či správaním investorov. Dôležité je nepanikáriť, ale pozerať sa na investovanie dlhodobo.
               </p>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <h4 className="font-semibold text-amber-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-amber-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Dôležité upozornenie:
                 </h4>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Trhy sa v čase zvyknú zotaviť a rásť, najmä ak máte dobre alokované portfólio. Bezpečnosť zvyšuje aj priebežný záujem, sledovanie diania a správne načasovanie krokov.
                 </p>
               </div>
@@ -193,12 +183,12 @@ export default function InvestovaniePage() {
                 Na túto otázku sa nedá odpovedať univerzálne, pretože každý človek má iné ciele, skúsenosti a finančné možnosti. Ku každému klientovi je treba pristupovať individuálne a vždy sa najskôr zisťuje jeho investičný profil, očakávania a mieru ochoty podstúpiť riziko.
               </p>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Náš prístup:
                 </h4>
-                <p className="text-blue-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Máme dlhoročné skúsenosti, pod správou desiatky miliónov eur a stovky spokojných klientov. Radi vám spravíme analýzu a stratégiu – zrozumiteľne, odborne a zdarma.
                 </p>
               </div>

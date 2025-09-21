@@ -52,11 +52,11 @@ export default function NezivotnePoisteniePage() {
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
+            src="/Poistenia.svg"
             alt="Banner background"
             fill
             className="object-cover"
@@ -68,19 +68,23 @@ export default function NezivotnePoisteniePage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
-              Neživotné poistenie
-            </h1>
-            <p className="text-lg sm:text-xl text-white mb-8 max-w-3xl mx-auto font-light drop-shadow-md">
-              Ochrana vašej nehnuteľnosti, majetku a zodpovednosti. Zabezpečte si pokoj pre prípad nečakaných udalostí.
-            </p>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
-            >
-              Bezplatná konzultácia
-            </button>
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
+            {/* Left side - Text content */}
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto max-w-[60%] sm:max-w-[55%]">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
+                <span className="block md:hidden">Neživotné poistenie</span>
+                <span className="hidden md:block">Neživotné poistenie</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+                Ochrana vašej nehnuteľnosti, majetku a zodpovednosti. Zabezpečte si pokoj pre prípad nečakaných udalostí.
+              </p>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
+              >
+                Bezplatná konzultácia
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -136,12 +140,12 @@ export default function NezivotnePoisteniePage() {
                 Pravidelná kontrola a aktualizácia poistenia zabezpečí, že váš majetok bude skutočne chránený a vy sa vyhnete nepríjemným prekvapeniam v kritických momentoch.
               </p>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h4 className="font-semibold text-green-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-green-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Kľúčové fakty:
                 </h4>
-                <p className="text-green-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Poistenie domácnosti je dôležitou súčasťou finančnej ochrany, pretože kryje škody na zariadení, elektronike a osobnom majetku. Často sa podceňuje, no práve v neočakávaných situáciách dokáže zabrániť vysokým stratám a nepríjemným následkom.
                 </p>
               </div>
@@ -162,12 +166,12 @@ export default function NezivotnePoisteniePage() {
                 Poistenie vozidiel chráni pred finančnými následkami nehôd, poškodenia alebo krádeže. Zásadné sú podmienky zmluvy, tie určujú, kedy a v akom rozsahu poisťovňa škodu preplatí. Navyše ide o zákonnú povinnosť, pri jej zanedbaní hrozia pokuty a ďalšie riziká.
               </p>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-                <h4 className="font-semibold text-amber-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-amber-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Praktický príklad:
                 </h4>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Poistenie občianskej zodpovednosti kryje škody, ktoré neúmyselne spôsobíte iným – či už na zdraví alebo majetku. V mnohých prípadoch vás môže ochrániť pred vysokými výdavkami, ktoré by ste inak museli znášať sami.
                 </p>
               </div>
@@ -333,7 +337,7 @@ export default function NezivotnePoisteniePage() {
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            JAKO TO FUNGUJE?
+            AKO TO FUNGUJE?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">

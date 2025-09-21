@@ -48,37 +48,26 @@ export default function HypotekyPage() {
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
+            src="/Hypoteka.svg"
             alt="Banner background"
             fill
-            className="object-cover"
+            className="object-cover object-right md:object-cover"
             priority
           />
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
-          <Image
-            src="/advisor-photo.png"
-            alt="Financial Advisor"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
             <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Hypotéky</span>
                 <span className="hidden md:block">Hypotéky</span>
               </h1>
@@ -147,12 +136,12 @@ export default function HypotekyPage() {
                 Mnohí ľudia sa pri hypotéke zameriavajú len na to, ako ju vôbec získať. Menej často však riešia to, ako ju splatiť čo najrýchlejšie a s čo najmenším preplatením a pritom práve to môže výrazne ovplyvniť ich budúce financie.
               </p>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h4 className="font-semibold text-green-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-green-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Kľúčové fakty:
                 </h4>
-                <p className="text-green-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Jednou z možností je už na začiatku hypotéky (alebo aj počas jej splácania) nastaviť vhodnú stratégiu, ktorá zohľadní príjmy, výdavky a ďalšie ciele. Vďaka nej je možné skrátiť splatnosť hypotéky aj o 10 až 15 rokov a ušetriť tisíce eur.
                 </p>
               </div>
@@ -177,12 +166,12 @@ export default function HypotekyPage() {
                 Hypotéka nie je len o tom, ktorá banka dá najnižší úrok. Každý človek má inú situáciu, iné plány a inú predstavu o budúcnosti – a preto by aj hypotéka mala byť nastavená individuálne na mieru.
               </p>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-                <h4 className="font-semibold text-amber-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-amber-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Dôležité upozornenie:
                 </h4>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Pri výbere hypotéky sa oplatí pozerať nielen na úrok, ale aj na to, aké sú podmienky, možnosti predčasného splatenia, poplatky a dlhodobý vplyv na rozpočet. Kto si to zistí dopredu a porovná viac možností, vyhne sa nepríjemným prekvapeniam.
                 </p>
               </div>

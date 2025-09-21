@@ -34,6 +34,7 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -62,9 +63,16 @@ export default function Navbar() {
       }
     };
 
+    // Clear dropdown state on resize to ensure proper behavior across breakpoints
+    const handleResize = () => {
+      setActiveDropdown(null);
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('resize', handleResize);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -73,15 +81,19 @@ export default function Navbar() {
       {/* Desktop/Tablet Navbar */}
       <nav className="absolute top-0 left-0 right-0 z-50 hidden md:block">
         <div className="w-full bg-transparent">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:ml-65">
-            <ul className="flex items-center justify-center space-x-1 md:space-x-2 lg:space-x-4 py-4 md:py-6 lg:py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ul className="flex items-center justify-center md:justify-center lg:justify-center space-x-1 md:space-x-2 lg:space-x-4 py-4 md:py-6 lg:py-4">
               {navLinks.map((link, index) => (
                 <li 
                   key={link.href} 
                   className="flex items-center relative"
                 >
                   {link.hasDropdown ? (
-                    <div className="relative group dropdown-container flex items-center">
+                    <div 
+                      className="relative group dropdown-container flex items-center lg:py-2 lg:px-1"
+                      onMouseEnter={() => setHoveredDropdown(link.href)}
+                      onMouseLeave={() => setHoveredDropdown(null)}
+                    >
                       {/* Main link to Služby page */}
                       <Link
                         href={link.href}
@@ -116,11 +128,49 @@ export default function Navbar() {
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
                       
-                      {/* Dropdown Menu */}
-                      <div className={`absolute top-full left-0 pt-1 transition-all duration-200 z-50 ${
+                      {/* Dropdown Menu - Tablet (click-based) */}
+                      <div className={`absolute top-full left-0 pt-1 transition-all duration-200 z-50 md:block lg:hidden ${
                         activeDropdown === link.href 
                           ? 'opacity-100 visible' 
-                          : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
+                          : 'opacity-0 invisible'
+                      }`}>
+                        <div className="w-40 md:w-44 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
+                          {link.subLinks?.map((subLink) => (
+                            <div key={subLink.href} className="relative">
+                              {subLink.hasDropdown ? (
+                                <div className="relative">
+                                  <div className="flex items-center justify-between px-3 md:px-4 py-2.5 md:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm font-medium border-b border-gray-100 cursor-pointer">
+                                    <Link
+                                      href={subLink.href}
+                                      onClick={closeDropdown}
+                                      className="flex-1"
+                                    >
+                                      {subLink.label}
+                                    </Link>
+                                    <svg className="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  </div>
+                                </div>
+                              ) : (
+                                <Link
+                                  href={subLink.href}
+                                  onClick={closeDropdown}
+                                  className="block px-3 md:px-4 py-2.5 md:py-3 text-[#202325] hover:bg-[#5ECAD5] hover:text-white transition-colors text-xs md:text-sm font-medium border-b border-gray-100 last:border-b-0"
+                                >
+                                  {subLink.label}
+                                </Link>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Dropdown Menu - Desktop/Laptop (hover-based) */}
+                      <div className={`absolute top-full left-0 pt-1 transition-all duration-200 z-50 hidden lg:block ${
+                        hoveredDropdown === link.href 
+                          ? 'opacity-100 visible' 
+                          : 'opacity-0 invisible'
                       }`}>
                         <div className="w-40 md:w-44 lg:w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl border border-gray-200/50 overflow-hidden">
                           {link.subLinks?.map((subLink) => (

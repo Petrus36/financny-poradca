@@ -77,7 +77,7 @@ export default function BlogPage() {
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[500px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
             <div className="flex-1 text-center md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-4 lg:-ml-8 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 BLOG
               </h1>
               <p className="text-lg md:text-xl text-white mb-8 max-w-2xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">

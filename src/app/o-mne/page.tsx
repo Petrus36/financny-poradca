@@ -48,7 +48,7 @@ export default function OMnePage() {
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
             <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-32 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">O mne</span>
                 <span className="hidden md:block">O mne</span>
               </h1>
@@ -72,50 +72,29 @@ export default function OMnePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             MOJA CESTA
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Image */}
-            <div className="w-full max-w-lg mx-auto md:mx-0 lg:mx-0">
+            <div className="w-full max-w-md mx-auto md:mx-0 lg:mx-0">
               <Image
                 src="/O-mne-moja-cesta.jpeg"
                 alt="Moja cesta - Financial team"
-                width={448}
-                height={448}
-                className="rounded-lg shadow-lg object-cover w-full aspect-square"
+                width={400}
+                height={300}
+                className="rounded-lg shadow-lg object-cover w-full aspect-[4/3]"
               />
             </div>
             
             {/* Text Content */}
-            <div className="text-justify text-sm md:text-base text-[#202325] leading-relaxed space-y-4">
+            <div className="text-justify text-base md:text-lg text-[#202325] leading-relaxed space-y-4">
               <p>
-                Volám sa Miňo, pochádzam z Malaciek a celý život sa pohybujem v prostredí, kde 
-                rozhodujú výkony, disciplína a zodpovednosť. Vyše 20 rokov som aktívne aj 
-                profesionálne športoval – hádzaná bola mojou srštou a zároveň školou života.
+                Študoval som na gymnáziu v Bratislave. "Celý život" som bol profesionálny a aktívny športovec. 
+                Moja mama zase robí už viac ako 20 rokov vo financiách a je pre mňa obrovským vzorom. 
+                Posledné roky (asi 8) som popri hádzanej aj pracoval. Vždy som bol zamestnaný v nejakej firme, 
+                kde som patril medzi tých, ktorí boli oceňovaní, ale mne to nestačilo a chcel som začať robiť na seba a niečo za sebou zanechať.
               </p>
               <p>
-                Objateľou kapitolou bolo aj 7 a pol roka v Nemecku, kde som intenzívne hrával hádzanú, 
-                ale zároveň pracoval v rámci finančných a poisťovacích spoločnostiach. Bola to skúka 
-                skúsenosť – pracovná aj ľudská. Získal som tam nádych jazyk, skúsenosti i nášky a 
-                schopnosti stávať, ktoré mi dnes umožňujú podávať kvalitné výkony.
-              </p>
-              <p>
-                Po návrate som sa zamestnal v DELL, kde som pôsobil 2,5 roka a v roku 2021 som sa 
-                začal menej YOCi o svojej finančnej život. Bola to intenzívna škola biznesu, komunikácie 
-                a IT.
-              </p>
-              <p>
-                V Finančníctve som vstúpil v januári 2020 napriek veku vystupu, no českému mi bolo 
-                jasné, že práve tu môžem skutočne pomáhať ľuďom s ich životom každ ako človek a 
-                profesionálne. Od marca 2024 sa tomu dívam venomm úkazne.
-              </p>
-              <p>
-                Mám aj najabe prvé výsledky – v roku 2025 dostanern 100 000 € AUM v osobnom 
-                výsledku (cca 350 000 € v kancelári).
-              </p>
-              <p>
-                Mám 35 rokov, vo finančnom svete som druhý rok, ale musíme sa k všetkým a 
-                pracujem na sebe. Stále vidím prestory na zlepšanie – a práve v tom je moja výhoda. 
-                Neuvažujem sa na výsledkoch, pracujem ďalej, učím sa každý den. Nezaspamujem a s 
-                výslepsom k všm ai k výsledkom, ktoré spoločne dosiahneme.
+                Aj keď veľmi rád spomínam na svoje 2,5 ročné pôsobenie v spoločnosti Dell, kde som bol v roku 2021 vyhlásený medzi top predajcov na celom svete. 
+                Keď som prestal aktívne hrávať, hneď som sa začal naplno venovať financiám.
               </p>
             </div>
           </div>
@@ -255,28 +234,52 @@ export default function OMnePage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
-                <span className="text-gray-500 text-sm">CERTIFIKÁT 1</span>
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
+                <Image
+                  src="/certifikat-2.png"
+                  alt="Certifikát 2"
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT 2</div>
             </div>
             <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
-                <span className="text-gray-500 text-sm">CERTIFIKÁT 2</span>
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
+                <Image
+                  src="/certifikat-Vklady.png"
+                  alt="Certifikát Vklady"
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+              <div className="text-sm font-semibold text-[#202325]">VKLADY</div>
             </div>
             <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
-                <span className="text-gray-500 text-sm">CERTIFIKÁT 3</span>
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
+                <Image
+                  src="/Uvery.png"
+                  alt="Certifikát Úvery"
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+              <div className="text-sm font-semibold text-[#202325]">ÚVERY</div>
             </div>
             <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg flex items-center justify-center mb-4">
-                <span className="text-gray-500 text-sm">CERTIFIKÁT 4</span>
+              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
+                <Image
+                  src="/Kapitálový_trh.png"
+                  alt="Certifikát Kapitálový trh"
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-sm font-semibold text-[#202325]">CERTIFIKÁT NAME</div>
+              <div className="text-sm font-semibold text-[#202325]">KAPITÁLOVÝ TRH</div>
             </div>
           </div>
         </div>

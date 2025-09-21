@@ -191,7 +191,7 @@ export default function DomovPage() {
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[800px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
             <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-16 sm:pt-12 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6 sm:mb-6 md:mb-8 lg:mb-6 drop-shadow-lg">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6 sm:mb-6 md:mb-8 lg:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Váš</span>
                 <span className="block md:hidden">finančný</span>
                 <span className="block md:hidden">poradca</span>
@@ -257,7 +257,7 @@ export default function DomovPage() {
                 <circle cx="12" cy="12" r="10" strokeWidth="2"/>
                 <path d="M15 8c-1.5-1-3.5-1-5 0-1.5 1-1.5 3-1.5 4s0 3 1.5 4c1.5 1 3.5 1 5 0M8 11h6M8 13h6" strokeWidth="2" strokeLinecap="round"/>
               </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-4 sm:mb-8 mt-3 sm:mt-6">400&nbsp;000</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-4 sm:mb-8 mt-3 sm:mt-6">500&nbsp;000</div>
               <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide leading-tight">POD<br/>SPRÁVOU<br/>KANCELÁRIE</div>
             </div>
 
@@ -267,7 +267,7 @@ export default function DomovPage() {
               <svg className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white mb-4 sm:mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
               </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4 leading-tight">1M+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4 leading-tight">2.5M+</div>
               <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide leading-tight">V<br/>HYPOTÉKACH</div>
             </div>
 

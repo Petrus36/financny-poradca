@@ -53,37 +53,28 @@ export default function DochodokPage() {
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[750px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
+            src="/dôchodok.svg"
             alt="Banner background"
             fill
-            className="object-cover"
+            className="object-cover object-right"
             priority
           />
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
-          <Image
-            src="/advisor-photo.png"
-            alt="Financial Advisor"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+        
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
             <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Dôchodok</span>
                 <span className="hidden md:block">Dôchodok</span>
               </h1>
@@ -152,12 +143,12 @@ export default function DochodokPage() {
                 Tento graf ukazuje, aký majetok je potrebný na dlhodobé vyplácanie renty vo výške 1000 € mesačne pri priemernom zhodnotení investície približne 4 % nad infláciu. Pri počiatočnom kapitáli 260 000 € dokáže takáto renta pokryť vaše výdavky prakticky neobmedzene.
               </p>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h4 className="font-semibold text-green-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Kľúčové fakty:
                 </h4>
-                <p className="text-green-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Tento model ilustruje, ako správne nastavené čerpanie renty zabezpečí finančnú stabilitu na celé desaťročia.
                 </p>
               </div>
@@ -178,12 +169,12 @@ export default function DochodokPage() {
                 Pre 30-ročného človeka, ktorý chce mať pri odchode do dôchodku k dispozícii približne 300 000 €, je potrebné mesačne investovať okolo 181 € pri očakávanom ročnom zhodnotení 7 %. Budovanie majetku tak prebieha dlhodobo a systematicky.
               </p>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <h4 className="font-semibold text-amber-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-amber-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Dôležité upozornenie:
                 </h4>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Po dosiahnutí cieľa je však dôležité správne majetok spravovať, aby ste si zachovali jeho hodnotu a zabezpečili si pravidelný príjem na dôchodku. Pomôžeme vám vybrať spoľahlivého partnera, ktorý vám s tým poradí.
                 </p>
               </div>
@@ -204,12 +195,12 @@ export default function DochodokPage() {
                 Tento graf ukazuje, ako začiatok investovania zásadne ovplyvňuje výšku mesačnej sumy potrebnej na dosiahnutie finančného cieľa. Čím skôr začnete, tým viac využijete efekt zloženého úročenia – vaše peniaze totiž postupne rastú rýchlejšie a vy môžete investovať menšie sumy.
               </p>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-800 mb-2 flex items-center text-base">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <h4 className="font-semibold text-[#202325] mb-2 flex items-center text-base">
+                  <span className="w-4 h-4 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Praktický príklad:
                 </h4>
-                <p className="text-blue-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Naopak, odkladanie začiatku investovania vedie k výraznému zvýšeniu potrebných mesačných platieb. Preto je rozumné začať budovať rezervu hneď, aj s malými sumami.
                 </p>
               </div>

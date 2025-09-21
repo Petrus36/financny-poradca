@@ -47,7 +47,7 @@ export default function KontaktPage() {
             <div className="p-6">
               <div className="h-96 w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20hrdinov%205%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20Hrdinov%201%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -61,7 +61,7 @@ export default function KontaktPage() {
               {/* Address Info */}
               <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="font-semibold text-[#202325] mb-2">Adresa:</h3>
-                <p className="text-[#202325]">Duklianskych hrdinov 5, 90101 Malacky</p>
+                <p className="text-[#202325]">Duklianskych Hrdinov 1, 90101 Malacky</p>
                 <p className="text-sm text-gray-600 mt-1">Slovakia</p>
               </div>
             </div>
@@ -84,31 +84,21 @@ export default function KontaktPage() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
-          <Image
-            src="/advisor-photo.png"
-            alt="Financial Advisor"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[500px] md:min-h-[700px] lg:min-h-[700px]">
-            {/* Left side - Text content */}
-            <div className="flex-1 text-center md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-4 lg:-ml-8 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+          <div className="flex items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
+            {/* Centered Text content */}
+            <div className="text-center">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 KONTAKT
               </h1>
-              <p className="text-lg md:text-xl text-white mb-8 max-w-2xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg md:text-xl text-white mb-8 max-w-3xl mx-auto font-light drop-shadow-md">
                 Spojte sa s nami a získajte profesionálne finančné poradenstvo
               </p>
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base md:text-lg w-full sm:w-auto"
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
               >
                 Bezplatná konzultácia
               </button>
@@ -157,7 +147,7 @@ export default function KontaktPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[#202325]">Duklianskych hrdinov 5, 90101 Malacky</p>
+                    <p className="text-lg font-semibold text-[#202325]">Duklianskych Hrdinov 1, 90101 Malacky</p>
                     <p className="text-sm text-gray-600">Navštívte nás</p>
                   </div>
                 </div>
@@ -180,7 +170,7 @@ export default function KontaktPage() {
               
               {/* Map iframe */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20hrdinov%205%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20Hrdinov%201%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -204,53 +194,7 @@ export default function KontaktPage() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-8">
-          <h2 className="text-4xl font-bold text-[#202325] text-center mb-12">
-            Napíšte nám správu
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-8">
-            <div>
-              <label className="block text-[#202325] font-medium mb-2">Meno a priezvisko</label>
-              <input 
-                type="text" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                placeholder="Vaše meno"
-              />
-            </div>
-            <div>
-              <label className="block text-[#202325] font-medium mb-2">Email</label>
-              <input 
-                type="email" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                placeholder="vas@email.com"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block text-[#202325] font-medium mb-2">Telefón</label>
-              <input 
-                type="tel" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                placeholder="+421 900 000 000"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block text-[#202325] font-medium mb-2">Správa</label>
-              <textarea 
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5ECAD5] focus:border-transparent"
-                placeholder="Napíšte nám vašu správu..."
-              ></textarea>
-            </div>
-            <div className="md:col-span-2 text-center">
-              <button className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg">
-                Odoslať správu
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </main>
   );
 }

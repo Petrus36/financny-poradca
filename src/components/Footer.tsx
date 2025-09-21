@@ -70,7 +70,7 @@ export default function Footer() {
 
       <footer className="bg-[#D9D9D9] py-8 md:py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Rýchle odkazy */}
             <div>
               <h3 className="text-[#202325] font-semibold text-base md:text-lg mb-3 md:mb-4">Rýchle odkazy</h3>
@@ -79,13 +79,12 @@ export default function Footer() {
                 <li><Link href="/o-mne" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">O mne</Link></li>
                 <li><Link href="/sluzby" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">Služby</Link></li>
                 <li><Link href="/spoluprace" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">Spolupráca</Link></li>
-                <li><Link href="/referencie" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">Referencie</Link></li>
                 <li><Link href="/blog" className="text-[#202325] hover:text-[#5ECAD5] transition-colors text-sm md:text-base">Blog</Link></li>
               </ul>
             </div>
 
             {/* Sociálne siete */}
-            <div>
+            {/* <div>
               <h3 className="text-[#202325] font-semibold text-base md:text-lg mb-3 md:mb-4">Sociálne siete</h3>
               <div className="space-y-3 md:space-y-4">
                 <a 
@@ -143,7 +142,7 @@ export default function Footer() {
                   https://www.simplea.sk/
                 </a>
               </div>
-            </div>
+            </div> */}
 
             {/* Kontakt */}
             <div>
@@ -163,12 +162,12 @@ export default function Footer() {
                 </div>
                 <button 
                   onClick={openMapModal}
-                  className="flex items-center space-x-2 hover:text-[#5ECAD5] transition-colors cursor-pointer"
+                  className="flex items-start space-x-1 hover:text-[#5ECAD5] transition-colors cursor-pointer"
                 >
-                  <svg className="w-5 md:w-6 h-5 md:h-6 text-[#202325]" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 md:w-6 h-5 md:h-6 text-[#202325] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
-                  <span className="text-[#202325] text-sm md:text-base">Duklianskych hrdinov 5, 90101 Malacky</span>
+                  <span className="text-[#202325] text-sm md:text-base leading-tight">Duklianskych hrdinov 5, 90101 Malacky</span>
                 </button>
               </div>
             </div>
@@ -194,11 +193,11 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-gray-300 text-center md:text-right">
+          {/* <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-gray-300 text-center md:text-right">
             <p className="text-[#202325] text-xs md:text-sm">
               S ❤ vyrobilo © 2024 NextLayer Studio s.r.o Všetky práva vyhradené.
             </p>
-          </div>
+          </div> */}
         </div>
       </footer>
 

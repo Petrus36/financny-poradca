@@ -63,7 +63,7 @@ export default function ZivotnePoisteniePage() {
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
               Životné poistenie
             </h1>
             <p className="text-lg sm:text-xl text-white mb-8 max-w-3xl mx-auto font-light drop-shadow-md">
