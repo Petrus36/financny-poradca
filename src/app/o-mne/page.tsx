@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ContactFormModal from "../../components/ContactFormModal";
 
 export default function OMnePage() {
@@ -87,7 +86,7 @@ export default function OMnePage() {
             {/* Text Content */}
             <div className="text-justify text-base md:text-lg text-[#202325] leading-relaxed space-y-4">
               <p>
-                Študoval som na gymnáziu v Bratislave. "Celý život" som bol profesionálny a aktívny športovec. 
+                Študoval som na gymnáziu v Bratislave. &ldquo;Celý život&rdquo; som bol profesionálny a aktívny športovec. 
                 Moja mama zase robí už viac ako 20 rokov vo financiách a je pre mňa obrovským vzorom. 
                 Posledné roky (asi 8) som popri hádzanej aj pracoval. Vždy som bol zamestnaný v nejakej firme, 
                 kde som patril medzi tých, ktorí boli oceňovaní, ale mne to nestačilo a chcel som začať robiť na seba a niečo za sebou zanechať.

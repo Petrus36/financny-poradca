@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ContactFormModal from "../../../components/ContactFormModal";
 
 export default function DochodokPage() {
