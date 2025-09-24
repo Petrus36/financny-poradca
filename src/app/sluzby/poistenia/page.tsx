@@ -17,17 +17,17 @@ export default function PoistieniaPage() {
       title: "Životné poistenie",
       description: "Zabezpečte svoju rodinu pre prípad nečakaných situácií. Komplexné riešenie pre ochranu vašich blízkych.",
       features: ["Ochrana rodiny", "Daňové úľavy", "Investičná zložka", "Flexibilné podmienky"],
-      icon: "👨‍👩‍👧‍👦",
+      icon: "",
       link: "/sluzby/poistenia/zivotne",
-      color: "bg-blue-50 border-blue-200 hover:bg-blue-100"
+      color: "bg-gray-50 border-gray-200 hover:bg-gray-100"
     },
     {
       title: "Neživotné poistenie",
       description: "Ochrana vašej nehnuteľnosti, majetku a zodpovednosti. Zabezpečte si pokoj pre prípad nečakaných udalostí.",
       features: ["Majetkové poistenie", "Úrazové poistenie", "Kritické choroby", "24/7 asistenčná služba"],
-      icon: "🏠",
+      icon: "",
       link: "/sluzby/poistenia/nezivotne",
-      color: "bg-green-50 border-green-200 hover:bg-green-100"
+      color: "bg-gray-50 border-gray-200 hover:bg-gray-100"
     }
   ];
 
@@ -55,7 +55,7 @@ export default function PoistieniaPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 -ml-16 sm:-ml-20 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-32 lg:pl-16 md:max-w-[65%] md:mr-auto max-w-[75%] sm:max-w-[70%]">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 -ml-16 sm:-ml-20 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-32 lg:pl-16 md:max-w-[65%] md:mr-auto max-w-[75%] sm:max-w-[70%]">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Poistenia</span>
                 <span className="hidden md:block">Poistenia</span>
@@ -97,7 +97,6 @@ export default function PoistieniaPage() {
             {insuranceTypes.map((type, index) => (
               <Link key={index} href={type.link}>
                 <div className={`${type.color} border-2 rounded-xl p-7 text-center hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}>
-                  <div className="text-5xl mb-5">{type.icon}</div>
                   <h3 className="text-xl font-bold text-[#202325] mb-4">
                     {type.title}
                   </h3>
@@ -155,7 +154,6 @@ export default function PoistieniaPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">👨‍👩‍👧‍👦</div>
               <h3 className="font-semibold text-[#202325] text-lg mb-3">Životné poistenie</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">Zabezpečte svoju rodinu pre prípad nečakaných situácií</p>
               <div className="space-y-2">
@@ -175,7 +173,6 @@ export default function PoistieniaPage() {
             </div>
             
             <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🩹</div>
               <h3 className="font-semibold text-[#202325] text-lg mb-3">Úrazové poistenie</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">Finančná pomoc v prípade úrazu alebo invalidity</p>
               <div className="space-y-2">
@@ -195,7 +192,6 @@ export default function PoistieniaPage() {
             </div>
             
             <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🏥</div>
               <h3 className="font-semibold text-[#202325] text-lg mb-3">Kritické choroby</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">Finančná podpora pri diagnostikovaní závažných ochorení</p>
               <div className="space-y-2">
@@ -215,7 +211,6 @@ export default function PoistieniaPage() {
             </div>
             
             <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🏠</div>
               <h3 className="font-semibold text-[#202325] text-lg mb-3">Poistenie majetku</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">Ochrana vašej nehnuteľnosti a domácnosti</p>
               <div className="space-y-2">
@@ -243,7 +238,7 @@ export default function PoistieniaPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             POISTOVNE
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-28 xl:gap-32">
             <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
               <Image
                 src="/Uniqa.webp"

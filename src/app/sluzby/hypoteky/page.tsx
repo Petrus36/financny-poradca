@@ -65,7 +65,7 @@ export default function HypotekyPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Hypotéky</span>
                 <span className="hidden md:block">Hypotéky</span>
@@ -196,7 +196,7 @@ export default function HypotekyPage() {
         </div>
       </section>
 
-      {/* Mortgage Types Section */}
+      {/* Mortgage Types Section }
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
@@ -224,34 +224,7 @@ export default function HypotekyPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Bank Partners Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            NAŠI BANKOVÍ PARTNERI
-          </h2>
-          <div className="flex flex-wrap items-center justify-center gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-32">
-            {banks.map((bank, index) => (
-              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-                {bank.isImage ? (
-                  <Image
-                    src={bank.logo}
-                    alt={`${bank.name} logo`}
-                    width={400}
-                    height={200}
-                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
-                  />
-                ) : (
-                  <span className="text-3xl">{bank.logo}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      </section>*/}
       {/* Benefits Section */}
       <section className="py-12 md:py-16 bg-[#202325]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -275,6 +248,31 @@ export default function HypotekyPage() {
               <h3 className="text-xl font-semibold text-[#5ECAD5] mb-4">Osobný prístup</h3>
               <p className="text-gray-300">Individuálne riešenia pre každého klienta</p>
             </div>
+          </div>
+        </div>
+      </section>
+            {/* Bank Partners Section */}
+            <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+            NAŠI BANKOVÍ PARTNERI
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 items-center justify-items-center">
+            {banks.map((bank, index) => (
+              <div key={index} className={`flex items-center justify-center h-16 sm:h-20 md:h-24 ${index === 4 ? 'md:col-start-2' : index === 5 ? 'md:col-start-3' : ''}`}>
+                {bank.isImage ? (
+                  <Image
+                    src={bank.logo}
+                    alt={`${bank.name} logo`}
+                    width={400}
+                    height={200}
+                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                  />
+                ) : (
+                  <span className="text-3xl">{bank.logo}</span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

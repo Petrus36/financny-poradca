@@ -1,11 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import ContactFormModal from "../../components/ContactFormModal";
 
 export default function OMnePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Counter animation states
+  const [clientsCount, setClientsCount] = useState(0);
+  const [aumCount, setAumCount] = useState(0);
+  const [mortgageCount, setMortgageCount] = useState(0);
+
+  // Animation function for counting
+  const animateCounter = (
+    setter: React.Dispatch<React.SetStateAction<number>>, 
+    target: number, 
+    duration: number = 2000,
+    delay: number = 0
+  ) => {
+    setTimeout(() => {
+      const startTime = Date.now();
+      const startValue = 0;
+      
+      const animate = () => {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
+        
+        setter(currentValue);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setter(target);
+        }
+      };
+      
+      requestAnimationFrame(animate);
+    }, delay);
+  };
+
+  // Start animations when component mounts
+  useEffect(() => {
+    // Animate each counter with different delays for staggered effect
+    animateCounter(setClientsCount, 50, 1500, 500);
+    animateCounter(setAumCount, 300, 2000, 700);
+    animateCounter(setMortgageCount, 2.5, 1800, 900);
+  }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -31,7 +77,7 @@ export default function OMnePage() {
           <div className="absolute inset-0 bg-black/30"></div>
           
           {/* Advisor photo positioned on the right */}
-          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
+          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
             <Image
               src="/advisor-photo.png"
               alt="Financial Advisor"
@@ -46,12 +92,12 @@ export default function OMnePage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[750px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-32 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-32 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">O mne</span>
                 <span className="hidden md:block">O mne</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-lg mx-auto lg:mx-0 font-light drop-shadow-md">
                 Nie ste len ďalší klient. Ste človek, ktorému pomôžem vybudovať zdravý finančný život.
               </p>
               <button 
@@ -140,32 +186,48 @@ export default function OMnePage() {
       </section>
 
       {/* Moje výsledky Section */}
-      <section className="bg-white py-12 md:py-16 lg:py-20">
+      <section className="pt-6 pb-2 md:pt-8 md:pb-2 lg:pt-12 lg:pb-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#202325] text-center mb-8 md:mb-12 lg:mb-16 uppercase tracking-normal">
-              MOJE VÝSLEDKY
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-8 lg:gap-12 w-full max-w-6xl">
-              <div className="text-center">
-                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#5ECAD5]">50+</div>
-                </div>
-                <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">KLIENTOV ZA ROK</div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#202325] text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+            MOJE VÝSLEDKY
+          </h2>
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+            {/* Clients per year */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-0 whitespace-nowrap">
+                {clientsCount}+
               </div>
-              <div className="text-center">
-                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#5ECAD5]">300k €</div>
-                </div>
-                <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">AUM</div>
-              </div>
-              <div className="text-center">
-                <div className="bg-[#202325] text-white p-8 md:p-10 lg:p-16 rounded-lg shadow-2xl mb-6 lg:mb-10 h-48 md:h-52 lg:h-64 flex items-center justify-center mx-auto max-w-sm">
-                  <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5]">2,5 milióna</div>
-                </div>
-                <div className="text-lg md:text-xl text-[#202325] font-semibold uppercase tracking-wide">SPRACOVANÝCH HYPOTÉK</div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide mt-6">
+                KLIENTOV ZA ROK
               </div>
             </div>
+
+            {/* AUM */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-0 whitespace-nowrap">
+                {aumCount}k €
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide mt-6">
+                AUM
+              </div>
+            </div>
+
+            {/* Processed mortgages */}
+            <div className="text-center flex flex-col items-center w-full sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-0 whitespace-nowrap mt-2 sm:mt-2 md:mt-3 lg:mt-4">
+                {mortgageCount} M
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide leading-tight mt-8">
+                SPRACOVANÝCH<br/>HYPOTÉK
+              </div>
+            </div>
+          </div>
+          
+          {/* Concluding Statement */}
+          <div className="text-center mt-8 sm:mt-12 md:mt-16 lg:mt-20">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#202325] font-bold px-4">
+              Mojím poslaním je, aby moji klienti boli z roka na rok bohatší.
+            </p>
           </div>
         </div>
       </section>

@@ -130,12 +130,12 @@ export default function ZivotnePoisteniePage() {
                 Životné poistenie nie je len papier alebo číslo. Je to nástroj, ktorý dáva istotu a pokoj, keď ich človek potrebuje najviac. Ak nevieš, či ho potrebuješ alebo aké krytie by pre teba malo zmysel, rád ti pripravím bezplatnú analýzu a pozrieme sa na to spoločne.
               </p>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h4 className="font-semibold text-green-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-green-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Kľúčové fakty:
                 </h4>
-                <p className="text-green-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Správne nastavené poistenie vám dá istotu, že v prípade nečakaných udalostí budete mať kryté to, čo je pre vás naozaj dôležité. Zároveň nezaplatíte zbytočne za niečo, čo pre vás nemá zmysel.
                 </p>
               </div>
@@ -156,12 +156,12 @@ export default function ZivotnePoisteniePage() {
                 Cena životného poistenia závisí od viacerých faktorov, najmä od veku, zdravotného stavu, zamestnania a najmä toho, čo má byť poistením kryté. Neexistuje teda univerzálna suma, ktorá by platila pre každého.
               </p>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-                <h4 className="font-semibold text-amber-800 mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-amber-500 rounded-full mr-2"></span>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
+                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
                   Praktický príklad:
                 </h4>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Veľa ľudí si myslí, že kvalitné poistenie musí byť automaticky drahé. V skutočnosti sa však dá nastaviť tak, aby bolo finančne dostupné a zároveň poskytovalo reálnu ochranu. Dôležité je vedieť, čo má poistenie riešiť, a nespoliehať sa len na &ldquo;najlacnejšiu ponuku&rdquo;.
                 </p>
               </div>
@@ -191,7 +191,7 @@ export default function ZivotnePoisteniePage() {
         </div>
       </section>
 
-      {/* Insurance Types Section */}
+      {/* Insurance Types Section }
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
@@ -215,7 +215,7 @@ export default function ZivotnePoisteniePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Insurance Companies Section */}
       <section className="py-12 md:py-16 bg-white">
@@ -223,7 +223,7 @@ export default function ZivotnePoisteniePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             POISTOVNE
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-28 xl:gap-32">
             {insuranceCompanies.map((company, index) => (
               <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
                 {company.isImage ? (
@@ -255,21 +255,21 @@ export default function ZivotnePoisteniePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🛡️</span>
+                <span className="text-white text-2xl">🔒</span>
               </div>
               <h3 className="text-white font-semibold mb-2">Finančná bezpečnosť</h3>
               <p className="text-gray-300 text-sm">Zabezpečenie rodiny pre prípad nečakaných situácií</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">💰</span>
+                <span className="text-white text-2xl">📊</span>
               </div>
               <h3 className="text-white font-semibold mb-2">Daňové úľavy</h3>
               <p className="text-gray-300 text-sm">Odpočet poistného z dane z príjmu až 500 € ročne</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📈</span>
+                <span className="text-white text-2xl">💼</span>
               </div>
               <h3 className="text-white font-semibold mb-2">Investičná zložka</h3>
               <p className="text-gray-300 text-sm">Možnosť sporenia a investovania súčasne</p>

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Michal Krásko - Finančný poradca",
+  title: "Michal Kurka - Finančný poradca",
   description: "Pomáham klientom dosahovať ich finančné ciele prostredníctvom osobného prístupu a profesionálnych riešení. Kontaktujte ma pre bezplatnú konzultáciu.",
 };
 

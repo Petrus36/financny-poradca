@@ -58,7 +58,7 @@ export default function InvestovaniePage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 -ml-16 sm:-ml-20 pt-52 sm:pt-64 md:pt-0 lg:pt-0 md:pl-20 lg:pl-16 md:max-w-[50%] md:mr-auto max-w-[70%] sm:max-w-[65%]">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 -ml-16 sm:-ml-20 pt-52 sm:pt-64 md:pt-0 lg:pt-0 md:pl-20 lg:pl-16 md:max-w-[50%] md:mr-auto max-w-[70%] sm:max-w-[65%]">
               <h1 className="text-5xl sm:text-5xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-4 sm:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Investovanie</span>
                 <span className="hidden md:block">Investovanie</span>
@@ -221,7 +221,7 @@ export default function InvestovaniePage() {
         </div>
       </section>
 
-      {/* Investment Options Section */}
+      {/* Investment Options Section }
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
@@ -249,7 +249,7 @@ export default function InvestovaniePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Why Invest Section */}
       <section className="py-12 md:py-16 bg-[#202325]">

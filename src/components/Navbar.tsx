@@ -147,9 +147,6 @@ export default function Navbar() {
                                     >
                                       {subLink.label}
                                     </Link>
-                                    <svg className="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                    </svg>
                                   </div>
                                 </div>
                               ) : (
@@ -185,9 +182,6 @@ export default function Navbar() {
                                     >
                                       {subLink.label}
                                     </Link>
-                                    <svg className="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                    </svg>
                                   </div>
                                   {/* Sub-dropdown with simple CSS hover */}
                                   <div className="absolute left-full top-0 ml-1 opacity-0 invisible group-hover/poistenia:opacity-100 group-hover/poistenia:visible transition-all duration-300 z-[60]">

@@ -808,9 +808,9 @@ export default function AdminPage() {
 
       {/* Blog Modal - Transparent overlay */}
       {showBlogModal && (
-        <div className="fixed inset-0 flex items-center justify-center p-4 z-[60]">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full relative z-[70] border border-gray-200">
-            <div className="flex justify-between items-center p-6 border-b bg-gray-50">
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-[60] overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full relative z-[70] border border-gray-200 my-8 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b bg-gray-50 sticky top-0 z-10">
               <h3 className="text-lg font-semibold text-gray-900">Pridať nový blog príspevok</h3>
               <button
                 onClick={() => {

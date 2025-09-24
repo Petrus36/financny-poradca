@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ContactFormModal from "../../components/ContactFormModal";
@@ -20,6 +20,56 @@ export default function DomovPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTestimonialModalOpen, setIsTestimonialModalOpen] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+
+  // Counter animation states
+  const [licenseCount, setLicenseCount] = useState(0);
+  const [clientCount, setClientCount] = useState(0);
+  const [moneyCount, setMoneyCount] = useState(0);
+  const [mortgageCount, setMortgageCount] = useState(0);
+  const [experienceCount, setExperienceCount] = useState(0);
+
+  // Animation function for counting
+  const animateCounter = (
+    setter: React.Dispatch<React.SetStateAction<number>>, 
+    target: number, 
+    duration: number = 2000,
+    delay: number = 0
+  ) => {
+    setTimeout(() => {
+      const startTime = Date.now();
+      const startValue = 0;
+      
+      const animate = () => {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
+        
+        setter(currentValue);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setter(target);
+        }
+      };
+      
+      requestAnimationFrame(animate);
+    }, delay);
+  };
+
+  // Start animations when component mounts
+  useEffect(() => {
+    // Animate each counter with different delays for staggered effect
+    animateCounter(setLicenseCount, 6, 1500, 500);
+    animateCounter(setClientCount, 3000, 2000, 700);
+    animateCounter(setMoneyCount, 500000, 2500, 900);
+    animateCounter(setMortgageCount, 2.5, 1800, 1100);
+    animateCounter(setExperienceCount, 20, 1600, 1300);
+  }, []);
 
   /* 
   const investmentPartners = [
@@ -174,7 +224,7 @@ export default function DomovPage() {
           <div className="absolute inset-0 bg-black/30"></div>
           
           {/* Advisor photo positioned on the right */}
-          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-60 -bottom-12 sm:-bottom-16 md:-bottom-16
+          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 -bottom-12 sm:-bottom-16 md:-bottom-16
            lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
             <Image
               src="/advisor-photo.png"
@@ -190,7 +240,7 @@ export default function DomovPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[800px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:-ml-8 px-4 sm:px-0 pt-16 sm:pt-12 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16">
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-16 sm:pt-12 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6 sm:mb-6 md:mb-8 lg:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 <span className="block md:hidden">Váš</span>
                 <span className="block md:hidden">finančný</span>
@@ -198,7 +248,7 @@ export default function DomovPage() {
                 <span className="hidden md:block">Váš finančný</span>
                 <span className="hidden md:block">poradca</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-lg lg:text-lg text-white mb-6 sm:mb-6 md:mb-10 lg:mb-8 max-w-xl md:max-w-lg lg:max-w-2xl mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md">
+              <p className="text-lg sm:text-xl md:text-lg lg:text-lg text-white mb-6 sm:mb-6 md:mb-10 lg:mb-8 max-w-xl md:max-w-lg lg:max-w-lg mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md">
                 Zhodnoťte svoj majetok medziročne až o 20% vďaka profesionálnemu prístupu k financiám.
               </p>
               <button 
@@ -212,80 +262,67 @@ export default function DomovPage() {
         </div>
       </section>
 
-      {/* My Achievements Section */}
-      <section className="py-12 md:py-16 lg:py-26 bg-white">
+      {/* Statistics Section - Right under banner */}
+      <section className="pt-6 pb-4 md:pt-8 md:pb-4 lg:pt-12 lg:pb-6 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-[#202325] text-center mb-12 sm:mb-16 md:mb-24 lg:mb-32 -mt-4 sm:-mt-6 md:-mt-10">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#202325] text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
             PRÁCA KANCELÁRIE V KOCKE
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-32 justify-items-center lg:justify-start lg:-ml-4 xl:-ml-20">
-            {/* Certificate Card */}
-            <div className="bg-[#2A2C2D] rounded-lg px-4 sm:px-8 md:px-12 lg:px-16 xl:px-28 py-6 sm:py-8 text-center flex flex-col justify-center items-center h-64 sm:h-72 md:h-80 hover:scale-105 transition-all duration-300 cursor-pointer w-full max-w-xs">
-              {/* Certificate Document Icon */}
-              <svg className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-white mb-4 sm:mb-6" fill="currentColor" viewBox="0 0 24 24">
-                {/* Document background */}
-                <rect x="6" y="4" width="10" height="14" rx="1" fill="currentColor"/>
-                {/* Horizontal lines on document */}
-                <line x1="8" y1="8" x2="13" y2="8" stroke="black" strokeWidth="0.8"/>
-                <line x1="8" y1="10" x2="13" y2="10" stroke="black" strokeWidth="0.8"/>
-                <line x1="8" y1="12" x2="11" y2="12" stroke="black" strokeWidth="0.8"/>
-                {/* Small bookmark tab */}
-                <rect x="16" y="6" width="1.5" height="6" fill="currentColor"/>
-                <path d="M16 12 L17.75 10.5 L17.5 12 Z" fill="currentColor"/>
-              </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4 -mt-1 sm:-mt-2">6/6</div>
-              <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide">NBS LICENCIÍ</div>
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+            {/* NBS Licenses */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-2 sm:mb-2 whitespace-nowrap">
+                {licenseCount}/6
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide">
+                NBS LICENCIÍ
+              </div>
             </div>
 
-            {/* People Card */}
-            <div className="bg-[#2A2C2D] rounded-lg px-4 sm:px-8 md:px-12 lg:px-16 xl:px-28 py-6 sm:py-8 text-center flex flex-col justify-center items-center h-64 sm:h-72 md:h-80 hover:scale-105 transition-all duration-300 cursor-pointer w-full max-w-xs">
-              {/* Two People Icon */}
-              <svg className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white mb-4 sm:mb-6 -mt-2 sm:-mt-4" fill="currentColor" viewBox="0 0 24 24">
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-                <circle cx="16" cy="7" r="3"/>
-                <path d="M16 14a3 3 0 0 1 3 3v2"/>
-              </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4">3000+</div>
-              <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide">KLIENTOV</div>
+            {/* Clients */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-2 sm:mb-2 whitespace-nowrap">
+                {clientCount.toLocaleString()}+
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide">
+                KLIENTOV
+              </div>
             </div>
 
-            {/* Euro Card */}
-            <div className="bg-[#2A2C2D] rounded-lg px-4 sm:px-8 md:px-12 lg:px-16 xl:px-28 py-6 sm:py-8 text-center flex flex-col justify-center items-center h-64 sm:h-72 md:h-80 hover:scale-105 transition-all duration-300 cursor-pointer w-full max-w-xs">
-              {/* Euro Circle Icon */}
-              <svg className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 text-white mb-4 sm:mb-6 mt-3 sm:mt-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" strokeWidth="2"/>
-                <path d="M15 8c-1.5-1-3.5-1-5 0-1.5 1-1.5 3-1.5 4s0 3 1.5 4c1.5 1 3.5 1 5 0M8 11h6M8 13h6" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-4 sm:mb-8 mt-3 sm:mt-6">500&nbsp;000</div>
-              <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide leading-tight">POD<br/>SPRÁVOU<br/>KANCELÁRIE</div>
+            {/* Money Under Management */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-0 whitespace-nowrap mt-2 sm:mt-2 md:mt-3 lg:mt-4">
+                {moneyCount.toLocaleString()}
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide leading-tight mt-2 sm:mt-2 md:mt-3">
+                POD SPRÁVOU<br/>KANCELÁRIE
+              </div>
             </div>
 
-            {/* House Card */}
-            <div className="bg-[#2A2C2D] rounded-lg px-4 sm:px-8 md:px-12 lg:px-16 xl:px-28 py-6 sm:py-8 text-center flex flex-col justify-center items-center h-64 sm:h-72 md:h-80 hover:scale-105 transition-all duration-300 cursor-pointer w-full max-w-xs">
-              {/* House Icon */}
-              <svg className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white mb-4 sm:mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-              </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4 leading-tight">2.5M+</div>
-              <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide leading-tight">V<br/>HYPOTÉKACH</div>
+            {/* Mortgages */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-2 sm:mb-2 whitespace-nowrap">
+                {mortgageCount}M+
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide leading-tight">
+                V HYPOTÉKACH
+              </div>
             </div>
 
-            {/* Experience Card */}
-            <div className="bg-[#2A2C2D] rounded-lg px-4 sm:px-8 md:px-12 lg:px-16 xl:px-28 py-6 sm:py-8 text-center flex flex-col justify-center items-center h-64 sm:h-72 md:h-80 hover:scale-105 transition-all duration-300 cursor-pointer w-full max-w-xs">
-              {/* Experience/Time Icon */}
-              <svg className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white mb-4 sm:mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" strokeWidth="2"/>
-                <polyline points="12,6 12,12 16,14" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7FE3DC] mb-2 sm:mb-4">20</div>
-              <div className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wide">ROKOV<br/>PRAXE</div>
+            {/* Experience */}
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+              <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-2 sm:mb-2 whitespace-nowrap">
+                {experienceCount}
+              </div>
+              <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide">
+                ROKOV PRAXE
+              </div>
             </div>
           </div>
           
           {/* Concluding Statement */}
-          <div className="text-center mt-16 sm:mt-24 md:mt-32 lg:mt-40">
-            <p className="text-lg sm:text-xl md:text-2xl text-[#202325] font-bold px-4">
+          <div className="text-center mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#202325] font-bold px-4">
               Mojím poslaním je, aby moji klienti boli z roka na rok bohatší.
             </p>
           </div>
