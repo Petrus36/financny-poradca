@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ConditionalLayout from "@/components/ConditionalLayout";
 import CookieConsent from "@/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="sk">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -39,6 +40,7 @@ export default function RootLayout({
           <CookieConsent />
         </ConditionalLayout>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
