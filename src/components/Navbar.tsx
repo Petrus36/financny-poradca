@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const navLinks = [
@@ -82,7 +83,21 @@ export default function Navbar() {
       <nav className="absolute top-0 left-0 right-0 z-50 hidden md:block">
         <div className="w-full bg-transparent">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ul className="flex items-center justify-center md:justify-center lg:justify-center space-x-1 md:space-x-2 lg:space-x-4 py-4 md:py-6 lg:py-4">
+            <div className="relative flex items-center py-4 md:py-6 lg:py-4">
+              {/* Logo on the left */}
+              <Link href="/domov" className="flex-shrink-0 absolute left-0">
+                <Image
+                  src="/MK_logo_cierne_rozsirene.png"
+                  alt="Michal Kurka Logo"
+                  width={150}
+                  height={50}
+                  className="h-10 md:h-12 lg:h-14 w-auto"
+                  priority
+                />
+              </Link>
+              
+              {/* Navigation items centered */}
+              <ul className="flex items-center justify-center space-x-1 md:space-x-2 lg:space-x-4 w-full">
               {navLinks.map((link, index) => (
                 <li 
                   key={link.href} 
@@ -226,31 +241,47 @@ export default function Navbar() {
                   )}
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
 
-    {/* Mobile Hamburger Button */}
-    <div className="absolute top-4 right-4 z-50 md:hidden">
-      <button
-        onClick={toggleMobileMenu}
-        className="p-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/20 text-white hover:bg-black/30 transition-all duration-200"
-        aria-label="Toggle menu"
-      >
-        <svg
-          className={`w-6 h-6 transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+    {/* Mobile Logo and Hamburger Button */}
+    <div className="absolute top-0 left-0 right-0 z-50 md:hidden">
+      <div className="flex items-center justify-between px-4 py-4">
+        {/* Logo on the left */}
+        <Link href="/domov" className="flex-shrink-0">
+          <Image
+            src="/MK_logo_cierne_rozsirene.png"
+            alt="Michal Kurka Logo"
+            width={120}
+            height={40}
+            className="h-8 w-auto"
+            priority
+          />
+        </Link>
+        
+        {/* Hamburger button on the right */}
+        <button
+          onClick={toggleMobileMenu}
+          className="p-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/20 text-white hover:bg-black/30 transition-all duration-200"
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
-      </button>
+          <svg
+            className={`w-6 h-6 transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {isMobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
     </div>
 
     {/* Mobile Menu Overlay */}
