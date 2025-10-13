@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import ContactFormModal from "../../../../components/ContactFormModal";
+import OptimizedImage from "../../../../components/OptimizedImage";
 
 export default function ZivotnePoisteniePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,35 +47,41 @@ export default function ZivotnePoisteniePage() {
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
+            src="/Poistenia.svg"
             alt="Banner background"
             fill
-            className="object-cover"
+            className="object-cover object-right"
             priority
           />
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
+        
+        
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
-              Životné poistenie
-            </h1>
-            <p className="text-lg sm:text-xl text-white mb-8 max-w-3xl mx-auto font-light drop-shadow-md">
-              Zabezpečte svoju rodinu pre prípad nečakaných situácií. Komplexné riešenie pre ochranu vás a vašich blízkych.
-            </p>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg text-lg"
-            >
-              Bezplatná konzultácia
-            </button>
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[600px] md:min-h-[700px] lg:min-h-[700px]">
+            {/* Left side - Text content */}
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
+              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
+                <span className="block md:hidden">Životné poistenie</span>
+                <span className="hidden md:block">Životné poistenie</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+                Zabezpečte svoju rodinu pre prípad nečakaných situácií
+              </p>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto sm:mx-0 block sm:inline-block"
+              >
+                Bezplatná konzultácia
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -109,6 +116,21 @@ export default function ZivotnePoisteniePage() {
                   Ak má rodina hypotéku alebo iné záväzky, bez finančnej rezervy sa vie veľmi rýchlo dostať do problémov. Práve vtedy dokáže dobre nastavené poistenie pomôcť, vyplatiť zvyšok úveru, zabezpečiť peniaze na liečbu, alebo nahradiť výpadok príjmu.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="mb-16">
+            <div className="max-w-3xl mx-auto">
+              <OptimizedImage
+                src="/image copy 3.png"
+                alt="Životné poistenie - Finančné poradenstvo"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-xl object-cover"
+                priority={false}
+                lazy={true}
+              />
             </div>
           </div>
 

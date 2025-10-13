@@ -91,13 +91,13 @@ export default function Navbar() {
                   alt="Michal Kurka Logo"
                   width={150}
                   height={50}
-                  className="h-10 md:h-12 lg:h-14 w-auto"
+                  className="h-10 md:h-8 lg:h-14 w-auto"
                   priority
                 />
               </Link>
               
               {/* Navigation items centered */}
-              <ul className="flex items-center justify-center space-x-1 md:space-x-2 lg:space-x-4 w-full">
+              <ul className="flex items-center justify-center md:justify-end md:pr-8 lg:justify-center lg:pr-0 space-x-1 md:space-x-2 lg:space-x-4 w-full">
               {navLinks.map((link, index) => (
                 <li 
                   key={link.href} 

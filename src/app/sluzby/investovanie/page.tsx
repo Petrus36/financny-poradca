@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ContactModal from "../../../components/ContactModal";
+import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function InvestovaniePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -106,6 +107,21 @@ export default function InvestovaniePage() {
                   Začať sa dá aj s menšími sumami, dôležité je nečakať. Čím skôr začnete, tým viac času majú peniaze rásť. Investovanie je vhodné pre každého, kto chce aktívne ovplyvniť svoju budúcnosť. Kľúčom k úspechu je spoľahlivý partner.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="mb-16">
+            <div className="max-w-4xl mx-auto">
+              <OptimizedImage
+                src="/image copy 2.png"
+                alt="Investovanie - Finančné poradenstvo"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-xl object-cover"
+                priority={false}
+                lazy={true}
+              />
             </div>
           </div>
 

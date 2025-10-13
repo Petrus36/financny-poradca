@@ -21,26 +21,16 @@ export default function SpolupracePage() {
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/banner.svg"
+            src="/Untitled-3.svg"
             alt="Banner background"
             fill
-            className="object-cover"
+            className="object-cover object-[40%_center] md:object-center"
             priority
           />
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Advisor photo positioned on the right */}
-        <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 -bottom-12 sm:-bottom-16 md:-bottom-16 lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
-          <Image
-            src="/advisor-photo.png"
-            alt="Financial Advisor"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ContactFormModal from "../../../components/ContactFormModal";
+import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function DochodokPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -124,6 +125,21 @@ export default function DochodokPage() {
             </div>
           </div>
 
+          {/* Image Section */}
+          <div className="mb-12">
+            <div className="max-w-3xl mx-auto">
+              <OptimizedImage
+                src="/image copy.png"
+                alt="Dôchodok - Finančné poradenstvo"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-xl object-cover shadow-lg"
+                priority={false}
+                lazy={true}
+              />
+            </div>
+          </div>
+
           {/* Three Column Article Style */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 lg:gap-24 max-w-7xl mx-auto lg:justify-start">
             
@@ -206,6 +222,32 @@ export default function DochodokPage() {
             </article>
           </div>
 
+          {/* Two Images Section */}
+          <div className="mb-16">
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <OptimizedImage
+                  src="/image copy 4.png"
+                  alt="Dôchodok - Finančné poradenstvo 1"
+                  width={1200}
+                  height={950}
+                  className="w-full h-auto rounded-xl object-cover"
+                  priority={false}
+                  lazy={true}
+                />
+                <OptimizedImage
+                  src="/image copy 5.png"
+                  alt="Dôchodok - Finančné poradenstvo 2"
+                  width={1000}
+                  height={750}
+                  className="w-full h-auto rounded-xl object-cover"
+                  priority={false}
+                  lazy={true}
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Bottom Quote */}
           <div className="bg-gradient-to-r from-[#5ECAD5]/5 to-blue-50/50 rounded-xl p-6 border-l-4 border-[#5ECAD5] mt-12">
             <p className="text-gray-800 leading-relaxed text-center">
@@ -242,6 +284,7 @@ export default function DochodokPage() {
           </div>
         </div>
       </section>
+
 
       {/* Retirement Options Section */}
       <section className="py-12 md:py-16 bg-white">

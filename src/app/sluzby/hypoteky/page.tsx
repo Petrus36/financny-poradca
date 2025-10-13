@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ContactFormModal from "../../../components/ContactFormModal";
+import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function HypotekyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -114,6 +115,22 @@ export default function HypotekyPage() {
                   Nie vždy je najlacnejšia ponuka tou najlepšou. Rozhoduje celkový kontext, detailné porovnanie a správne informácie. A práve tu prichádza na rad hypošpecialista – človek, ktorý vám pomôže zorientovať sa, vybrať múdro a bez zbytočných kompromisov.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="mb-16">
+            <div className="relative max-w-4xl mx-auto">
+              <OptimizedImage
+                src="/image.png"
+                alt="Hypotéka - Finančné poradenstvo"
+                width={800}
+                height={600}
+                className="w-full h-auto rounded-xl object-cover"
+                priority={false}
+                lazy={true}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
             </div>
           </div>
 
