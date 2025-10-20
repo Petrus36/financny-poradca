@@ -13,7 +13,8 @@ export default function ZivotnePoisteniePage() {
     setIsModalOpen(false);
   };
 
-  const insuranceTypes = [
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _insuranceTypes = [
     {
       title: "Životné poistenie",
       description: "Zabezpečte svoju rodinu pre prípad nečakaných situácií",

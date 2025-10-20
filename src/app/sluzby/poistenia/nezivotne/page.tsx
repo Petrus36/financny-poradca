@@ -12,7 +12,8 @@ export default function NezivotnePoisteniePage() {
     setIsModalOpen(false);
   };
 
-  const insuranceTypes = [
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _insuranceTypes = [
     {
       title: "Majetkové poistenie",
       description: "Ochrana vašej nehnuteľnosti a domácnosti",

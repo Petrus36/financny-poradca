@@ -12,7 +12,8 @@ export default function HypotekyPage() {
     setIsModalOpen(false);
   };
 
-  const mortgageTypes = [
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _mortgageTypes = [
     {
       title: "Hypotéka na bývanie",
       description: "Najvýhodnejšie úvery na kúpu nehnuteľnosti",

@@ -13,7 +13,8 @@ export default function InvestovaniePage() {
     setIsModalOpen(false);
   };
 
-  const investmentOptions = [
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _investmentOptions = [
     {
       title: "Investičné fondy",
       description: "Dlhodobé investovanie do diverzifikovaných portfólií",
