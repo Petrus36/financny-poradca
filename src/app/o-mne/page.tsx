@@ -245,8 +245,8 @@ export default function OMnePage() {
                   Individuálny prístup pre klienta
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                  Nemám nikdy 2 rovnakých klientov. Každý klient má iné potreby, ciele, očakávania a finančné možnosti. 
-                  Preto je potrebné sa spoznať, aby som pochopil ako funguje. Na základe informácii pripravím finančný plán na mieru.
+                  Nemám 2 rovnakých klientov. Každý klient má iné potreby, ciele, očakávania a finančné možnosti. 
+                  Preto je potrebné sa spoznať, aby som pochopil ako fungujete. Na základe informácii pripravím finančný plán na mieru.
                 </p>
               </div>
               
@@ -255,7 +255,7 @@ export default function OMnePage() {
                   Šetrím čas aj peniaze
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                  Okrem nosenia zložky do banky vám ušetrím čas pri splatení hypotéky o 10 až 15 rokov skôr.
+                  Nemám na mysli, že odnesiem zložku do banky. Síce aj to robím, ale ja hladám možnosti, ako splatiť hypotéku o 10-15 rokov skôr.
                 </p>
               </div>
               
@@ -278,69 +278,10 @@ export default function OMnePage() {
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                   Moja práca nekončí podpisom zmluvy. Budujem s vami dlhodobý vzťah. Budem vás informovať o aktuálnych 
-                  možnostiach a produktových novinkách. Vždy sa môžete spoľahnúť, že vo financiách budete mať pri sebe 
+                  možnostiach a novinkách. Vždy sa môžete spoľahnúť, že vo financiách budete mať pri sebe 
                   človeka, ktorý myslí niekoľko krokov dopredu a vie sa postarať aj o to, čo zatiaľ nepotrebujete.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifikáty Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            CERTIFIKÁTY
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
-                <Image
-                  src="/certifikat-Poistenie.png"
-                  alt="Certifikát Poistenie"
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-sm font-semibold text-[#202325]">POISTENIE</div>
-            </div>
-            <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
-                <Image
-                  src="/certifikat-Vklady.png"
-                  alt="Certifikát Vklady"
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-sm font-semibold text-[#202325]">VKLADY</div>
-            </div>
-            <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
-                <Image
-                  src="/Uvery.png"
-                  alt="Certifikát Úvery"
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-sm font-semibold text-[#202325]">ÚVERY</div>
-            </div>
-            <div className="text-center">
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg shadow-lg overflow-hidden mb-4">
-                <Image
-                  src="/Kapitálový_trh.png"
-                  alt="Certifikát Kapitálový trh"
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-sm font-semibold text-[#202325]">KAPITÁLOVÝ TRH</div>
             </div>
           </div>
         </div>

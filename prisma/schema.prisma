@@ -17,7 +17,16 @@ model FormSubmission {
   financialLiteracy String
   products          String   // JSON string of selected products
   interests         String
-  topics            String   // JSON string of selected topics
+  topics            String   @default("[]") // JSON string of selected topics (legacy)
+  // New yes/no questions (client-specific)
+  saveOnMortgage            Boolean  @default(false)
+  saveOnInsurance           Boolean  @default(false)
+  incomeSecurity            Boolean  @default(false)
+  kidsFuture                Boolean  @default(false)
+  betterReturns             Boolean  @default(false)
+  reviewExistingContracts   Boolean  @default(false)
+  // Perception of financial literacy in Slovakia
+  skFinancialLiteracy       String   @default("")
   name              String
   surname           String
   phone             String?

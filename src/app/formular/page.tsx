@@ -10,6 +10,14 @@ export default function FormularPage() {
     products: [] as string[],
     interests: '',
     topics: [] as string[],
+    // New yes/no questions
+    saveOnMortgage: false,
+    saveOnInsurance: false,
+    incomeSecurity: false,
+    kidsFuture: false,
+    betterReturns: false,
+    reviewExistingContracts: false,
+    skFinancialLiteracy: '',
     name: '',
     surname: '',
     phone: '',
@@ -82,6 +90,14 @@ export default function FormularPage() {
           products: [],
           interests: '',
           topics: [],
+          // New yes/no questions
+          saveOnMortgage: false,
+          saveOnInsurance: false,
+          incomeSecurity: false,
+          kidsFuture: false,
+          betterReturns: false,
+          reviewExistingContracts: false,
+          skFinancialLiteracy: '',
           name: '',
           surname: '',
           phone: '',
@@ -180,7 +196,7 @@ export default function FormularPage() {
                 'Investície',
                 'Poistenie (život, auto, nehnuteľnosť)',
                 '2. / 3. pilier',
-                'Iné (možnosť napísania)'
+                'Iné'
               ].map((option) => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
                   <input
@@ -225,44 +241,88 @@ export default function FormularPage() {
             </div>
           </div>
 
-          {/* Question 4: Topics */}
+          {/* Question 4+: Client yes/no questions */}
           <div className="space-y-4">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-700">
-              4. Vyberte si 2 témy, ktoré sú pre vás najdôležitejšie
+              4. Záujmové otázky (odpoveď áno/nie)
             </h2>
-            <p className="text-sm text-gray-500 ml-2 sm:ml-4">[drop-down alebo multi-choice s výberom z horeuvedených tém]</p>
+            <div className="space-y-3 ml-2 sm:ml-4">
+              {/* 1 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.saveOnMortgage} onChange={(e)=>setFormData(p=>({...p, saveOnMortgage: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť ako na hypotéke usporiť viac ako polovicu úrokov?
+                  <span className="block text-gray-500 text-sm">(na hypotéke 150.000 € úspora 60.000 + skrátenie splácania o niekoľko rokov)</span>
+                </span>
+              </label>
+              {/* 2 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.saveOnInsurance} onChange={(e)=>setFormData(p=>({...p, saveOnInsurance: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť ako ušetriť na poistných zmluvách (optimalizácia)?
+                  <span className="block text-gray-500 text-sm">(častokrát aj stovky eur ročne)</span>
+                </span>
+              </label>
+              {/* 3 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.incomeSecurity} onChange={(e)=>setFormData(p=>({...p, incomeSecurity: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť ako mať zabezpečený príjem v prípade zdravotných problémov?
+                  <span className="block text-gray-500 text-sm">(súkromná PN, súkromný invalidný dôchodok, ...)</span>
+                </span>
+              </label>
+              {/* 4 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.kidsFuture} onChange={(e)=>setFormData(p=>({...p, kidsFuture: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť ako efektívne zabezpečiť finančnú budúcnosť vašich detí?
+                  <span className="block text-gray-500 text-sm">(príklad – 15 rokov 50 € mes. → vklad 9.000 € → 1% p.a. = 9.750 € vs. 7% p.a. 16.133 €)</span>
+                </span>
+              </label>
+              {/* 5 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.betterReturns} onChange={(e)=>setFormData(p=>({...p, betterReturns: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť ako mať násobne viac peňazí vďaka dobrému zhodnocovaniu?
+                  <span className="block text-gray-500 text-sm">(príklad - 100 € /mes. na 30 rokov → 2% p.a. = 49.655 € vs. 8% p.a. = 146.815 €)</span>
+                </span>
+              </label>
+              {/* 6 */}
+              <label className="flex items-start space-x-3">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-[#5ECAD5]" checked={formData.reviewExistingContracts} onChange={(e)=>setFormData(p=>({...p, reviewExistingContracts: e.target.checked}))} />
+                <span className="text-gray-700">
+                  Chcete vedieť, či vaše už uzatvorené zmluvy sú pre vás výhodné a majú zmysel?
+                </span>
+              </label>
+            </div>
+          </div>
+
+          {/* Question 5: Public financial literacy perception */}
+          <div className="space-y-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-700">
+              5. Ako hodnotíte finančnú gramotnosť na Slovensku?
+            </h2>
             <div className="space-y-2 ml-2 sm:ml-4">
-              {[
-                'Ako ušetriť na hypotéke',
-                'Ako optimalizovať poistenia',
-                'Ako mať zabezpečený príjem v prípade zdravotných problémov',
-                'Ako zabezpečiť budúcnosť detí',
-                'Ako zhodnotiť úspory/investície',
-                'Ako platiť menej na daniach'
-              ].map((option) => (
+              {['Katastrofa', 'Zlá', 'Priemerná', 'Dobrá', 'Skvelá'].map((option) => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
                   <input
-                    type="checkbox"
-                    checked={formData.topics.includes(option)}
-                    onChange={(e) => handleTopicChange(option, e.target.checked)}
-                    disabled={!formData.topics.includes(option) && formData.topics.length >= 2}
-                    className="w-4 h-4 text-[#5ECAD5] focus:ring-[#5ECAD5] rounded disabled:opacity-50"
+                    type="radio"
+                    name="skFinancialLiteracy"
+                    value={option}
+                    checked={formData.skFinancialLiteracy === option}
+                    onChange={(e) => setFormData(prev => ({ ...prev, skFinancialLiteracy: e.target.value }))}
+                    className="w-4 h-4 text-[#5ECAD5] focus:ring-[#5ECAD5]"
                   />
-                  <span className={`text-gray-700 ${!formData.topics.includes(option) && formData.topics.length >= 2 ? 'opacity-50' : ''}`}>
-                    {option}
-                  </span>
+                  <span className="text-gray-700">{option}</span>
                 </label>
               ))}
             </div>
-            <p className="text-sm text-[#5ECAD5] ml-2 sm:ml-4 font-medium">
-              Vybrané: {formData.topics.length}/2
-            </p>
           </div>
 
-          {/* Question 5: Contact Information */}
+          {/* Question 6: Contact Information */}
           <div className="space-y-4">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-700">
-              5. Ako vás môžeme kontaktovať?
+              6. Ako vás môžeme kontaktovať?
             </h2>
             <div className="space-y-4 ml-2 sm:ml-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -301,7 +361,12 @@ export default function FormularPage() {
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    onChange={(e) => {
+                      const digitsOnly = e.target.value.replace(/[^0-9+ ]/g, '');
+                      setFormData(prev => ({ ...prev, phone: digitsOnly }));
+                    }}
+                    inputMode="tel"
+                    pattern="[+0-9 ]*"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5ECAD5] focus:border-[#5ECAD5] text-[#202325] bg-white"
                     placeholder="+421 XXX XXX XXX"
                   />

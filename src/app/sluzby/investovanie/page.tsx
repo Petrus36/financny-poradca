@@ -101,7 +101,7 @@ export default function InvestovaniePage() {
               <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                  Peniaze, ktoré si sporíme tak &ldquo;ODPOČÍVAJÚ&rdquo; a peniaze, ktoré investujem tak &ldquo;PRACUJÚ&rdquo;. Investovanie má zmysel, pretože peniaze časom strácajú hodnotu. Na rozdiel od bežného sporenia vám investície umožňujú zhodnocovať úspory a budovať kapitál na dôležité ciele bývanie, vzdelanie detí či finančnú slobodu.
+                  Peniaze, ktoré si sporíme tak &ldquo;ODPOČÍVAJÚ&rdquo; a peniaze, ktoré investujem tak &ldquo;PRACUJÚ&rdquo;. Investovanie má zmysel, pretože peniaze časom strácajú hodnotu. Na rozdiel od bežného sporenia vám investície umožňujú zhodnocovať úspory a budovať kapitál na dôležité ciele ako bývanie, vzdelanie detí či finančnú slobodu.
                 </p>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
                   Začať sa dá aj s menšími sumami, dôležité je nečakať. Čím skôr začnete, tým viac času majú peniaze rásť. Investovanie je vhodné pre každého, kto chce aktívne ovplyvniť svoju budúcnosť. Kľúčom k úspechu je spoľahlivý partner.
@@ -205,7 +205,7 @@ export default function InvestovaniePage() {
                   Náš prístup:
                 </h4>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Máme dlhoročné skúsenosti, pod správou desiatky miliónov eur a stovky spokojných klientov. Radi vám spravíme analýzu a stratégiu – zrozumiteľne, odborne a zdarma.
+                  Máme dlhoročné skúsenosti, pod správou desiatky miliónov eur a stovky spokojných klientov. Radi vám spravíme analýzu a stratégiu – zrozumiteľne a odborne.
                 </p>
               </div>
 
@@ -318,8 +318,8 @@ export default function InvestovaniePage() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">4</div>
-              <h3 className="text-lg font-semibold text-[#202325] mb-2">Monitoring</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Pravidelne sledujeme a optimalizujeme výkonnosť</p>
+              <h3 className="text-lg font-semibold text-[#202325] mb-2">Servis</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Pravidelné konzultácie a vyhodnocovanie</p>
             </div>
           </div>
         </div>

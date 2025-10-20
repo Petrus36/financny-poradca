@@ -240,16 +240,27 @@ export default function DomovPage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[800px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-16 sm:pt-12 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16">
-              <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6 sm:mb-6 md:mb-8 lg:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
-                <span className="block md:hidden">Váš</span>
-                <span className="block md:hidden">finančný</span>
-                <span className="block md:hidden">poradca</span>
-                <span className="hidden md:block">Váš finančný</span>
-                <span className="hidden md:block">poradca</span>
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-6 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 pt-28">
+              <h1 className="font-light text-white leading-tight mb-6 md:mb-8 lg:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
+                {/* Mobile: 320px - 639px */}
+                <span className="block sm:hidden text-[2.75rem] leading-[1.1] font-light mb-3 text-white" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
+                <span className="block sm:hidden text-xl leading-relaxed">Som partner pre vašu budúcnosť.</span>
+                
+                {/* Small Mobile: 640px - 767px */}
+                <span className="hidden sm:block md:hidden text-5xl leading-[1.15] font-light mb-4 text-white" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
+                <span className="hidden sm:block md:hidden text-2xl leading-relaxed">Som partner pre vašu</span>
+                <span className="hidden sm:block md:hidden text-2xl leading-relaxed">budúcnosť.</span>
+                
+                {/* Tablet: 768px - 1023px */}
+                <span className="hidden md:block lg:hidden text-5xl leading-[1.2] font-light mb-1 text-white" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
+                <span className="hidden md:block lg:hidden text-2xl leading-relaxed">Som partner pre vašu budúcnosť.</span>
+                
+                {/* Desktop and Laptop: 1024px+ */}
+                <span className="hidden lg:block text-6xl xl:text-7xl font-light mb-2" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
+                <span className="hidden lg:block text-3xl xl:text-4xl font-light">Som partner pre vašu budúcnosť.</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-lg lg:text-lg text-white mb-6 sm:mb-6 md:mb-10 lg:mb-8 max-w-xl md:max-w-lg lg:max-w-lg mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md">
-                Zhodnoťte svoj majetok medziročne až o 20% vďaka profesionálnemu prístupu k financiám.
+              <p className="text-base sm:text-lg md:text-lg lg:text-lg text-white mb-6 sm:mb-8 md:mb-10 lg:mb-8 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md leading-relaxed">
+                Vďaka odbornosti a starostlivosti zhodnocujeme klientom majetok až o 20% ročne.
               </p>
               <button 
                 onClick={() => setIsModalOpen(true)}
@@ -292,7 +303,7 @@ export default function DomovPage() {
             {/* Money Under Management */}
             <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
               <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-0 whitespace-nowrap mt-2 sm:mt-2 md:mt-3 lg:mt-4">
-                {moneyCount.toLocaleString()}
+                {moneyCount.toLocaleString()}€
               </div>
               <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide leading-tight mt-2 sm:mt-2 md:mt-3">
                 POD SPRÁVOU<br/>KANCELÁRIE
@@ -300,12 +311,12 @@ export default function DomovPage() {
             </div>
 
             {/* Mortgages */}
-            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto">
+            <div className="text-center flex flex-col items-center w-1/2 sm:w-auto mt-2 sm:mt-2 md:mt-3 lg:mt-4">
               <div className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5ECAD5] mb-2 sm:mb-2 whitespace-nowrap">
-                {mortgageCount}M+
+                {mortgageCount}M€+
               </div>
               <div className="text-sm sm:text-sm md:text-base font-semibold text-[#202325] uppercase tracking-wide leading-tight">
-                V HYPOTÉKACH
+                V HYPOTÉKACH <br/> MESAČNE
               </div>
             </div>
 
@@ -337,7 +348,7 @@ export default function DomovPage() {
             MÁTE OTÁZKY?
           </h2>
           <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
-            Som tu, aby som vám pomohol nájsť riešenie, ktoré bude vyhovova&apos; práve vám. Vyplň&apos;te krátky formulár, ktorý vám zaberie menej než 2 minúty.
+            Som tu, aby som vám pomohol nájsť riešenie, ktoré bude vyhovovať práve vám. Vyplňte krátky formulár, ktorý vám zaberie menej než 2 minúty.
           </p>
           
           {/* Čo tým získate section */}
@@ -346,7 +357,7 @@ export default function DomovPage() {
             <div className="space-y-2">
               <div className="flex items-start">
                 <span className="text-white font-normal mr-3">1.</span>
-                <p className="text-gray-300 text-base md:text-lg">Bezplatný vstupnú analýzu vašej aktuálnej finančnej situácie.</p>
+                <p className="text-gray-300 text-base md:text-lg">Bezplatnú vstupnú analýzu vašej aktuálnej finančnej situácie.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-white font-normal mr-3">2.</span>
@@ -354,7 +365,7 @@ export default function DomovPage() {
               </div>
               <div className="flex items-start">
                 <span className="text-white font-normal mr-3">3.</span>
-                <p className="text-gray-300 text-base md:text-lg">Nezáväzný návrh spolupráce - až po vašom súhlase podnikneme ďalšie kroky.</p>
+                <p className="text-gray-300 text-base md:text-lg">Po odsúhlasení nastavíme spoluprácu.</p>
               </div>
             </div>
           </div>
@@ -369,7 +380,7 @@ export default function DomovPage() {
               </div>
               <div className="flex items-start">
                 <span className="text-white font-normal mr-3">2.</span>
-                <p className="text-gray-300 text-base md:text-lg">Do 24 hodín vás kontaktujem s prvou analýzou.</p>
+                <p className="text-gray-300 text-base md:text-lg">Do 24 hodín vás kontaktujem.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-white font-normal mr-3">3.</span>

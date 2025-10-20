@@ -151,7 +151,7 @@ export default function SpolupracePage() {
            {/* Description */}
            <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-3xl mx-auto">
              Tak si predstav, že do toho pôjdeš, dáš tomu šancu a po čase zistíš, že to nie je pre teba. 
-             Že ťa to nenapadá, alebo že chceš ísť iným smerom.
+             Že ťa to nenapĺňa, alebo že chceš ísť iným smerom.
            </p>
            
            {/* Secondary title */}
@@ -162,10 +162,10 @@ export default function SpolupracePage() {
            {/* Content paragraphs */}
            <div className="text-left max-w-3xl mx-auto space-y-4 sm:space-y-6">
              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-               Získaš sebavedomie, ktoré si predtým nemal. Naučíš sa komunikovať s ľuďmi, riešiť 
+               Získaš sebavedomie, ktoré si predtým možno nemal. Naučíš sa komunikovať s ľuďmi, riešiť 
                reálne situácie, orientovať sa vo financiách. Budeš ovládať soft skills, ktoré sú dnes 
                cennejšie než niektoré tituly. Zvládneš vedenie ľudí, time management, nastavovanie 
-               cieľov a rozhodovanie - veci, ktoré si ini tréníujú až na manažérskych pozíciách.
+               cieľov a rozhodovanie - veci, ktoré si iní trénujú až na manažérskych pozíciách.
              </p>
              
              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">

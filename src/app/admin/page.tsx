@@ -14,6 +14,13 @@ interface FormSubmission {
   products: string[];
   interests: string;
   topics: string[];
+  saveOnMortgage: boolean;
+  saveOnInsurance: boolean;
+  incomeSecurity: boolean;
+  kidsFuture: boolean;
+  betterReturns: boolean;
+  reviewExistingContracts: boolean;
+  skFinancialLiteracy: string;
   name: string;
   surname: string;
   phone: string | null;
@@ -584,9 +591,16 @@ export default function AdminPage() {
                         </div>
                       </td>
                       <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                          {submission.financialLiteracy}
-                        </span>
+                        <div className="flex flex-col space-y-1">
+                          <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                            {submission.financialLiteracy}
+                          </span>
+                          {submission.skFinancialLiteracy && (
+                            <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800">
+                              SK gramotnosť: {submission.skFinancialLiteracy}
+                            </span>
+                          )}
+                        </div>
                         <div className="md:hidden text-xs text-gray-500 mt-1 max-w-xs truncate">
                           {submission.interests}
                         </div>
@@ -1034,6 +1048,14 @@ export default function AdminPage() {
                     {selectedSubmission.financialLiteracy}
                   </span>
                 </div>
+                {selectedSubmission.skFinancialLiteracy && (
+                  <div className="flex items-center space-x-2 mt-2">
+                    <span className="text-sm font-medium text-gray-600">SK gramotnosť:</span>
+                    <span className="inline-flex px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 text-indigo-800">
+                      {selectedSubmission.skFinancialLiteracy}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Current Products */}
@@ -1062,56 +1084,36 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              {/* Selected Topics */}
+              {/* Selected Interests - show only checked */}
               <div className="bg-indigo-50 rounded-lg p-4">
-                <h4 className="text-lg font-semibold text-indigo-900 mb-3">📚 Vybrané témy (2 najdôležitejšie)</h4>
-                <div className="space-y-2">
-                  {selectedSubmission.topics.map((topic, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-2 bg-white p-3 rounded border-l-4 border-indigo-400"
-                    >
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-indigo-100 text-indigo-800 rounded-full text-sm font-bold">
-                        {index + 1}
-                      </span>
-                      <p className="text-gray-900 font-medium">{topic}</p>
+                <h4 className="text-lg font-semibold text-indigo-900 mb-3">📚 Vybrané záujmy</h4>
+                {(() => {
+                  const interestItems: { label: string; value: boolean }[] = [
+                    { label: 'Ušetriť na hypotéke', value: selectedSubmission.saveOnMortgage },
+                    { label: 'Ušetriť na poistných zmluvách', value: selectedSubmission.saveOnInsurance },
+                    { label: 'Zabezpečený príjem pri zdravotných problémoch', value: selectedSubmission.incomeSecurity },
+                    { label: 'Budúcnosť detí', value: selectedSubmission.kidsFuture },
+                    { label: 'Lepšie zhodnocovanie', value: selectedSubmission.betterReturns },
+                    { label: 'Kontrola existujúcich zmlúv', value: selectedSubmission.reviewExistingContracts },
+                  ];
+                  const selectedOnly = interestItems.filter(i => i.value);
+                  if (selectedOnly.length === 0) {
+                    return <p className="text-gray-500 italic">Žiadne vybrané záujmy</p>;
+                  }
+                  return (
+                    <div className="space-y-2">
+                      {selectedOnly.map((i, idx) => (
+                        <div key={idx} className="flex items-center space-x-2 bg-white p-3 rounded border-l-4 border-indigo-400">
+                          <span className="inline-flex items-center justify-center w-6 h-6 bg-indigo-100 text-indigo-800 rounded-full text-sm font-bold">{idx + 1}</span>
+                          <p className="text-gray-900 font-medium">{i.label}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                {selectedSubmission.topics.length === 0 && (
-                  <p className="text-gray-500 italic">Žiadne témy neboli vybrané</p>
-                )}
+                  );
+                })()}
               </div>
 
-              {/* Summary */}
-              <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
-                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3">📋 Súhrn</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-center">
-                  <div className="bg-white p-3 rounded shadow">
-                    <p className="text-2xl font-bold text-blue-600">{selectedSubmission.products.length}</p>
-                    <p className="text-sm text-gray-600">Produktov</p>
-                  </div>
-                  <div className="bg-white p-3 rounded shadow">
-                    <p className="text-2xl font-bold text-indigo-600">{selectedSubmission.topics.length}</p>
-                    <p className="text-sm text-gray-600">Tém</p>
-                  </div>
-                  <div className="bg-white p-3 rounded shadow">
-                    <p className="text-2xl font-bold text-green-600">
-                      {selectedSubmission.phone && selectedSubmission.email ? '2' : '1'}
-                    </p>
-                    <p className="text-sm text-gray-600">Kontaktov</p>
-                  </div>
-                  <div className="bg-white p-3 rounded shadow">
-                    <p className="text-2xl font-bold text-purple-600">
-                      {selectedSubmission.financialLiteracy === 'Skvelá' ? '5' :
-                       selectedSubmission.financialLiteracy === 'Dobrá' ? '4' :
-                       selectedSubmission.financialLiteracy === 'Priemerná' ? '3' :
-                       selectedSubmission.financialLiteracy === 'Zlá' ? '2' : '1'}/5
-                    </p>
-                    <p className="text-sm text-gray-600">Gramotnosť</p>
-                  </div>
-                </div>
-              </div>
+              {/* Summary removed as requested */}
             </div>
 
             {/* Modal Footer */}
