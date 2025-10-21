@@ -38,19 +38,6 @@ export default function FormularPage() {
     }
   };
 
-  const handleTopicChange = (topic: string, checked: boolean) => {
-    if (checked) {
-      setFormData(prev => ({
-        ...prev,
-        topics: [...prev.topics, topic]
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        topics: prev.topics.filter(t => t !== topic)
-      }));
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
