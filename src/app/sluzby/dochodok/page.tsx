@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 import ContactFormModal from "../../../components/ContactFormModal";
 import OptimizedImage from "../../../components/OptimizedImage";
 
@@ -64,9 +65,13 @@ export default function DochodokPage() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Contact Modal */}
-      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+    <>
+      <Head>
+        <link rel="preload" href="/dôchodok.svg" as="image" type="image/svg+xml" />
+      </Head>
+      <main className="min-h-screen">
+        {/* Contact Modal */}
+        <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -502,5 +507,6 @@ export default function DochodokPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

@@ -27,11 +27,6 @@ export const metadata: Metadata = {
   description: "Pomáham klientom dosahovať ich finančné ciele prostredníctvom osobného prístupu a profesionálnych riešení. Kontaktujte ma pre bezplatnú konzultáciu.",
   keywords: ["finančný poradca", "investovanie", "poistenie", "hypotéky", "dôchodok", "Slovensko"],
   authors: [{ name: "Michal Kurka" }],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   robots: {
     index: true,
     follow: true,
@@ -40,6 +35,12 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({

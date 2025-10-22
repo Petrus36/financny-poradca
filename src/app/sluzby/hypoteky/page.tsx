@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 import ContactFormModal from "../../../components/ContactFormModal";
 import OptimizedImage from "../../../components/OptimizedImage";
 
@@ -68,9 +69,13 @@ export default function HypotekyPage() {
   const allBanks = [...banks, ...additionalBanks];
 
   return (
-    <main className="min-h-screen">
-      {/* Contact Modal */}
-      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+    <>
+      <Head>
+        <link rel="preload" href="/Hypoteka.svg" as="image" type="image/svg+xml" />
+      </Head>
+      <main className="min-h-screen">
+        {/* Contact Modal */}
+        <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Bank Partners Modal */}
       {isBankModalOpen && (
@@ -406,5 +411,6 @@ export default function HypotekyPage() {
       {/* Calculator Section */}
       
     </main>
+    </>
   );
 }

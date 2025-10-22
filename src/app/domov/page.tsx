@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import ContactFormModal from "../../components/ContactFormModal";
 
 interface Testimonial {
@@ -205,9 +206,14 @@ export default function DomovPage() {
   };
 
   return (
-    <main className="min-h-screen">
-      {/* Contact Modal */}
-      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+    <>
+      <Head>
+        <link rel="preload" href="/banner.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/advisor-photo.png" as="image" />
+      </Head>
+      <main className="min-h-screen">
+        {/* Contact Modal */}
+        <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[800px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -591,5 +597,6 @@ export default function DomovPage() {
         </div>
       )}
     </main>
+    </>
   );
 } 

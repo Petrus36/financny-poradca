@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import ContactModal from "../../../components/ContactModal";
 import OptimizedImage from "../../../components/OptimizedImage";
 
@@ -66,9 +67,13 @@ export default function InvestovaniePage() {
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+    <>
+      <Head>
+        <link rel="preload" href="/Investovanie.svg" as="image" type="image/svg+xml" />
+      </Head>
+      <main className="min-h-screen">
+        {/* Contact Modal */}
+        <ContactModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Investment Companies Modal */}
       {isInvestmentModalOpen && (
@@ -466,5 +471,6 @@ export default function InvestovaniePage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

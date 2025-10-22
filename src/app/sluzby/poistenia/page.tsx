@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import ContactFormModal from "../../../components/ContactFormModal";
 
 interface InsuranceCompany {
@@ -71,9 +72,13 @@ export default function PoistieniaPage() {
   const allInsuranceCompanies = [...insuranceCompanies, ...additionalInsuranceCompanies];
 
   return (
-    <main className="min-h-screen">
-      {/* Contact Modal */}
-      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+    <>
+      <Head>
+        <link rel="preload" href="/Poistenia.svg" as="image" type="image/svg+xml" />
+      </Head>
+      <main className="min-h-screen">
+        {/* Contact Modal */}
+        <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
 
       {/* Insurance Companies Modal */}
       {isInsuranceModalOpen && (
@@ -350,5 +355,6 @@ export default function PoistieniaPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }
