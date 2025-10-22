@@ -11,16 +11,35 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap', // Prevent invisible text while loading
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: "Michal Kurka - Finančný poradca",
   description: "Pomáham klientom dosahovať ich finančné ciele prostredníctvom osobného prístupu a profesionálnych riešení. Kontaktujte ma pre bezplatnú konzultáciu.",
+  keywords: ["finančný poradca", "investovanie", "poistenie", "hypotéky", "dôchodok", "Slovensko"],
+  authors: [{ name: "Michal Kurka" }],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({
