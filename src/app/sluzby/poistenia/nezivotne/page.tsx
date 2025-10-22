@@ -240,60 +240,7 @@ export default function NezivotnePoisteniePage() {
         </div>
       </section>
 
-      {/* Insurance Types Section }
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            TYPY NEŽIVOTNÉHO POISTENIA
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {insuranceTypes.map((type, index) => (
-              <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{type.icon}</div>
-                <h3 className="font-semibold text-[#202325] text-lg mb-3">{type.title}</h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">{type.description}</p>
-                <div className="space-y-2">
-                  {type.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center justify-center">
-                      <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                      <span className="text-xs text-gray-600">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>*/}
 
-      {/* Insurance Companies Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            POISTOVNE
-          </h2>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
-            {insuranceCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-                {company.isImage ? (
-                  <Image
-                    src={company.logo}
-                    alt={`${company.name} logo`}
-                    width={400}
-                    height={200}
-                    className={company.isSmaller 
-                      ? "h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] transition-all duration-300 scale-100 sm:scale-110 md:scale-120"
-                      : "h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
-                    }
-                  />
-                ) : (
-                  <span className="text-3xl">{company.logo}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Benefits Section */}
       <section className="py-12 md:py-16 bg-[#202325]">

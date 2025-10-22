@@ -7,9 +7,14 @@ import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function HypotekyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBankModalOpen, setIsBankModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closeBankModal = () => {
+    setIsBankModalOpen(false);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -40,13 +45,64 @@ export default function HypotekyPage() {
     { name: "SLSP", logo: "/slovenskáSporitelna.webp", rate: "od 3,3%", isImage: true },
     { name: "Poštová Banka", logo: "/POSTOVA_BANKA_LOGO_RGB.jpg", rate: "od 3,4%", isImage: true },
     { name: "UniCredit Bank", logo: "/UniCredit-Logo.jpg", rate: "od 3,0%", isImage: true },
-    { name: "Prima Banka", logo: "/PrimaBanka.jpg", rate: "od 3,2%", isImage: true, customSize: true }
+    { name: "Prima Banka", logo: "/PrimaBanka.jpg", rate: "od 3,2%", isImage: true, extraLarge: true }
   ];
+
+  const additionalBanks = [
+    { name: "ČSOB", logo: "/ČSOB_logo.webp", rate: "od 3,1%", isImage: true },
+    { name: "mBank", logo: "/mBank.jpg", rate: "od 3,0%", isImage: true, customSize: true },
+    { name: "365.bank", logo: "/365bank_logo.webp", rate: "od 3,2%", isImage: true },
+    { name: "COFIDIS", logo: "/COFIDIS_logo.webp", rate: "od 3,3%", isImage: true, extraLarge: true },
+    { name: "PSS", logo: "/PSS_logo.webp", rate: "od 3,1%", isImage: true, extraLarge: true }
+  ];
+
+  const allBanks = [...banks, ...additionalBanks];
 
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Bank Partners Modal */}
+      {isBankModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Blurred background overlay */}
+          <div className="absolute inset-0 backdrop-blur-sm"></div>
+          {/* Popup content */}
+          <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex-1 text-center">
+                  <h2 className="text-2xl font-bold text-[#202325]">Naši bankoví partneri</h2>
+                </div>
+                <button
+                  onClick={closeBankModal}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
+                {allBanks.map((bank, index) => (
+                  <div key={index} className="flex items-center justify-center h-32 w-full">
+                    {bank.isImage ? (
+                      <Image
+                        src={bank.logo}
+                        alt={`${bank.name} logo`}
+                        width={300}
+                        height={150}
+                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${bank.extraLarge ? 'h-48' : (bank as any).customSize ? 'h-16' : 'h-24'}`}
+                      />
+                    ) : (
+                      <span className="text-3xl">{bank.logo}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -291,6 +347,18 @@ export default function HypotekyPage() {
                 )}
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-gray-600 text-lg">
+              Všetkých bankových partnerov najdete{" "}
+              <button
+                onClick={() => setIsBankModalOpen(true)}
+                className="text-[#5ECAD5] hover:text-[#4BB8C4] underline cursor-pointer font-semibold transition-colors"
+              >
+                tu
+              </button>
+              .
+            </p>
           </div>
         </div>
       </section>

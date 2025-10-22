@@ -8,9 +8,14 @@ import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function InvestovaniePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInvestmentModalOpen, setIsInvestmentModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closeInvestmentModal = () => {
+    setIsInvestmentModalOpen(false);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -35,10 +40,73 @@ export default function InvestovaniePage() {
     }
   ];
 
+  // Investment companies for main page
+  const investmentCompanies: any[] = [
+    { name: "Amundi", logo: "/Amundi_logo.png", isImage: true, extraLarge: true },
+    { name: "Simplea", logo: "/Simplea_In_logo.png", isImage: true, extraLarge: true },
+    { name: "Trigea", logo: "/Trigea_logo.png", isImage: true, extraLarge: true },
+    { name: "EIC", logo: "/eic_logo.png", isImage: true, extraLarge: true }
+  ];
+
+  // All investment companies for popup (includes additional logos)
+  const allInvestmentCompanies: any[] = [
+    ...investmentCompanies,
+    { name: "Merity", logo: "/merity_logo.jpg", isImage: true, extraLarge: true },
+    { name: "Conseq", logo: "/conseq_logo.png", isImage: true, extraLarge: true },
+    { name: "IAD", logo: "/IAD_logo.png", isImage: true, extraLarge: true }
+  ];
+
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Investment Companies Modal */}
+      {isInvestmentModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Blurred background overlay */}
+          <div className="absolute inset-0 backdrop-blur-sm"></div>
+          {/* Popup content */}
+          <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex-1 text-center">
+                  <h2 className="text-2xl font-bold text-[#202325]">Naše investičné spoločnosti</h2>
+                </div>
+                <button
+                  onClick={closeInvestmentModal}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
+                {allInvestmentCompanies.length > 0 ? (
+                  allInvestmentCompanies.map((company, index) => (
+                    <div key={index} className="flex items-center justify-center h-32 w-full">
+                      {company.isImage ? (
+                        <Image
+                          src={company.logo}
+                          alt={`${company.name} logo`}
+                          width={300}
+                          height={150}
+                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : (company as any).customSize ? 'h-16' : (company as any).isLarger ? 'h-32' : 'h-24'}`}
+                        />
+                      ) : (
+                        <span className="text-3xl">{company.logo}</span>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <div className="col-span-full text-center text-gray-400">
+                    <p>Logos will be added here</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -291,6 +359,52 @@ export default function InvestovaniePage() {
               <h3 className="text-xl font-semibold text-[#5ECAD5] mb-4">Diverzifikácia</h3>
               <p className="text-gray-300">Rozloženie rizika na rôzne typy investícií</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Investment Companies Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
+            INVESTIČNÉ SPOLOČNOSTI
+          </h2>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+            {investmentCompanies.map((company, index) => (
+              <div key={index} className="flex items-center justify-center h-24 w-24 sm:h-32 sm:w-32 md:h-40 md:w-40 lg:h-48 lg:w-48 flex-shrink-0">
+                {company.isImage ? (
+                  <Image
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    width={300}
+                    height={150}
+                    className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
+                      company.extraLarge 
+                        ? 'h-16 sm:h-20 md:h-24 lg:h-32' 
+                        : (company as any).customSize 
+                          ? 'h-12 sm:h-14 md:h-16 lg:h-20' 
+                          : (company as any).isLarger 
+                            ? 'h-14 sm:h-16 md:h-20 lg:h-24' 
+                            : 'h-12 sm:h-14 md:h-16 lg:h-20'
+                    }`}
+                  />
+                ) : (
+                  <span className="text-2xl sm:text-3xl">{company.logo}</span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-gray-600 text-lg">
+              Všetky investičné spoločnosti najdete{" "}
+              <button
+                onClick={() => setIsInvestmentModalOpen(true)}
+                className="text-[#5ECAD5] hover:text-[#4BB8C4] underline cursor-pointer font-semibold transition-colors"
+              >
+                tu
+              </button>
+              .
+            </p>
           </div>
         </div>
       </section>

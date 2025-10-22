@@ -7,9 +7,14 @@ import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function DochodokPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPensionModalOpen, setIsPensionModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closePensionModal = () => {
+    setIsPensionModalOpen(false);
   };
 
   const retirementOptions = [
@@ -34,10 +39,21 @@ export default function DochodokPage() {
   ];
 
   const retirementCompanies = [
-    { name: "Allianz", logo: "/Alianz.png", product: "DDS Klasik", isImage: true },
-    { name: "Generali", logo: "/Generali.jpg", product: "Perspektíva", isImage: true },
-    { name: "NN", logo: "/NN.webp", product: "Invest DDS", isImage: true },
-    { name: "UNIQA", logo: "/Uniqa.webp", product: "Profit DDS", isImage: true }
+    { name: "Allianz", logo: "/Alianz.png", product: "DDS Klasik", isImage: true, extraLarge: false },
+    { name: "Generali", logo: "/Generali.jpg", product: "Perspektíva", isImage: true, extraLarge: false },
+    { name: "NN", logo: "/NN.webp", product: "Invest DDS", isImage: true, extraLarge: false },
+    { name: "UNIQA", logo: "/Uniqa.webp", product: "Profit DDS", isImage: true, extraLarge: false }
+  ];
+
+  // All pension companies for popup
+  const allPensionCompanies = [
+    ...retirementCompanies,
+    { name: "AXA", logo: "/AXA_logo.png", product: "DDS Premium", isImage: true, extraLarge: true },
+    { name: "ČSOB", logo: "/CSOB_logo.png", product: "DDS Plus", isImage: true, extraLarge: true },
+    { name: "Wüstenrot", logo: "/Wuestenrot_logo.png", product: "DDS Garant", isImage: true, extraLarge: true },
+    { name: "MetLife", logo: "/MetLife_logo.png", product: "DDS Invest", isImage: true, extraLarge: true },
+    { name: "Union", logo: "/Union_logo.png", product: "DDS Union", isImage: true, extraLarge: true },
+    { name: "Europe", logo: "/Europe_logo.png", product: "DDS Europe", isImage: true, extraLarge: true }
   ];
 
   const ageGroups = [
@@ -372,8 +388,61 @@ export default function DochodokPage() {
               </div>
             ))}
           </div>
+          
+          {/* Clickable text for popup */}
+          <div className="text-center mt-8">
+            <p className="text-gray-600 text-lg">
+              Všetky dôchodkove spoločnosti najdete{" "}
+              <button
+                onClick={() => setIsPensionModalOpen(true)}
+                className="text-[#5ECAD5] hover:text-[#4BB8C4] underline font-semibold cursor-pointer transition-colors"
+              >
+                tu
+              </button>
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* Pension Companies Modal */}
+      {isPensionModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-[#202325]">Dôchodkove spoločnosti</h3>
+                <button
+                  onClick={closePensionModal}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {allPensionCompanies.map((company, index) => (
+                  <div key={index} className="flex items-center justify-center p-4">
+                    <div className="h-32 w-full flex items-center justify-center">
+                      {company.isImage ? (
+                        <Image
+                          src={company.logo}
+                          alt={`${company.name} logo`}
+                          width={400}
+                          height={200}
+                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
+                            company.extraLarge ? 'h-48' : 'h-24'
+                          }`}
+                        />
+                      ) : (
+                        <span className="text-3xl">{company.logo}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Benefits Section */}
       <section className="py-12 md:py-16 bg-white">

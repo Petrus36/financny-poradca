@@ -7,9 +7,14 @@ import ContactFormModal from "../../../components/ContactFormModal";
 
 export default function PoistieniaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInsuranceModalOpen, setIsInsuranceModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closeInsuranceModal = () => {
+    setIsInsuranceModalOpen(false);
   };
 
   const insuranceTypes = [
@@ -31,10 +36,76 @@ export default function PoistieniaPage() {
     }
   ];
 
+  const insuranceCompanies = [
+    { name: "UNIQA", logo: "/Uniqa.webp", isImage: true, isLarger: true },
+    { name: "Allianz", logo: "/Alianz.png", isImage: true },
+    { name: "Generali", logo: "/Generali.jpg", isImage: true },
+    { name: "Kooperativa", logo: "/Kooperativa.jpg", isImage: true, customSize: true }
+  ];
+
+  const additionalInsuranceCompanies: any[] = [
+    { name: "Wüstenrot", logo: "/wustenrot_logo.jpg", isImage: true, isLarger: true },
+    { name: "Simplea", logo: "/simplea_logo.jpg", isImage: true },
+    { name: "MetLife", logo: "/metlife_logo.png", isImage: true, isLarger: true },
+    { name: "AXA", logo: "/AXA_logo.png", isImage: true },
+    { name: "Colonade", logo: "/Colonade_logo.png", isImage: true, extraLarge: true },
+    { name: "ČSOB", logo: "/ČSOB_logo.webp", isImage: true, isLarger: true },
+    { name: "Pillow", logo: "/Pillow_logo.png", isImage: true },
+    { name: "Komunalna", logo: "/Komunalna_logo.webp", isImage: true, extraLarge: true },
+    { name: "Union", logo: "/union_logo.png", isImage: true },
+    { name: "Europe", logo: "/Europe_logo.png", isImage: true, isLarger: true },
+    { name: "YouPlus", logo: "/youplus_logo.jpg", isImage: true, isLarger: true },
+    { name: "NN", logo: "/NN.webp", isImage: true },
+    { name: "Premium", logo: "/Premium_logo.svg", isImage: true }
+  ];
+
+  const allInsuranceCompanies = [...insuranceCompanies, ...additionalInsuranceCompanies];
+
   return (
     <main className="min-h-screen">
       {/* Contact Modal */}
       <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Insurance Companies Modal */}
+      {isInsuranceModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Blurred background overlay */}
+          <div className="absolute inset-0 backdrop-blur-sm"></div>
+          {/* Popup content */}
+          <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex-1 text-center">
+                  <h2 className="text-2xl font-bold text-[#202325]">Naše poistovne</h2>
+                </div>
+                <button
+                  onClick={closeInsuranceModal}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
+                {allInsuranceCompanies.map((company, index) => (
+                  <div key={index} className="flex items-center justify-center h-32 w-full">
+                    {company.isImage ? (
+                      <Image
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        width={300}
+                        height={150}
+                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : (company as any).customSize ? 'h-16' : (company as any).isLarger ? 'h-32' : 'h-24'}`}
+                      />
+                    ) : (
+                      <span className="text-3xl">{company.logo}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -239,42 +310,33 @@ export default function PoistieniaPage() {
             POISTOVNE
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-28 xl:gap-32">
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-              <Image
-                src="/Uniqa.webp"
-                alt="UNIQA logo"
-                width={400}
-                height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
-              />
-            </div>
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-              <Image
-                src="/Alianz.png"
-                alt="Allianz logo"
-                width={400}
-                height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
-              />
-            </div>
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-              <Image
-                src="/Generali.jpg"
-                alt="Generali logo"
-                width={400}
-                height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
-              />
-            </div>
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
-              <Image
-                src="/Kooperativa.jpg"
-                alt="Kooperativa logo"
-                width={400}
-                height={200}
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] transition-all duration-300 scale-100 sm:scale-110 md:scale-120"
-              />
-            </div>
+            {insuranceCompanies.map((company, index) => (
+              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+                {company.isImage ? (
+                  <Image
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    width={400}
+                    height={200}
+                    className={`w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150 ${(company as any).customSize ? 'h-12 sm:h-14 md:h-16 hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] scale-100 sm:scale-110 md:scale-120' : 'h-16 sm:h-20 md:h-24'}`}
+                  />
+                ) : (
+                  <span className="text-3xl">{company.logo}</span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-gray-600 text-lg">
+              Všetkých poistovní najdete{" "}
+              <button
+                onClick={() => setIsInsuranceModalOpen(true)}
+                className="text-[#5ECAD5] hover:text-[#4BB8C4] underline cursor-pointer font-semibold transition-colors"
+              >
+                tu
+              </button>
+              .
+            </p>
           </div>
         </div>
       </section>
