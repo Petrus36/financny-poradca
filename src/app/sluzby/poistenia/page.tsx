@@ -5,6 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactFormModal from "../../../components/ContactFormModal";
 
+interface InsuranceCompany {
+  name: string;
+  logo: string;
+  isImage: boolean;
+  isLarger?: boolean;
+  customSize?: boolean;
+  extraLarge?: boolean;
+}
+
 export default function PoistieniaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInsuranceModalOpen, setIsInsuranceModalOpen] = useState(false);
@@ -36,14 +45,14 @@ export default function PoistieniaPage() {
     }
   ];
 
-  const insuranceCompanies = [
-    { name: "UNIQA", logo: "/Uniqa.webp", isImage: true, isLarger: true },
-    { name: "Allianz", logo: "/Alianz.png", isImage: true },
-    { name: "Generali", logo: "/Generali.jpg", isImage: true },
-    { name: "Kooperativa", logo: "/Kooperativa.jpg", isImage: true, customSize: true }
+  const insuranceCompanies: InsuranceCompany[] = [
+    { name: "UNIQA", logo: "/Uniqa.webp", isImage: true, isLarger: true, extraLarge: false },
+    { name: "Allianz", logo: "/Alianz.png", isImage: true, extraLarge: false },
+    { name: "Generali", logo: "/Generali.jpg", isImage: true, extraLarge: false },
+    { name: "Kooperativa", logo: "/Kooperativa.jpg", isImage: true, customSize: true, extraLarge: false }
   ];
 
-  const additionalInsuranceCompanies: any[] = [
+  const additionalInsuranceCompanies: InsuranceCompany[] = [
     { name: "Wüstenrot", logo: "/wustenrot_logo.jpg", isImage: true, isLarger: true },
     { name: "Simplea", logo: "/simplea_logo.jpg", isImage: true },
     { name: "MetLife", logo: "/metlife_logo.png", isImage: true, isLarger: true },
@@ -94,7 +103,7 @@ export default function PoistieniaPage() {
                         alt={`${company.name} logo`}
                         width={300}
                         height={150}
-                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : (company as any).customSize ? 'h-16' : (company as any).isLarger ? 'h-32' : 'h-24'}`}
+                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : company.customSize ? 'h-16' : company.isLarger ? 'h-32' : 'h-24'}`}
                       />
                     ) : (
                       <span className="text-3xl">{company.logo}</span>
@@ -318,7 +327,7 @@ export default function PoistieniaPage() {
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className={`w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150 ${(company as any).customSize ? 'h-12 sm:h-14 md:h-16 hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] scale-100 sm:scale-110 md:scale-120' : 'h-16 sm:h-20 md:h-24'}`}
+                    className={`w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150 ${company.customSize ? 'h-12 sm:h-14 md:h-16 hover:scale-[1.2] sm:hover:scale-[1.3] md:hover:scale-[1.4] scale-100 sm:scale-110 md:scale-120' : 'h-16 sm:h-20 md:h-24'}`}
                   />
                 ) : (
                   <span className="text-3xl">{company.logo}</span>

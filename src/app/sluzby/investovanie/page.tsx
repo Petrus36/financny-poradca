@@ -6,6 +6,15 @@ import Link from "next/link";
 import ContactModal from "../../../components/ContactModal";
 import OptimizedImage from "../../../components/OptimizedImage";
 
+interface InvestmentCompany {
+  name: string;
+  logo: string;
+  isImage: boolean;
+  extraLarge?: boolean;
+  customSize?: boolean;
+  isLarger?: boolean;
+}
+
 export default function InvestovaniePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInvestmentModalOpen, setIsInvestmentModalOpen] = useState(false);
@@ -41,7 +50,7 @@ export default function InvestovaniePage() {
   ];
 
   // Investment companies for main page
-  const investmentCompanies: any[] = [
+  const investmentCompanies: InvestmentCompany[] = [
     { name: "Amundi", logo: "/Amundi_logo.png", isImage: true, extraLarge: true },
     { name: "Simplea", logo: "/Simplea_In_logo.png", isImage: true, extraLarge: true },
     { name: "Trigea", logo: "/Trigea_logo.png", isImage: true, extraLarge: true },
@@ -49,7 +58,7 @@ export default function InvestovaniePage() {
   ];
 
   // All investment companies for popup (includes additional logos)
-  const allInvestmentCompanies: any[] = [
+  const allInvestmentCompanies: InvestmentCompany[] = [
     ...investmentCompanies,
     { name: "Merity", logo: "/merity_logo.jpg", isImage: true, extraLarge: true },
     { name: "Conseq", logo: "/conseq_logo.png", isImage: true, extraLarge: true },
@@ -90,7 +99,7 @@ export default function InvestovaniePage() {
                           alt={`${company.name} logo`}
                           width={300}
                           height={150}
-                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : (company as any).customSize ? 'h-16' : (company as any).isLarger ? 'h-32' : 'h-24'}`}
+                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : company.customSize ? 'h-16' : company.isLarger ? 'h-32' : 'h-24'}`}
                         />
                       ) : (
                         <span className="text-3xl">{company.logo}</span>
@@ -381,9 +390,9 @@ export default function InvestovaniePage() {
                     className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
                       company.extraLarge 
                         ? 'h-16 sm:h-20 md:h-24 lg:h-32' 
-                        : (company as any).customSize 
+                        : company.customSize 
                           ? 'h-12 sm:h-14 md:h-16 lg:h-20' 
-                          : (company as any).isLarger 
+                          : company.isLarger 
                             ? 'h-14 sm:h-16 md:h-20 lg:h-24' 
                             : 'h-12 sm:h-14 md:h-16 lg:h-20'
                     }`}

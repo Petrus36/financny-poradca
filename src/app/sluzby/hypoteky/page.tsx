@@ -5,6 +5,15 @@ import Image from "next/image";
 import ContactFormModal from "../../../components/ContactFormModal";
 import OptimizedImage from "../../../components/OptimizedImage";
 
+interface Bank {
+  name: string;
+  logo: string;
+  rate: string;
+  isImage: boolean;
+  extraLarge?: boolean;
+  customSize?: boolean;
+}
+
 export default function HypotekyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBankModalOpen, setIsBankModalOpen] = useState(false);
@@ -39,7 +48,7 @@ export default function HypotekyPage() {
     }
   ];
 
-  const banks = [
+  const banks: Bank[] = [
     { name: "VÚB Banka", logo: "/VÚB.webp", rate: "od 3,2%", isImage: true },
     { name: "Tatra Banka", logo: "/TatraBanka.webp", rate: "od 3,1%", isImage: true },
     { name: "SLSP", logo: "/slovenskáSporitelna.webp", rate: "od 3,3%", isImage: true },
@@ -48,7 +57,7 @@ export default function HypotekyPage() {
     { name: "Prima Banka", logo: "/PrimaBanka.jpg", rate: "od 3,2%", isImage: true, extraLarge: true }
   ];
 
-  const additionalBanks = [
+  const additionalBanks: Bank[] = [
     { name: "ČSOB", logo: "/ČSOB_logo.webp", rate: "od 3,1%", isImage: true },
     { name: "mBank", logo: "/mBank.jpg", rate: "od 3,0%", isImage: true, customSize: true },
     { name: "365.bank", logo: "/365bank_logo.webp", rate: "od 3,2%", isImage: true },
@@ -91,7 +100,7 @@ export default function HypotekyPage() {
                         alt={`${bank.name} logo`}
                         width={300}
                         height={150}
-                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${bank.extraLarge ? 'h-48' : (bank as any).customSize ? 'h-16' : 'h-24'}`}
+                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${bank.extraLarge ? 'h-48' : bank.customSize ? 'h-16' : 'h-24'}`}
                       />
                     ) : (
                       <span className="text-3xl">{bank.logo}</span>

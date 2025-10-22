@@ -40,12 +40,6 @@ export default function NezivotnePoisteniePage() {
     }
   ];
 
-  const insuranceCompanies = [
-    { name: "UNIQA", logo: "/Uniqa.webp", specialty: "Majetkové poistenie", isImage: true, isSmaller: false },
-    { name: "Allianz", logo: "/Alianz.png", specialty: "Úrazové poistenie", isImage: true, isSmaller: false },
-    { name: "Generali", logo: "/Generali.jpg", specialty: "Kritické choroby", isImage: true, isSmaller: false },
-    { name: "Kooperativa", logo: "/Kooperativa.jpg", specialty: "Odpovednosť", isImage: true, isSmaller: true }
-  ];
 
   return (
     <main className="min-h-screen">
