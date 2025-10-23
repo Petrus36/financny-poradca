@@ -57,19 +57,20 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Error creating contact submission:', error);
+    const err = error as { message?: string; stack?: string; name?: string; code?: string };
     console.error('Error details:', {
       message: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
       name: error instanceof Error ? error.name : undefined,
-      code: error.code
+      code: err.code
     });
 
     let errorMessage = 'Chyba pri odosielaní formulára';
-    let errorDetails = error.message || 'Unknown error';
+    let errorDetails = err.message || 'Unknown error';
     
-    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+    if (err.code === 'P2021' || errorDetails.includes('does not exist')) {
       errorMessage = 'Database tables not created';
       errorDetails = 'Please run database migrations: npx prisma db push';
     } else if (errorDetails.includes('connect')) {
@@ -106,13 +107,14 @@ export async function GET() {
 
     console.log(`✅ Found ${contactSubmissions.length} contact submissions`);
     return NextResponse.json(contactSubmissions);
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Error fetching contact submissions:', error);
     
     let errorMessage = 'Chyba pri načítavaní kontaktných formulárov';
-    let errorDetails = error.message || 'Unknown error';
+    const err = error as { message?: string; code?: string };
+    let errorDetails = err.message || 'Unknown error';
     
-    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+    if (err.code === 'P2021' || errorDetails.includes('does not exist')) {
       errorMessage = 'Database tables not created';
       errorDetails = 'Please run database migrations: npx prisma db push';
     } else if (errorDetails.includes('connect')) {

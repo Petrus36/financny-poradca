@@ -59,10 +59,11 @@ export async function getDatabaseStatus() {
         contactSubmissions: contactCount
       }
     }
-  } catch (error: any) {
+  } catch (error) {
     console.error('Database status check failed:', error)
     
-    if (error.message?.includes('does not exist') || error.code === 'P2021') {
+    const err = error as { message?: string; code?: string }
+    if (err.message?.includes('does not exist') || err.code === 'P2021') {
       return {
         connected: false,
         error: 'Database tables do not exist',
@@ -72,7 +73,7 @@ export async function getDatabaseStatus() {
     
     return {
       connected: false,
-      error: error.message || 'Unknown error',
+      error: err.message || 'Unknown error',
       suggestion: 'Check DATABASE_URL and database connection'
     }
   }

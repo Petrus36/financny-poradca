@@ -41,14 +41,15 @@ export async function POST(request: NextRequest) {
 
     console.log('✅ Form submission saved successfully:', submission.id);
     return NextResponse.json({ success: true, id: submission.id });
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Error saving form submission:', error);
     
     // Provide more specific error messages
     let errorMessage = 'Failed to save submission';
-    let errorDetails = error.message || 'Unknown error';
+    const err = error as { message?: string; code?: string };
+    let errorDetails = err.message || 'Unknown error';
     
-    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+    if (err.code === 'P2021' || errorDetails.includes('does not exist')) {
       errorMessage = 'Database tables not created';
       errorDetails = 'Please run database migrations: npx prisma db push';
     } else if (errorDetails.includes('connect')) {
@@ -98,13 +99,14 @@ export async function GET() {
     }));
 
     return NextResponse.json(formattedSubmissions);
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Error fetching submissions:', error);
     
     let errorMessage = 'Failed to fetch submissions';
-    let errorDetails = error.message || 'Unknown error';
+    const err = error as { message?: string; code?: string };
+    let errorDetails = err.message || 'Unknown error';
     
-    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+    if (err.code === 'P2021' || errorDetails.includes('does not exist')) {
       errorMessage = 'Database tables not created';
       errorDetails = 'Please run database migrations: npx prisma db push';
     } else if (errorDetails.includes('connect')) {
