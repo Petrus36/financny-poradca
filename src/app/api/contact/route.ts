@@ -3,6 +3,18 @@ import { prisma } from '../../../lib/prisma';
 
 export async function POST(request: NextRequest) {
   try {
+    // Verify database connection first
+    if (!process.env.DATABASE_URL) {
+      console.error('❌ DATABASE_URL not configured');
+      return NextResponse.json(
+        { 
+          error: 'Database not configured',
+          details: 'DATABASE_URL environment variable is missing'
+        },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const { name, surname, phone, email, message } = body;
 
@@ -23,6 +35,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log('📧 Attempting to save contact submission...');
+
     // Create contact submission
     const contactSubmission = await prisma.contactSubmission.create({
       data: {
@@ -34,6 +48,8 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    console.log('✅ Contact submission saved successfully:', contactSubmission.id);
+
     return NextResponse.json(
       { 
         message: 'Kontaktný formulár bol úspešne odoslaný',
@@ -41,15 +57,28 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
-    console.error('Error creating contact submission:', error);
+  } catch (error: any) {
+    console.error('❌ Error creating contact submission:', error);
     console.error('Error details:', {
       message: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
-      name: error instanceof Error ? error.name : undefined
+      name: error instanceof Error ? error.name : undefined,
+      code: error.code
     });
+
+    let errorMessage = 'Chyba pri odosielaní formulára';
+    let errorDetails = error.message || 'Unknown error';
+    
+    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+      errorMessage = 'Database tables not created';
+      errorDetails = 'Please run database migrations: npx prisma db push';
+    } else if (errorDetails.includes('connect')) {
+      errorMessage = 'Cannot connect to database';
+      errorDetails = 'Check DATABASE_URL configuration';
+    }
+
     return NextResponse.json(
-      { error: 'Chyba pri odosielaní formulára', details: error instanceof Error ? error.message : 'Unknown error' },
+      { error: errorMessage, details: errorDetails },
       { status: 500 }
     );
   }
@@ -57,17 +86,42 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
+    if (!process.env.DATABASE_URL) {
+      console.error('❌ DATABASE_URL not configured');
+      return NextResponse.json(
+        { 
+          error: 'Database not configured',
+          details: 'DATABASE_URL environment variable is missing'
+        },
+        { status: 500 }
+      );
+    }
+
+    console.log('📊 Fetching contact submissions...');
     const contactSubmissions = await prisma.contactSubmission.findMany({
       orderBy: {
         createdAt: 'desc',
       },
     });
 
+    console.log(`✅ Found ${contactSubmissions.length} contact submissions`);
     return NextResponse.json(contactSubmissions);
-  } catch (error) {
-    console.error('Error fetching contact submissions:', error);
+  } catch (error: any) {
+    console.error('❌ Error fetching contact submissions:', error);
+    
+    let errorMessage = 'Chyba pri načítavaní kontaktných formulárov';
+    let errorDetails = error.message || 'Unknown error';
+    
+    if (error.code === 'P2021' || errorDetails.includes('does not exist')) {
+      errorMessage = 'Database tables not created';
+      errorDetails = 'Please run database migrations: npx prisma db push';
+    } else if (errorDetails.includes('connect')) {
+      errorMessage = 'Cannot connect to database';
+      errorDetails = 'Check DATABASE_URL configuration';
+    }
+
     return NextResponse.json(
-      { error: 'Chyba pri načítavaní kontaktných formulárov' },
+      { error: errorMessage, details: errorDetails },
       { status: 500 }
     );
   }

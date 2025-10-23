@@ -1,32 +1,23 @@
 import { NextResponse } from 'next/server';
-import { prisma, testConnection } from '@/lib/prisma';
+import { getDatabaseStatus } from '@/lib/prisma';
 
 export async function GET() {
   try {
-    // Test database connection
-    const isConnected = await testConnection();
+    const dbStatus = await getDatabaseStatus();
     
-    if (!isConnected) {
-      return NextResponse.json(
-        { 
-          status: 'error',
-          database: 'disconnected',
-          message: 'Database connection failed'
-        },
-        { status: 500 }
-      );
-    }
-
-    // Test a simple query
-    const blogCount = await prisma.blogPost.count();
-    
-    return NextResponse.json({
-      status: 'ok',
-      database: 'connected',
+    const response = {
+      status: dbStatus.connected ? 'ok' : 'error',
+      database: dbStatus.connected ? 'connected' : 'disconnected',
       environment: process.env.NODE_ENV,
-      blogPosts: blogCount,
-      timestamp: new Date().toISOString()
-    });
+      databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing',
+      timestamp: new Date().toISOString(),
+      ...dbStatus
+    };
+    
+    return NextResponse.json(
+      response,
+      { status: dbStatus.connected ? 200 : 500 }
+    );
     
   } catch (error) {
     console.error('Health check failed:', error);
@@ -36,7 +27,8 @@ export async function GET() {
         status: 'error',
         database: 'error',
         message: error instanceof Error ? error.message : 'Unknown error',
-        environment: process.env.NODE_ENV
+        environment: process.env.NODE_ENV,
+        databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing'
       },
       { status: 500 }
     );
