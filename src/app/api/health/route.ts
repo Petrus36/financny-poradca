@@ -3,7 +3,13 @@ import { getDatabaseStatus } from '@/lib/prisma';
 
 export async function GET() {
   try {
+    console.log('Health check started...');
+    console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+    console.log('VERCEL:', !!process.env.VERCEL);
+    
     const dbStatus = await getDatabaseStatus();
+    console.log('Database status:', dbStatus);
     
     const response = {
       status: dbStatus.connected ? 'ok' : 'error',
@@ -14,6 +20,8 @@ export async function GET() {
       ...dbStatus
     };
     
+    console.log('Health check response:', response);
+    
     return NextResponse.json(
       response,
       { status: dbStatus.connected ? 200 : 500 }
@@ -21,6 +29,7 @@ export async function GET() {
     
   } catch (error) {
     console.error('Health check failed:', error);
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
     
     return NextResponse.json(
       { 
@@ -28,7 +37,9 @@ export async function GET() {
         database: 'error',
         message: error instanceof Error ? error.message : 'Unknown error',
         environment: process.env.NODE_ENV,
-        databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing'
+        databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing',
+        errorType: error instanceof Error ? error.constructor.name : 'Unknown',
+        timestamp: new Date().toISOString()
       },
       { status: 500 }
     );
