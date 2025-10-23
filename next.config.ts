@@ -38,6 +38,21 @@ const nextConfig: NextConfig = {
   poweredByHeader: false, // Remove X-Powered-By header for security and performance
   // Enable static optimization
   reactStrictMode: true,
+  // Vercel specific optimizations
+  output: 'standalone',
+  // Ensure API routes work properly
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, PUT, DELETE, OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
