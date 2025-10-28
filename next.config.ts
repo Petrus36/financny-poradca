@@ -32,14 +32,12 @@ const nextConfig: NextConfig = {
   compress: true,
   // Optimize production builds
   experimental: {
-    optimizePackageImports: ['@prisma/client', 'react-icons'],
+    optimizePackageImports: ['react-icons'],
   },
   // Production-only optimizations
   poweredByHeader: false, // Remove X-Powered-By header for security and performance
   // Enable static optimization
   reactStrictMode: true,
-  // Vercel specific optimizations
-  output: 'standalone',
   // Ensure API routes work properly
   async headers() {
     return [
