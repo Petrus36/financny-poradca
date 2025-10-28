@@ -361,19 +361,19 @@ export default function DochodokPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             DÔCHODKOVÉ SPOLOČNOSTI
           </h2>
-          <div className="flex flex-nowrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
             {retirementCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+              <div key={index} className="flex items-center justify-center min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
                 {company.isImage ? (
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className={`w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 ${
+                    className={`w-auto object-contain hover:scale-110 sm:hover:scale-125 md:hover:scale-[1.35] transition-all duration-300 ${
                       company.name === 'Rentea' || company.name === 'TatraBanka'
-                        ? 'h-14 sm:h-16 md:h-18 scale-110 sm:scale-120 md:scale-130' 
-                        : 'h-16 sm:h-20 md:h-24 scale-125 sm:scale-140 md:scale-150'
+                        ? 'h-12 sm:h-14 md:h-16 lg:h-18' 
+                        : 'h-14 sm:h-16 md:h-20 lg:h-24'
                     }`}
                   />
                 ) : (
