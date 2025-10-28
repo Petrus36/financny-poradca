@@ -11,13 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "db:deploy": "node scripts/deploy-db.js",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio",
-    "db:check": "node scripts/check-db-connection.js",
-    "db:setup-production": "node scripts/setup-production-db.js",
-    "vercel:setup": "bash scripts/setup-vercel-db.sh",
-    "vercel:blob": "bash scripts/setup-vercel-blob.sh"
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
