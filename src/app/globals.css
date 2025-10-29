@@ -12,6 +12,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Custom breakpoint: LaptopL at 1024px only */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .laptopl-right {
+    right: -4.5rem !important;
+  }
+}
+
+/* Classic laptop view (xl and above) - move picture more to the left */
+@media (min-width: 1280px) {
+  .laptopl-right {
+    right: 8rem !important;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -232,49 +232,7 @@ export default function NezivotnePoisteniePage() {
             </button>
           </div>
         </div>
-      </section>
-
-
-
-      {/* Benefits Section */}
-      <section className="py-12 md:py-16 bg-[#202325]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-8 md:mb-12">
-            VÝHODY NEŽIVOTNÉHO POISTENIA
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🏠</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Ochrana majetku</h3>
-              <p className="text-gray-300 text-sm">Komplexné krytie nehnuteľnosti a domácnosti</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">⚡</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Rýchla výplata</h3>
-              <p className="text-gray-300 text-sm">Finančná pomoc dostupná okamžite po udalosti</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🛡️</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Právna ochrana</h3>
-              <p className="text-gray-300 text-sm">Pokrytie súdnych výdavkov a právnych služieb</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📞</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">24/7 asistenčná služba</h3>
-              <p className="text-gray-300 text-sm">Nepretržité poradenstvo a pomoc</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      </section> 
       {/* Process Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -15,11 +15,20 @@ interface Testimonial {
   initial: string;
 }
 
+interface PartnerLogo {
+  name: string;
+  logo: string;
+  isImage: boolean;
+  extraLarge?: boolean;
+  customSize?: boolean;
+}
+
 export default function DomovPage() {
   // const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTestimonialModalOpen, setIsTestimonialModalOpen] = useState(false);
+  const [isPartnersModalOpen, setIsPartnersModalOpen] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
 
   // Counter animation states
@@ -205,6 +214,54 @@ export default function DomovPage() {
     setSelectedTestimonial(null);
   };
 
+  const closePartnersModal = () => {
+    setIsPartnersModalOpen(false);
+  };
+
+  // All partner logos used across the website
+  const allPartnerLogos: PartnerLogo[] = [
+    // Banks (from hypoteky page)
+    { name: "VÚB Banka", logo: "/VÚB.webp", isImage: true },
+    { name: "Tatra Banka", logo: "/TatraBanka.webp", isImage: true },
+    { name: "SLSP", logo: "/slovenskáSporitelna.webp", isImage: true },
+    { name: "Poštová Banka", logo: "/POSTOVA_BANKA_LOGO_RGB.jpg", isImage: true },
+    { name: "UniCredit Bank", logo: "/UniCredit-Logo.jpg", isImage: true },
+    { name: "Prima Banka", logo: "/PrimaBanka.jpg", isImage: true, extraLarge: true },
+    { name: "ČSOB", logo: "/ČSOB_logo.webp", isImage: true },
+    { name: "mBank", logo: "/mBank.jpg", isImage: true, customSize: true },
+    { name: "365.bank", logo: "/365bank_logo.webp", isImage: true },
+    { name: "COFIDIS", logo: "/COFIDIS_logo.webp", isImage: true, extraLarge: true },
+    { name: "PSS", logo: "/PSS_logo.webp", isImage: true, extraLarge: true },
+    // Insurance companies (from poistenia page)
+    { name: "UNIQA", logo: "/Uniqa.webp", isImage: true, extraLarge: false },
+    { name: "Allianz", logo: "/Alianz.png", isImage: true },
+    { name: "Generali", logo: "/Generali.jpg", isImage: true },
+    { name: "Kooperativa", logo: "/Kooperativa.jpg", isImage: true, customSize: true },
+    { name: "Wüstenrot", logo: "/wustenrot_logo.jpg", isImage: true },
+    { name: "Simplea", logo: "/simplea_logo.jpg", isImage: true },
+    { name: "MetLife", logo: "/metlife_logo.png", isImage: true },
+    { name: "AXA", logo: "/AXA_logo.png", isImage: true },
+    { name: "Colonade", logo: "/Colonade_logo.png", isImage: true, extraLarge: true },
+    { name: "Pillow", logo: "/Pillow_logo.png", isImage: true },
+    { name: "Komunalna", logo: "/Komunalna_logo.webp", isImage: true, extraLarge: true },
+    { name: "Union", logo: "/union_logo.png", isImage: true },
+    { name: "Europe", logo: "/Europe_logo.png", isImage: true },
+    { name: "YouPlus", logo: "/youplus_logo.jpg", isImage: true },
+    { name: "NN", logo: "/NN.webp", isImage: true },
+    { name: "Premium", logo: "/Premium_logo.svg", isImage: true },
+    // Investment companies (from investovanie page)
+    { name: "Amundi", logo: "/Amundi_logo.png", isImage: true, extraLarge: true },
+    { name: "Simplea Investment", logo: "/Simplea_In_logo.png", isImage: true, extraLarge: true },
+    { name: "Trigea", logo: "/Trigea_logo.png", isImage: true, extraLarge: true },
+    { name: "EIC", logo: "/eic_logo.png", isImage: true, extraLarge: true },
+    { name: "Merity", logo: "/merity_logo.jpg", isImage: true, extraLarge: true },
+    { name: "Conseq", logo: "/conseq_logo.png", isImage: true, extraLarge: true },
+    { name: "IAD", logo: "/IAD_logo.png", isImage: true, extraLarge: true },
+    // Retirement companies (from dochodok page)
+    { name: "VÚB Generali", logo: "/VUBGenerali_logo.png", isImage: true },
+    { name: "Rentea", logo: "/Rentea_logo.jpeg", isImage: true },
+  ];
+
   return (
     <>
       <Head>
@@ -214,6 +271,53 @@ export default function DomovPage() {
       <main className="min-h-screen">
         {/* Contact Modal */}
         <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
+
+        {/* Partners Modal */}
+        {isPartnersModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Blurred background overlay */}
+            <div className="absolute inset-0 backdrop-blur-sm bg-black/30" onClick={closePartnersModal}></div>
+            {/* Popup content */}
+            <div className="relative bg-white rounded-lg shadow-xl max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-8">
+                  <div className="flex-1 text-center">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#202325]">Naši partneri</h2>
+                  </div>
+                  <button
+                    onClick={closePartnersModal}
+                    className="text-gray-500 hover:text-gray-700 text-3xl font-bold transition-colors"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
+                  {allPartnerLogos.map((partner, index) => (
+                    <div key={index} className="flex items-center justify-center h-32 w-full">
+                      {partner.isImage ? (
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          width={300}
+                          height={150}
+                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
+                            partner.extraLarge 
+                              ? 'h-28 md:h-32' 
+                              : partner.customSize 
+                              ? 'h-16 md:h-20' 
+                              : 'h-20 md:h-24'
+                          }`}
+                        />
+                      ) : (
+                        <span className="text-3xl">{partner.logo}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       {/* Hero Banner Section */}
       <section className="relative min-h-[800px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
@@ -230,7 +334,7 @@ export default function DomovPage() {
           <div className="absolute inset-0 bg-black/30"></div>
           
           {/* Advisor photo positioned on the right */}
-          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 -bottom-12 sm:-bottom-16 md:-bottom-16
+          <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 laptopl-right -bottom-12 sm:-bottom-16 md:-bottom-16
            lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
             <Image
               src="/advisor-photo.png"
@@ -547,7 +651,14 @@ export default function DomovPage() {
           </div>
           
           <p className="text-gray-600 mt-6 sm:mt-8 md:mt-12 text-sm sm:text-base md:text-lg px-4">
-            Kompletný zoznam partnerov nájdete <Link href="/spoluprace" className="text-[#5ECAD5] hover:text-[#4BB8C4] underline">tu</Link>.
+            Kompletný zoznam partnerov nájdete{" "}
+            <button
+              onClick={() => setIsPartnersModalOpen(true)}
+              className="text-[#5ECAD5] hover:text-[#4BB8C4] underline cursor-pointer font-semibold transition-colors"
+            >
+              tu
+            </button>
+            .
           </p>
         </div>
       </section>

@@ -207,49 +207,6 @@ export default function ZivotnePoisteniePage() {
           </div>
         </div>
       </section>
-
-
-
-
-      {/* Benefits Section */}
-      <section className="py-12 md:py-16 bg-[#202325]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-8 md:mb-12">
-            VÝHODY ŽIVOTNÉHO POISTENIA
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🔒</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Finančná bezpečnosť</h3>
-              <p className="text-gray-300 text-sm">Zabezpečenie rodiny pre prípad nečakaných situácií</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📊</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Daňové úľavy</h3>
-              <p className="text-gray-300 text-sm">Odpočet poistného z dane z príjmu až 500 € ročne</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">💼</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Investičná zložka</h3>
-              <p className="text-gray-300 text-sm">Možnosť sporenia a investovania súčasne</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">⚡</span>
-              </div>
-              <h3 className="text-white font-semibold mb-2">Rýchla výplata</h3>
-              <p className="text-gray-300 text-sm">Finančná pomoc dostupná okamžite po udalosti</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Process Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

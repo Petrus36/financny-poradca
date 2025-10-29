@@ -128,7 +128,7 @@ export default function SpolupracePage() {
              <div className="flex justify-center lg:justify-end order-1 lg:order-2">
                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
                  <Image
-                   src="/Spolupraca.jpeg"
+                   src="/Kurka_photo3.PNG"
                    alt="Professional advisor"
                    width={450}
                    height={400}
