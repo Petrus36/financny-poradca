@@ -15,6 +15,14 @@ interface InsuranceCompany {
   extraLarge?: boolean;
 }
 
+interface InsuranceType {
+  title: string;
+  description: string;
+  link: string;
+  color: string;
+  features?: string[];
+}
+
 export default function PoistieniaPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInsuranceModalOpen, setIsInsuranceModalOpen] = useState(false);
@@ -27,20 +35,16 @@ export default function PoistieniaPage() {
     setIsInsuranceModalOpen(false);
   };
 
-  const insuranceTypes = [
+  const insuranceTypes: InsuranceType[] = [
     {
       title: "Životné poistenie",
-      description: "Zabezpečte svoju rodinu pre prípad nečakaných situácií. Komplexné riešenie pre ochranu vašich blízkych.",
-      features: ["Ochrana rodiny", "Daňové úľavy", "Investičná zložka", "Flexibilné podmienky"],
-      icon: "",
+      description: "Život prináša aj nečakané situácie. Správne nastavená ochrana vám dá istotu, že zvládnete aj tie najťažšie dni.",
       link: "/sluzby/poistenia/zivotne",
       color: "bg-gray-50 border-gray-200 hover:bg-gray-100"
     },
     {
       title: "Neživotné poistenie",
-      description: "Ochrana vašej nehnuteľnosti, majetku a zodpovednosti. Zabezpečte si pokoj pre prípad nečakaných udalostí.",
-      features: ["Majetkové poistenie", "Úrazové poistenie", "Kritické choroby", "24/7 asistenčná služba"],
-      icon: "",
+      description: "Ochrana toho, čo ste si vybudovali. Či už ide o váš domov, auto alebo cestovanie, pomôžem vám nastaviť istotu, že aj v nečakaných situáciách zostanete v bezpečí.",
       link: "/sluzby/poistenia/nezivotne",
       color: "bg-gray-50 border-gray-200 hover:bg-gray-100"
     }
@@ -146,7 +150,8 @@ export default function PoistieniaPage() {
                 <span className="hidden md:block">Poistenia</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
-                Komplexné poistné riešenia pre ochranu vás a vašej rodiny. Vyberte si z našej širokej ponuky životných a neživotných poistení.
+              Ochrana, ktorá dáva zmysel.<br></br>
+              Pre vás, vašu rodinu aj všetko, čo ste vybudovali.
               </p>
               <button 
                 onClick={() => setIsModalOpen(true)}
@@ -179,24 +184,32 @@ export default function PoistieniaPage() {
 
           {/* Two Column Selection */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {insuranceTypes.map((type, index) => (
-              <Link key={index} href={type.link}>
-                <div className={`${type.color} border-2 rounded-xl p-7 text-center hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}>
-                  <h3 className="text-xl font-bold text-[#202325] mb-4">
-                    {type.title}
-                  </h3>
-                  <p className="text-gray-600 mb-5 leading-relaxed">
+            {insuranceTypes.map((type, index) => {
+              const isPrimaryType = type.title === "Životné poistenie" || type.title === "Neživotné poistenie";
+              return (
+                <Link key={index} href={type.link}>
+                  <div className={`${type.color} border-2 rounded-xl p-7 text-center hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}>
+                    <h3 className={`font-bold text-[#202325] mb-4 ${isPrimaryType ? "text-3xl" : "text-xl"}`}>
+                      {type.title}
+                    </h3>
+                  <p className={`text-gray-600 leading-relaxed text-center ${index === 0 ? "text-lg mt-4 mb-6" : "text-base mb-5"}`}>
                     {type.description}
                   </p>
-                  <div className="space-y-2 mb-5">
-                    {type.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center justify-center">
-                        <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                        <span className="text-sm text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="inline-flex items-center text-[#5ECAD5] font-semibold">
+                  {type.features && (
+                    <div className="space-y-2 mb-5">
+                      {type.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center justify-center">
+                          <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div
+                    className={`inline-flex items-center text-[#5ECAD5] font-semibold ${
+                      type.title === "Neživotné poistenie" ? "mt-4" : ""
+                    }`}
+                  >
                     Zistiť viac
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -204,7 +217,8 @@ export default function PoistieniaPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
 
           {/* Quote Section */}

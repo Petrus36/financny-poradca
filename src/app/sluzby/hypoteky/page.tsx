@@ -166,11 +166,12 @@ export default function HypotekyPage() {
               HYPOTÉKY
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-[#202325] mb-8 max-w-3xl mx-auto leading-tight">
-              Vedeli ste, že aj dnes sa dá získať financovanie až do 90% hodnoty nehnuteľnosti?
+            Hypotéka nie je šprint, ale
+            maratón. Preto je dôležité, akého partnera si vyberiete.
             </h2>
             <div className="w-20 h-1 bg-[#5ECAD5] mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Ak sa správne nastavia podmienky a zvolí vhodný postup, dá sa vyhnúť chybám, ktoré by inak mohli stáť čas, peniaze či zbytočný stres. Celý proces sa dá zvládnuť prehľadne s riešením, ktoré bude pre vás najvýhodnejší a bude vám dávať dlhodobo zmysel, musíte máť správne informácie a vyhladať hypošpecialistu.
+              Ak sa správne nastavia podmienky a zvolí vhodný postup, dá sa vyhnúť chybám, ktoré by inak mohli stáť čas, peniaze či zbytočný stres. Celý proces sa dá zvládnuť prehľadne s riešením, ktoré bude pre vás najvýhodnejšie a bude vám dávať dlhodobo zmysel.
             </p>
           </div>
 

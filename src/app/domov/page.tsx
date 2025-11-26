@@ -76,70 +76,11 @@ export default function DomovPage() {
     // Animate each counter with different delays for staggered effect
     animateCounter(setLicenseCount, 6, 1500, 500);
     animateCounter(setClientCount, 3000, 2000, 700);
-    animateCounter(setMoneyCount, 500000, 2500, 900);
+    animateCounter(setMoneyCount, 650000, 2500, 900);
     animateCounter(setMortgageCount, 2.5, 1800, 1100);
     animateCounter(setExperienceCount, 20, 1600, 1300);
   }, []);
 
-  /* 
-  const investmentPartners = [
-    { 
-      name: "365 Invest", 
-      logo: "/partners/365invest.png", 
-      alt: "365 Invest logo",
-      category: "Investment Platform",
-      color: "bg-blue-500"
-    },
-    { 
-      name: "PROXENTA", 
-      logo: "/partners/proxenta.png", 
-      alt: "PROXENTA logo",
-      category: "Investment Management",
-      color: "bg-gray-700"
-    },
-    { 
-      name: "UNIQA", 
-      logo: "/partners/uniqa.png", 
-      alt: "UNIQA logo",
-      category: "Insurance & Investment",
-      color: "bg-blue-600"
-    },
-    { 
-      name: "CONSEQ", 
-      logo: "/partners/conseq.png", 
-      alt: "CONSEQ logo",
-      category: "Investment Advisory",
-      color: "bg-gray-800"
-    },
-    { 
-      name: "eic european investment centre", 
-      logo: "/partners/eic.png", 
-      alt: "EIC logo",
-      category: "European Investment",
-      color: "bg-blue-500"
-    },
-    { 
-      name: "finax", 
-      logo: "/partners/finax.png", 
-      alt: "Finax logo",
-      category: "Robo Advisory",
-      color: "bg-blue-600"
-    },
-    { 
-      name: "VÚB", 
-      logo: "/partners/vub.png", 
-      alt: "VÚB logo",
-      category: "Banking & Investment",
-      color: "bg-red-600"
-    },
-    { 
-      name: "Tatra banka", 
-      logo: "/partners/tatrabanka.png", 
-      alt: "Tatra banka logo",
-      category: "Banking Services",
-      color: "bg-green-600"
-    }
-  ]; */
 
   const testimonials = [
     {
