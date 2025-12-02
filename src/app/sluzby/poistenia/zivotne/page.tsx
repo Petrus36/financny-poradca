@@ -105,10 +105,13 @@ export default function ZivotnePoisteniePage() {
               <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                  Možno si to hovoríš aj ty, veď čo ak sa mi nikdy nič nestane? Pravda však je, že život prináša aj nečakané a ťažké momenty, úmrtie živiteľa rodiny, vážna choroba, úraz či trvalá invalidita. V takýchto chvíľach nejde len o zdravie či emócie, často príde aj náhly výpadok príjmu a zvýšené výdavky.
-                </p>
-                <p className="text-lg text-gray-700 italic leading-relaxed">
-                  Ak má rodina hypotéku alebo iné záväzky, bez finančnej rezervy sa vie veľmi rýchlo dostať do problémov. Práve vtedy dokáže dobre nastavené poistenie pomôcť, vyplatiť zvyšok úveru, zabezpečiť peniaze na liečbu, alebo nahradiť výpadok príjmu.
+                Každý z nás má svoje plány – budovať majetok, splniť si sny, dopriať rodine istotu a pohodlie.
+                No stačí jedna nečakaná udalosť a všetky tieto ciele sa môžu zrazu zastaviť.
+                A pritom to tak vôbec nemusí byť.
+                Ako často hovorím – „lacno nakúpené peniaze v čase krízy“.
+                Životné poistenie je práve ten spôsob, ako ochrániť svoje sny, aby neskončili kvôli
+                okolnostiam, ktoré nevieme ovplyvniť.
+                Pretože ak sa o svoje ciele staráme dnes, zostanú v bezpečí aj zajtra.
                 </p>
               </div>
             </div>

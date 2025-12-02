@@ -251,80 +251,136 @@ export default function PoistieniaPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             TYPY POISTENIA
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <h3 className="font-semibold text-[#202325] text-lg mb-3">Životné poistenie</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">Zabezpečte svoju rodinu pre prípad nečakaných situácií</p>
-              <div className="space-y-2">
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Ochrana rodiny</span>
+          {/* First row - 3 boxes (tablet and desktop) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {/* Rizikové životné poistenie */}
+            <div className="relative bg-gray-50 border border-gray-100/80 p-5 md:p-6 lg:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5ECAD5] via-[#4BB8C4] to-[#5ECAD5]" />
+              <div className="flex flex-col h-full">
+                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-[#5ECAD5]/10 text-[#5ECAD5] group-hover:bg-[#5ECAD5] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Daňové úľavy</span>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Investičná zložka</span>
-                </div>
+                <h3 className="font-semibold text-[#202325] text-lg mb-3 text-center group-hover:text-[#111827] transition-colors">
+                  Rizikové životné poistenie
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Nečakané situácie prichádzajú bez varovania – dôležité je byť pripravený. Správne nastavené poistenie chráni vás aj vašu rodinu podľa vašej životnej situácie.
+                </p>
               </div>
             </div>
-            
-            <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <h3 className="font-semibold text-[#202325] text-lg mb-3">Úrazové poistenie</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">Finančná pomoc v prípade úrazu alebo invalidity</p>
-              <div className="space-y-2">
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Vysoké plnenia</span>
+
+            {/* Cestovné poistenie */}
+            <div className="relative bg-gray-50 border border-gray-100/80 p-5 md:p-6 lg:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5ECAD5] via-[#4BB8C4] to-[#5ECAD5]" />
+              <div className="flex flex-col h-full">
+                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-[#5ECAD5]/10 text-[#5ECAD5] group-hover:bg-[#5ECAD5] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M3 20l3-8 6-2 4-7 2 1-2 7 4 2-1.5 3-4.5-1-3 4-4-3-2.5 4H3Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Rýchla výplata</span>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Široké krytie</span>
-                </div>
+                <h3 className="font-semibold text-[#202325] text-lg mb-3 text-center group-hover:text-[#111827] transition-colors">
+                  Cestovné poistenie
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Stačí malá nepríjemnosť a dovolenka sa môže poriadne predražiť.
+                  Preto je lepšie mať krytie, ktoré zohľadní vaše plány, cieľ aj dĺžku pobytu.
+                </p>
               </div>
             </div>
-            
-            <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <h3 className="font-semibold text-[#202325] text-lg mb-3">Kritické choroby</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">Finančná podpora pri diagnostikovaní závažných ochorení</p>
-              <div className="space-y-2">
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Včasná diagnostika</span>
+
+            {/* Poistenie vozidiel */}
+            <div className="relative bg-gray-50 border border-gray-100/80 p-5 md:p-6 lg:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5ECAD5] via-[#4BB8C4] to-[#5ECAD5]" />
+              <div className="flex flex-col h-full">
+                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-[#5ECAD5]/10 text-[#5ECAD5] group-hover:bg-[#5ECAD5] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 17V11l2-4h12l2 4v6M5 17h14M7 17v2M17 17v2M7 9h10"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Jednorazová výplata</span>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Krytie liečby</span>
-                </div>
+                <h3 className="font-semibold text-[#202325] text-lg mb-3 text-center group-hover:text-[#111827] transition-colors">
+                  Poistenie vozidiel
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Aj skúsenému vodičovi sa môže prihodiť situácia, ktorú neovplyvní. Poistenie vozidla má význam len vtedy, keď zodpovedá vašim skutočným potrebám.
+                </p>
               </div>
             </div>
-            
-            <div className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <h3 className="font-semibold text-[#202325] text-lg mb-3">Poistenie majetku</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">Ochrana vašej nehnuteľnosti a domácnosti</p>
-              <div className="space-y-2">
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Komplexné krytie</span>
+          </div>
+
+          {/* Second row - 2 boxes centered */}
+          <div className="mt-6 flex flex-col md:flex-row justify-center gap-6 md:gap-8 px-0 sm:px-4 md:px-20 lg:px-40">
+            {/* Poistenie majetku */}
+            <div className="relative bg-gray-50 border border-gray-100/80 p-5 md:p-6 lg:p-7 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5ECAD5] via-[#4BB8C4] to-[#5ECAD5]" />
+              <div className="flex flex-col h-full">
+                <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#5ECAD5]/10 text-[#5ECAD5] group-hover:bg-[#5ECAD5] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 20V10L12 4l8 6v10H4Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">Náhrada škôd</span>
+                <h3 className="font-semibold text-[#202325] text-lg mb-3 text-center group-hover:text-[#111827] transition-colors">
+                  Poistenie majetku
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Škody na majetku často prídu vtedy, keď ich najmenej čakáme. Každý domov je iný – preto aj ochrana by mala byť nastavená presne podľa vás.
+                </p>
+              </div>
+            </div>
+
+            {/* Poistenie všeobecnej zodpovednosti */}
+            <div className="relative bg-gray-50 border border-gray-100/80 p-5 md:p-6 lg:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5ECAD5] via-[#4BB8C4] to-[#5ECAD5]" />
+              <div className="flex flex-col h-full">
+                <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-[#5ECAD5]/10 text-[#5ECAD5] group-hover:bg-[#5ECAD5] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 21c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7 3.582 7 8 7Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M12 12v3M12 9.5v.01"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
-                <div className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  <span className="text-xs text-gray-600">24/7 asistenčná služba</span>
-                </div>
+                <h3 className="font-semibold text-[#202325] text-lg mb-3 text-center group-hover:text-[#111827] transition-colors">
+                  Poistenie všeobecnej zodpovednosti
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Stačí malá nepozornosť a vznikne škoda, ktorá môže stáť tisíce eur. Zodpovednosť máme všetci, no jej krytie by malo vychádzať z vášho spôsobu života.
+                </p>
               </div>
             </div>
           </div>
