@@ -127,23 +127,13 @@ export default function NezivotnePoisteniePage() {
                   <span className="text-white text-sm font-bold">1</span>
                 </div>
                 <h3 className="text-2xl font-bold text-[#202325]">
-                  Poistenie nehnuteľnosti
+                  Poistenie nehnuteľnosti a domácnosti
                 </h3>
               </div>
               
               <p className="text-gray-600 leading-relaxed">
                 Pravidelná kontrola a aktualizácia poistenia zabezpečí, že váš majetok bude skutočne chránený a vy sa vyhnete nepríjemným prekvapeniam v kritických momentoch.
               </p>
-
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  Kľúčové fakty:
-                </h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Poistenie domácnosti je dôležitou súčasťou finančnej ochrany, pretože kryje škody na zariadení, elektronike a osobnom majetku. Často sa podceňuje, no práve v neočakávaných situáciách dokáže zabrániť vysokým stratám a nepríjemným následkom.
-                </p>
-              </div>
             </article>
 
             {/* Right Column */}
@@ -157,18 +147,23 @@ export default function NezivotnePoisteniePage() {
                 </h3>
               </div>
 
-              <p className="text-gray-600 leading-relaxed">
-                Poistenie vozidiel chráni pred finančnými následkami nehôd, poškodenia alebo krádeže. Zásadné sú podmienky zmluvy, tie určujú, kedy a v akom rozsahu poisťovňa škodu preplatí. Navyše ide o zákonnú povinnosť, pri jej zanedbaní hrozia pokuty a ďalšie riziká.
-              </p>
-
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h4 className="font-semibold text-[#202325] mb-3 flex items-center">
-                  <span className="w-5 h-5 bg-[#5ECAD5] rounded-full mr-2"></span>
-                  Praktický príklad:
-                </h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Poistenie občianskej zodpovednosti kryje škody, ktoré neúmyselne spôsobíte iným – či už na zdraví alebo majetku. V mnohých prípadoch vás môže ochrániť pred vysokými výdavkami, ktoré by ste inak museli znášať sami.
-                </p>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+                <div>
+                  <h4 className="font-semibold text-[#202325] mb-2">
+                    Povinné zmluvné poistenie (PZP)
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    je zákonná povinnosť každého vodiča. Kryje škody, ktoré spôsobíte iným účastníkom premávky - na vozidle, zdraví či majetku. Bez platného PZP hrozia pokuty, a v prípade nehody aj vysoké osobné náklady.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#202325] mb-2">
+                    Havarijné poistenie
+                  </h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    je dobrovoľné, no chráni váš vlastný majetok. Pokrýva škody na vašom vozidle pri nehode, krádeži, vandalizme či živelných udalostiach.
+                  </p>
+                </div>
               </div>
             </article>
           </div>

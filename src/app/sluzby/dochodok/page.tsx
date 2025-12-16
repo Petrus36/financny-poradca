@@ -81,11 +81,11 @@ export default function DochodokPage() {
             {/* Left side - Text content */}
             <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-0 pt-40 sm:pt-32 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 md:max-w-[55%] md:mr-auto">
               <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
-                <span className="block md:hidden">Dôchodok</span>
-                <span className="hidden md:block">Dôchodok</span>
+                <span className="block md:hidden">Renta a dôchodok</span>
+                <span className="hidden md:block">Renta a dôchodok</span>
               </h1>
               <p className="text-lg sm:text-xl md:text-xl text-white mb-8 max-w-xl md:max-w-3xl lg:max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
-                Zabezpečte si dôstojný dôchodok a finančnú nezávislosť v seniorskom veku
+                Zabezpečte si dôstojný dôchodok a finančnú nezávislosť.
               </p>
               <button 
                 onClick={() => setIsModalOpen(true)}
@@ -122,10 +122,13 @@ export default function DochodokPage() {
               <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                  Čas je najväčší spojenec investora. Čím skôr začneš, tým viac môžeš využiť efekt zloženého úročenia, ktorý výrazne zvyšuje výsledok aj pri menších sumách. Dlhší horizont zároveň umožňuje lepšie zvládnuť výkyvy trhu a znížiť riziko.
+                Čas je kľúčový faktor úspešného dôchodkového sporenia. Čím skôr začneš, tým viac za teba pracuje zložené úročenie – peniaze majú priestor rásť a vytvárať zisk aj z už dosiahnutých výnosov.
                 </p>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
-                  Skorý štart znamená aj menší tlak na výšku mesačných vkladov – nemusíš odkladať veľa, ale pravidelne a dlhodobo. Odsúvanie rozhodnutia &ldquo;na neskôr&rdquo; sa pri investovaní často rovná stratenej príležitosti.
+                Skorý štart zároveň znamená, že tvoj cieľ dosiahneš s menším mesačným vkladom. Ak začneš dnes, stačí odkladať menej. Ak to odložíš o pár rokov, budeš musieť prispievať podstatne viac, aby si dosiahol rovnaký výsledok.
+                </p>
+                <p className="text-lg text-gray-700 italic leading-relaxed">
+                Investovanie na dôchodok nie je o dokonalom načasovaní, ale o rozhodnutí začať. Každý mesiac, ktorý nevyužiješ, je mesiac, kedy tvoje peniaze mohli pracovať pre teba.
                 </p>
               </div>
             </div>
@@ -292,64 +295,26 @@ export default function DochodokPage() {
       </section>
 
 
-      {/* Retirement Options Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
-            MOŽNOSTI DÔCHODKOVÉHO SPORENIA
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-8">
-            {retirementOptions.map((option, index) => (
-              <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-3xl sm:text-4xl mb-4 text-center">{option.icon}</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#202325] mb-4 text-center">
-                  {option.title}
-                </h3>
-                <p className="text-gray-600 mb-6 text-center text-sm md:text-base leading-relaxed">
-                  {option.description}
-                </p>
-                <ul className="space-y-2">
-                  {option.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <div className="w-2 h-2 bg-[#5ECAD5] rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-[#202325] text-sm md:text-base">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+      
 
       {/* Why Start Early Section */}
-      <section className="py-12 md:py-16 bg-[#202325]">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] mb-8">
             PREČO ZAČAŤ SKORO?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-8 mb-12">
-            <div className="bg-white/10 p-6 rounded-lg">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#5ECAD5] mb-4">Zložené úročenie</h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">Čím skôr začnete, tým viac zarobíte na úrokoch z úrokov</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-lg">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#5ECAD5] mb-4">Nižšie príspevky</h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">Mladší začiatok znamená nižšie mesačné príspevky</p>
-            </div>
-          </div>
-          
-          {/* Age comparison table */}
-          <div className="bg-white/5 p-6 rounded-lg">
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">Porovnanie podľa veku</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              {ageGroups.map((group, index) => (
-                <div key={index} className="bg-white/10 p-4 rounded-lg">
-                  <div className="text-[#5ECAD5] font-bold text-base sm:text-lg mb-2">{group.age} rokov</div>
-                  <div className="text-xs sm:text-sm text-gray-300 mb-1">Mesačne: {group.monthlyContribution}</div>
-                  <div className="text-xs sm:text-sm text-gray-300">Celkom: {group.totalSavings}</div>
-                </div>
-              ))}
+          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-[#5ECAD5]">
+            <div className="flex items-start">
+              <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
+              <div className="text-left">
+                <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
+                  Zložené úročenie je ôsmy div sveta. Ten, kto mu rozumie, zarába na ňom, ten, kto mu nerozumie, platí ho.
+                </p>
+                <p className="text-gray-800 font-semibold text-right">
+                  ALBERT EINSTEIN
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -421,23 +386,19 @@ export default function DochodokPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">1</div>
-              <h3 className="text-lg font-semibold text-[#202325] mb-2">Analýza cieľov</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Zistíme vaše dôchodkové ciele a možnosti</p>
+              <h3 className="text-lg font-semibold text-[#202325] mb-2">Analýza cieľov a potrieb</h3>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">2</div>
-              <h3 className="text-lg font-semibold text-[#202325] mb-2">Výber stratégie</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Navrhneme optimálnu dôchodkovú stratégiu</p>
+              <h3 className="text-lg font-semibold text-[#202325] mb-2">Návrh vhodnej stratégie</h3>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">3</div>
-              <h3 className="text-lg font-semibold text-[#202325] mb-2">Spustenie</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Spustíme dôchodkové sporenie podľa plánu</p>
+              <h3 className="text-lg font-semibold text-[#202325] mb-2">Realizácia</h3>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#5ECAD5] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">4</div>
-              <h3 className="text-lg font-semibold text-[#202325] mb-2">Sledovanie</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">Pravidelne sledujeme a optimalizujeme výkonnosť</p>
+              <h3 className="text-lg font-semibold text-[#202325] mb-2">Pravidelný servis</h3>
             </div>
           </div>
         </div>

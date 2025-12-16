@@ -60,13 +60,9 @@ export default function SpolupracePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main title */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-[#202325] text-center mb-6">
-            MÁŠ ZÁUJEM?
+          Máš svoj život vážne pod kontrolou?
           </h2>
           
-          {/* Subtitle */}
-          <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-[#202325] text-center mb-4">
-            Žiadne vstupné poplatky, vzdelanie či prax
-          </h3>
           
           {/* Description */}
           <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center max-w-4xl mx-auto mb-12 sm:mb-16 md:mb-20 leading-relaxed">
@@ -94,9 +90,9 @@ export default function SpolupracePage() {
                 O Všetko sa postaráme
               </h4>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                Nie si v tom sám. Od prvého dňa máš za sebou silný tím, ktorý ťa podrží od 
-                školení, cez zmluvy a systémy, až po moderné nástroje a know-how, ktoré 
-                by inak stáli tisíce. Nemusíš byť expert na financie, ani tráviť hodiny nad 
+                Nie si v tom sám. Od prvého dňa máš za sebou silný tím, ktorý ťa podrží. Školenia, systémy, až po moderné nástroje a know how, ktoré by stáli 
+                tisíce sú
+                samozrejmosťou. Nemusíš byť expert na financie, ani tráviť hodiny nad 
                 papiermi. Našou úlohou je vytvoriť ti zázemie, v ktorom sa môžeš naplno 
                 venovať tomu najdôležitejšiemu - svojej vízii.
               </p>
@@ -164,8 +160,8 @@ export default function SpolupracePage() {
              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
                Získaš sebavedomie, ktoré si predtým možno nemal. Naučíš sa komunikovať s ľuďmi, riešiť 
                reálne situácie, orientovať sa vo financiách. Budeš ovládať soft skills, ktoré sú dnes 
-               cennejšie než niektoré tituly. Zvládneš vedenie ľudí, time management, nastavovanie 
-               cieľov a rozhodovanie - veci, ktoré si iní trénujú až na manažérskych pozíciách.
+               cennejšie než niektoré tituly. Zvládneš základy vedenia ľudí, time management, nastavovanie 
+               cieľov a rozhodovanie - veci, ku ktorým sa v iných odvetiach dostaneš až na manažérskych pozíciách.
              </p>
              
              <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">

@@ -24,7 +24,7 @@ const navLinks = [
           { href: "/sluzby/poistenia/nezivotne", label: "Neživotné poistenie" },
         ]
       },
-      { href: "/sluzby/dochodok", label: "Dôchodok" },
+      { href: "/sluzby/dochodok", label: "Renta a dôchodok" },
     ]
   },
   { href: "/spoluprace", label: "Spolupráca" },
