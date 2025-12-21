@@ -13,40 +13,12 @@ export default function DochodokPage() {
     setIsModalOpen(false);
   };
 
-  const retirementOptions = [
-    {
-      title: "III. pilier - DDS",
-      description: "Doplnkové dôchodkové sporenie s daňovými výhodami",
-      features: ["Daňové úľavy", "Štátny príspevok", "Garantovaný výnos"],
-      icon: "🏛️"
-    },
-    {
-      title: "Dôchodkové poistenie",
-      description: "Životné poistenie s dôchodkovou rentou",
-      features: ["Garantovaná renta", "Ochrana rodiny", "Flexibilné výplaty"],
-      icon: "🛡️"
-    },
-    {
-      title: "Investičné sporenie",
-      description: "Dlhodobé investovanie na dôchodok",
-      features: ["Vyššie výnosy", "Rôzne stratégie", "Flexibilita"],
-      icon: "📈"
-    }
-  ];
-
   const retirementCompanies = [
     { name: "TatraBanka", logo: "/TatraBanka.webp", product: "DDS Klasik", isImage: true, extraLarge: false },
     { name: "Generali", logo: "/VUBGenerali_logo.png", product: "Perspektíva", isImage: true, extraLarge: false },
     { name: "NN", logo: "/NN.webp", product: "Invest DDS", isImage: true, extraLarge: false },
     { name: "UNIQA", logo: "/Uniqa.webp", product: "Profit DDS", isImage: true, extraLarge: true },
     { name: "Rentea", logo: "/Rentea_logo.jpeg", product: "Profit DDS", isImage: true, extraLarge: false }
-  ];
-
-  const ageGroups = [
-    { age: "20-30", monthlyContribution: "30-50€", totalSavings: "40-70k€" },
-    { age: "30-40", monthlyContribution: "50-100€", totalSavings: "60-120k€" },
-    { age: "40-50", monthlyContribution: "100-200€", totalSavings: "80-160k€" },
-    { age: "50-60", monthlyContribution: "150-300€", totalSavings: "100-200k€" }
   ];
 
   return (
