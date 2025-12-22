@@ -276,13 +276,15 @@ export default function DomovPage() {
           
           {/* Advisor photo positioned on the right */}
           <div className="absolute right-4 sm:right-20 md:-right-30 lg:right-20 laptopl-right -bottom-12 sm:-bottom-16 md:-bottom-16
-           lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]">
+           lg:-bottom-24 z-20 w-[320px] h-[420px] sm:w-[400px] sm:h-[520px] md:w-[520px] md:h-[650px] lg:w-[600px] lg:h-[750px] xl:w-[650px] xl:h-[850px]"
+           style={{ aspectRatio: 320/420 }}>
             <Image
               src="/advisor-photo.png"
               alt="Financial Advisor"
               fill
               className="object-contain"
               priority
+              sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, (max-width: 1024px) 520px, (max-width: 1280px) 600px, 650px"
             />
           </div>
         </div>
@@ -540,53 +542,58 @@ export default function DomovPage() {
           
           {/* Partner logos */}
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
                 src="/Kooperativa.jpg"
                 alt="Kooperativa"
                 width={160}
                 height={80}
                 className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
                 src="/mBank.jpg"
                 alt="mBank"
                 width={160}
                 height={80}
                 className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
                 src="/Alianz.png"
                 alt="Allianz"
                 width={400}
                 height={200}
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
                 src="/Conseq.png"
                 alt="CONSEQ"
                 width={160}
                 height={80}
                 className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
                 src="/Generali.jpg"
                 alt="Generali"
                 width={400}
                 height={200}
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
           </div>

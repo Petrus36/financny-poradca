@@ -25,11 +25,23 @@ export default function OptimizedImage({
   quality = 85 // Optimized quality setting
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Calculate aspect ratio to prevent layout shift
+  const aspectRatio = width / height;
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      style={{ 
+        aspectRatio: `${aspectRatio}`,
+        width: '100%'
+      }}
+    >
       {!isLoaded && !priority && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl"></div>
+        <div 
+          className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl"
+          style={{ aspectRatio: `${aspectRatio}` }}
+        />
       )}
       <Image
         src={src}
@@ -37,13 +49,18 @@ export default function OptimizedImage({
         width={width}
         height={height}
         quality={quality}
-        className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+        className={`${className} ${isLoaded || priority ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
         priority={priority}
         loading={lazy && !priority ? "lazy" : "eager"}
         onLoad={() => setIsLoaded(true)}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         placeholder="blur"
         blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+        style={{ 
+          width: '100%',
+          height: 'auto',
+          objectFit: 'contain'
+        }}
       />
     </div>
   );

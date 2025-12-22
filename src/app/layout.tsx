@@ -35,6 +35,10 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  other: {
+    // Preload Monda font to prevent CLS
+    'font-preload': 'https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap',
+  },
 };
 
 export const viewport = {
@@ -50,6 +54,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
+      <head>
+        {/* Preconnect to Google Fonts for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload Monda font to prevent CLS from font swap */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

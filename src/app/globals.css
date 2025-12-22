@@ -38,3 +38,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Prevent layout shift from Monda font loading */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Monda', Arial, Helvetica, sans-serif;
+  font-display: swap;
+}
+
+/* Prevent layout shifts from images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reserve space for images to prevent CLS */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
