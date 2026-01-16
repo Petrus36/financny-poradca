@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import ContactFormModal from "../../../components/ContactFormModal";
-import OptimizedImage from "../../../components/OptimizedImage";
 
 interface Bank {
   name: string;
@@ -193,14 +192,12 @@ export default function HypotekyPage() {
           {/* Image Section */}
           <div className="mb-16">
             <div className="relative max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src="/image.png"
                 alt="Hypotéka - Finančné poradenstvo"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-xl object-cover"
-                priority={false}
-                lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
             </div>
@@ -355,7 +352,7 @@ export default function HypotekyPage() {
                     alt={`${bank.name} logo`}
                     width={400}
                     height={200}
-                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
                   />
                 ) : (
                   <span className="text-3xl">{bank.logo}</span>

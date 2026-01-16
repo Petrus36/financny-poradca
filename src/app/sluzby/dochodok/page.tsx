@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import ContactFormModal from "../../../components/ContactFormModal";
-import OptimizedImage from "../../../components/OptimizedImage";
 
 export default function DochodokPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,14 +108,12 @@ export default function DochodokPage() {
           {/* Image Section */}
           <div className="mb-12">
             <div className="max-w-3xl mx-auto">
-              <OptimizedImage
+              <Image
                 src="/image copy.png"
                 alt="Dôchodok - Finančné poradenstvo"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-xl object-cover shadow-lg"
-                priority={false}
-                lazy={true}
               />
             </div>
           </div>
@@ -207,23 +204,19 @@ export default function DochodokPage() {
           <div className="mb-16">
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <OptimizedImage
+                <Image
                   src="/image copy 4.png"
                   alt="Dôchodok - Finančné poradenstvo 1"
                   width={1200}
                   height={950}
                   className="w-full h-auto rounded-xl object-cover"
-                  priority={false}
-                  lazy={true}
                 />
-                <OptimizedImage
+                <Image
                   src="/image copy 5.png"
                   alt="Dôchodok - Finančné poradenstvo 2"
                   width={1000}
                   height={750}
                   className="w-full h-auto rounded-xl object-cover"
-                  priority={false}
-                  lazy={true}
                 />
               </div>
             </div>
@@ -307,7 +300,7 @@ export default function DochodokPage() {
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className={`w-auto object-contain hover:scale-110 sm:hover:scale-125 md:hover:scale-[1.35] transition-all duration-300 ${
+                    className={`w-auto object-contain hover:scale-110 transition-all duration-300 ${
                       company.name === 'Rentea' || company.name === 'TatraBanka'
                         ? 'h-12 sm:h-14 md:h-16 lg:h-18' 
                         : 'h-14 sm:h-16 md:h-20 lg:h-24'

@@ -570,7 +570,7 @@ export default function DomovPage() {
                 alt="Allianz"
                 width={400}
                 height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>
@@ -592,7 +592,7 @@ export default function DomovPage() {
                 alt="Generali"
                 width={400}
                 height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-[1.4] sm:hover:scale-[1.5] md:hover:scale-[1.65] transition-all duration-300 scale-125 sm:scale-140 md:scale-150"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
               />
             </div>

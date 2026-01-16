@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import ContactModal from "../../../components/ContactModal";
-import OptimizedImage from "../../../components/OptimizedImage";
 
 interface InvestmentCompany {
   name: string;
@@ -196,14 +195,12 @@ export default function InvestovaniePage() {
           {/* Image Section */}
           <div className="mb-16">
             <div className="max-w-4xl mx-auto">
-              <OptimizedImage
+              <Image
                 src="/image copy 2.png"
                 alt="Investovanie - Finančné poradenstvo"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-xl object-cover"
-                priority={false}
-                lazy={true}
               />
             </div>
           </div>
@@ -383,9 +380,9 @@ export default function InvestovaniePage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             INVESTIČNÉ SPOLOČNOSTI
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
             {investmentCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center h-24 w-24 sm:h-32 sm:w-32 md:h-40 md:w-40 lg:h-48 lg:w-48 flex-shrink-0">
+              <div key={index} className="flex items-center justify-center">
                 {company.isImage ? (
                   <Image
                     src={company.logo}
@@ -394,12 +391,12 @@ export default function InvestovaniePage() {
                     height={150}
                     className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
                       company.extraLarge 
-                        ? 'h-16 sm:h-20 md:h-24 lg:h-32' 
+                        ? 'h-14 sm:h-16 md:h-20' 
                         : company.customSize 
-                          ? 'h-12 sm:h-14 md:h-16 lg:h-20' 
+                          ? 'h-10 sm:h-12 md:h-14' 
                           : company.isLarger 
-                            ? 'h-14 sm:h-16 md:h-20 lg:h-24' 
-                            : 'h-12 sm:h-14 md:h-16 lg:h-20'
+                            ? 'h-12 sm:h-14 md:h-16' 
+                            : 'h-10 sm:h-12 md:h-14'
                     }`}
                   />
                 ) : (

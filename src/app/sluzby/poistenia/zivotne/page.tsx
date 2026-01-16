@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import ContactFormModal from "../../../../components/ContactFormModal";
-import OptimizedImage from "../../../../components/OptimizedImage";
 
 export default function ZivotnePoisteniePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -120,14 +119,12 @@ export default function ZivotnePoisteniePage() {
           {/* Image Section */}
           <div className="mb-16">
             <div className="max-w-3xl mx-auto">
-              <OptimizedImage
+              <Image
                 src="/image copy 3.png"
                 alt="Životné poistenie - Finančné poradenstvo"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-xl object-cover"
-                priority={false}
-                lazy={true}
               />
             </div>
           </div>
