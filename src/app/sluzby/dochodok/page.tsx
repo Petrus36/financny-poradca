@@ -291,23 +291,20 @@ export default function DochodokPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             DÔCHODKOVÉ SPOLOČNOSTI
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
             {retirementCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
+              <div key={index} className="flex items-center justify-center">
                 {company.isImage ? (
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className={`w-auto object-contain hover:scale-110 transition-all duration-300 ${
-                      company.name === 'Rentea' || company.name === 'TatraBanka'
-                        ? 'h-12 sm:h-14 md:h-16 lg:h-18' 
-                        : 'h-14 sm:h-16 md:h-20 lg:h-24'
-                    }`}
+                    className="w-auto object-contain hover:scale-110 transition-all duration-300 h-14 md:h-20"
+                    style={{ maxHeight: '6rem', height: 'auto' }}
                   />
                 ) : (
-                  <span className="text-3xl">{company.logo}</span>
+                  <span className="text-xl">{company.logo}</span>
                 )}
               </div>
             ))}

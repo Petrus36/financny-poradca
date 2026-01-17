@@ -96,17 +96,18 @@ export default function InvestovaniePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
                 {allInvestmentCompanies.length > 0 ? (
                   allInvestmentCompanies.map((company, index) => (
-                    <div key={index} className="flex items-center justify-center h-32 w-full">
+                    <div key={index} className="flex items-center justify-center w-full">
                       {company.isImage ? (
                         <Image
                           src={company.logo}
                           alt={`${company.name} logo`}
                           width={300}
                           height={150}
-                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : company.customSize ? 'h-16' : company.isLarger ? 'h-32' : 'h-24'}`}
+                          className="w-auto object-contain hover:scale-110 transition-transform duration-300 h-12 md:h-16"
+                          style={{ maxHeight: '5rem', height: 'auto' }}
                         />
                       ) : (
-                        <span className="text-3xl">{company.logo}</span>
+                        <span className="text-xl">{company.logo}</span>
                       )}
                     </div>
                   ))
@@ -389,18 +390,11 @@ export default function InvestovaniePage() {
                     alt={`${company.name} logo`}
                     width={300}
                     height={150}
-                    className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
-                      company.extraLarge 
-                        ? 'h-14 sm:h-16 md:h-20' 
-                        : company.customSize 
-                          ? 'h-10 sm:h-12 md:h-14' 
-                          : company.isLarger 
-                            ? 'h-12 sm:h-14 md:h-16' 
-                            : 'h-10 sm:h-12 md:h-14'
-                    }`}
+                    className="w-auto object-contain hover:scale-110 transition-transform duration-300 h-12 md:h-16"
+                    style={{ maxHeight: '5rem', height: 'auto' }}
                   />
                 ) : (
-                  <span className="text-2xl sm:text-3xl">{company.logo}</span>
+                  <span className="text-xl">{company.logo}</span>
                 )}
               </div>
             ))}

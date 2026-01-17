@@ -234,23 +234,18 @@ export default function DomovPage() {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
                   {allPartnerLogos.map((partner, index) => (
-                    <div key={index} className="flex items-center justify-center h-32 w-full">
+                    <div key={index} className="flex items-center justify-center w-full">
                       {partner.isImage ? (
                         <Image
                           src={partner.logo}
                           alt={`${partner.name} logo`}
                           width={300}
                           height={150}
-                          className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${
-                            partner.extraLarge 
-                              ? 'h-28 md:h-32' 
-                              : partner.customSize 
-                              ? 'h-16 md:h-20' 
-                              : 'h-20 md:h-24'
-                          }`}
+                          className="w-auto object-contain hover:scale-110 transition-transform duration-300 h-12 md:h-16"
+                          style={{ maxHeight: '4.5rem', height: 'auto' }}
                         />
                       ) : (
-                        <span className="text-3xl">{partner.logo}</span>
+                        <span className="text-xl">{partner.logo}</span>
                       )}
                     </div>
                   ))}

@@ -97,17 +97,18 @@ export default function HypotekyPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
                 {allBanks.map((bank, index) => (
-                  <div key={index} className="flex items-center justify-center h-32 w-full">
+                  <div key={index} className="flex items-center justify-center w-full">
                     {bank.isImage ? (
                       <Image
                         src={bank.logo}
                         alt={`${bank.name} logo`}
                         width={300}
                         height={150}
-                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${bank.extraLarge ? 'h-48' : bank.customSize ? 'h-16' : 'h-24'}`}
+                        className="w-auto object-contain hover:scale-110 transition-transform duration-300 h-12 md:h-16"
+                        style={{ maxHeight: '5.5rem', height: 'auto' }}
                       />
                     ) : (
-                      <span className="text-3xl">{bank.logo}</span>
+                      <span className="text-xl">{bank.logo}</span>
                     )}
                   </div>
                 ))}
@@ -343,19 +344,20 @@ export default function HypotekyPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             NAŠI BANKOVÍ PARTNERI
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
             {banks.map((bank, index) => (
-              <div key={index} className={`flex items-center justify-center h-16 sm:h-20 md:h-24 ${index === 4 ? 'md:col-start-2' : index === 5 ? 'md:col-start-3' : ''}`}>
+              <div key={index} className={`flex items-center justify-center ${index === 4 ? 'md:col-start-2' : index === 5 ? 'md:col-start-3' : ''}`}>
                 {bank.isImage ? (
                   <Image
                     src={bank.logo}
                     alt={`${bank.name} logo`}
                     width={400}
                     height={200}
-                    className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
+                    className="w-auto object-contain hover:scale-110 transition-all duration-300 h-14 md:h-20"
+                    style={{ maxHeight: '6rem', height: 'auto' }}
                   />
                 ) : (
-                  <span className="text-3xl">{bank.logo}</span>
+                  <span className="text-xl">{bank.logo}</span>
                 )}
               </div>
             ))}

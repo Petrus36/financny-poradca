@@ -105,17 +105,18 @@ export default function PoistieniaPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center">
                 {allInsuranceCompanies.map((company, index) => (
-                  <div key={index} className="flex items-center justify-center h-32 w-full">
+                  <div key={index} className="flex items-center justify-center w-full">
                     {company.isImage ? (
                       <Image
                         src={company.logo}
                         alt={`${company.name} logo`}
                         width={300}
                         height={150}
-                        className={`w-auto object-contain hover:scale-110 transition-transform duration-300 ${company.extraLarge ? 'h-48' : company.customSize ? 'h-16' : company.isLarger ? 'h-32' : 'h-24'}`}
+                        className="w-auto object-contain hover:scale-110 transition-transform duration-300 h-12 md:h-16"
+                        style={{ maxHeight: '5.5rem', height: 'auto' }}
                       />
                     ) : (
-                      <span className="text-3xl">{company.logo}</span>
+                      <span className="text-xl">{company.logo}</span>
                     )}
                   </div>
                 ))}
@@ -393,19 +394,20 @@ export default function PoistieniaPage() {
           <h2 className="text-3xl md:text-4xl font-semibold text-[#202325] text-center mb-8 md:mb-12">
             POISTOVNE
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-28 xl:gap-32">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
             {insuranceCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+              <div key={index} className="flex items-center justify-center">
                 {company.isImage ? (
                   <Image
                     src={company.logo}
                     alt={`${company.name} logo`}
                     width={400}
                     height={200}
-                    className={`w-auto object-contain hover:scale-110 transition-all duration-300 ${company.customSize ? 'h-12 sm:h-14 md:h-16' : 'h-16 sm:h-20 md:h-24'}`}
+                    className="w-auto object-contain hover:scale-110 transition-all duration-300 h-14 md:h-20"
+                    style={{ maxHeight: '6rem', height: 'auto' }}
                   />
                 ) : (
-                  <span className="text-3xl">{company.logo}</span>
+                  <span className="text-xl">{company.logo}</span>
                 )}
               </div>
             ))}

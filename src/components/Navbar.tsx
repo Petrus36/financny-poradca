@@ -250,7 +250,7 @@ export default function Navbar() {
     {/* Mobile Logo and Hamburger Button */}
     <div className="absolute top-0 left-0 right-0 z-50 md:hidden">
       <div className="flex items-center justify-between px-4 py-4">
-        {/* Logo on the left */}
+        {/* Logo on the left - only show on home page */}
         <Link href="/domov" className="flex-shrink-0">
           <Image
             src="/MK_logo_cierne_rozsirene.png"
