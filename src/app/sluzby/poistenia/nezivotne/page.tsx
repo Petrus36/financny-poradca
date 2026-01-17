@@ -98,7 +98,7 @@ export default function NezivotnePoisteniePage() {
             </h2>
             <div className="w-20 h-1 bg-[#5ECAD5] mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Mnohí ľudia roky platia poistky automaticky, no až keď sa stane škoda, zistia, že to dôležité poistené vôbec nemajú a preplácaju za zbytočné. Poistné podmienky sa menia, váš život a situácia tiež. Pomôžem vám zistiť, čo vám dnes skutočne kryje poistenie a za čo zbytočne platíte.
+              Mnohí ľudia roky platia poistenia automaticky, no až keď sa stane škoda, zistia, že to dôležité poistené vôbec nemajú a preplácaju za zbytočné. Poistné podmienky sa menia, váš život a situácia tiež. Pomôžem vám zistiť, čo vám dnes skutočne kryje poistenie a za čo zbytočne platíte.
             </p>
           </div>
 
@@ -108,10 +108,12 @@ export default function NezivotnePoisteniePage() {
               <div className="text-6xl text-[#5ECAD5] mr-4 leading-none">&ldquo;</div>
               <div>
                 <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                  Veľa nehnuteľností na Slovensku je podpoistených, pretože ich hodnota za posledné roky vzrástla, no poistné sumy ostali nezmenené. Pri škode tak poisťovňa vyplatí len časť nákladov a zvyšok hradí majiteľ.
+                Mnohé domácnosti sú poistené len „na papieri“.
+                Hodnota nehnuteľností za roky výrazne vzrástla, no poistné sumy ostali nezmenené. 
                 </p>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
-                  Až 30 % domácností navyše nemá poistenie vôbec, čo predstavuje vysoké riziko najmä pri požiaroch, záplavách či iných živelných udalostiach.
+                Pri škode tak poisťovňa nepokryje celú výšku nákladov –
+                pritom stačí jednoduchý audit, aby ste sa tomu vyhli.
                 </p>
               </div>
             </div>
@@ -147,7 +149,6 @@ export default function NezivotnePoisteniePage() {
                 </h3>
               </div>
 
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
                 <div>
                   <h4 className="font-semibold text-[#202325] mb-2">
                     Povinné zmluvné poistenie (PZP)
@@ -164,7 +165,6 @@ export default function NezivotnePoisteniePage() {
                     je dobrovoľné, no chráni váš vlastný majetok. Pokrýva škody na vašom vozidle pri nehode, krádeži, vandalizme či živelných udalostiach.
                   </p>
                 </div>
-              </div>
             </article>
           </div>
 
