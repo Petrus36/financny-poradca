@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+  // Set the root directory to avoid lockfile detection issues
+  outputFileTracingRoot: path.join(__dirname),
   images: {
     remotePatterns: [
       {
@@ -8,10 +11,6 @@ const nextConfig: NextConfig = {
         hostname: 'via.placeholder.com',
         port: '',
         pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: '**', // Allow all HTTPS domains for flexibility
       },
       {
         protocol: 'http',
@@ -47,13 +46,6 @@ const nextConfig: NextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
           { key: 'Access-Control-Allow-Methods', value: 'GET, POST, PUT, DELETE, OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
-        ],
-      },
-      {
-        // Cache static assets aggressively to improve TTFB
-        source: '/:path*\\.(jpg|jpeg|png|gif|svg|webp|ico|woff|woff2|ttf|eot)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
