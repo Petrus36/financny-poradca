@@ -85,13 +85,13 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative flex items-center py-4 md:py-6 lg:py-4">
               {/* Logo on the left */}
-              <Link href="/domov" className="flex-shrink-0 absolute left-0">
+              <Link href="/domov" className="flex-shrink-0 absolute left-8 mt-14">
                 <Image
-                  src="/MK_logo_cierne_rozsirene.png"
+                  src="/Kópia súboru MK logo 2 biele.png"
                   alt="Michal Kurka Logo"
-                  width={150}
-                  height={50}
-                  className="h-10 md:h-8 lg:h-14 w-auto"
+                  width={60}
+                  height={20}
+                  className="h-4 md:h-4 lg:h-6 w-auto"
                   priority
                 />
               </Link>
@@ -251,13 +251,13 @@ export default function Navbar() {
     <div className="absolute top-0 left-0 right-0 z-50 md:hidden">
       <div className="flex items-center justify-between px-4 py-4">
         {/* Logo on the left - only show on home page */}
-        <Link href="/domov" className="flex-shrink-0">
+        <Link href="/domov" className="flex-shrink-0 -mt-2">
           <Image
-            src="/MK_logo_cierne_rozsirene.png"
+            src="/Kópia súboru MK logo 2 biele.png"
             alt="Michal Kurka Logo"
-            width={120}
-            height={40}
-            className="h-8 w-auto"
+            width={55}
+            height={18}
+            className="h-4 w-auto"
             priority
           />
         </Link>

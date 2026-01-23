@@ -102,34 +102,31 @@ export default function SpolupracePage() {
        </section>
 
        {/* Your Time Section */}
-       <section className="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-[#2A2C2D]">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-16 items-center">
-             {/* Left side - Text content */}
-             <div className="text-left order-2 lg:order-1 lg:ml-0 xl:-ml-8">
-               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#5ECAD5] mb-6 sm:mb-8 leading-tight">
-                 Tvoj čas je v tvojich rukách
-               </h2>
-               <p className="text-sm sm:text-base md:text-lg text-white mb-4 sm:mb-6 leading-relaxed">
-                 Najväčšia mena je čas a v tomto biznise si sám sebe pánom. Rozhoduješ, kedy 
-                 pracuješ, ako rastieš a s kým spolupracuješ. Ja ti dám nástroje, know-how a podporu. 
-                 Ty si nastavíš tempo.
-               </p>
-               <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-                 Chceš viac zo života? Začni tým, že ho vezmeš do vlastných rúk.
-               </p>
-             </div>
+       <section className="py-12 sm:py-16 md:py-20 bg-[#2A2C2D]">
+         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center">
+             {/* Main heading */}
+             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-6 md:mb-8 leading-tight">
+               Tvoj čas je v tvojich rukách
+             </h2>
              
-             {/* Right side - Image */}
-             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-               <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-                 <Image
-                   src="/Kurka_photo3.PNG"
-                   alt="Professional advisor"
-                   width={450}
-                   height={400}
-                   className="w-full h-auto object-cover rounded-lg shadow-2xl aspect-[5/4]"
-                 />
+             {/* Content */}
+             <div className="max-w-3xl mx-auto space-y-5">
+               <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
+                 Najväčšia mena je čas a v tomto biznise si sám sebe pánom.
+               </p>
+               
+               <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
+                 Rozhoduješ, kedy pracuješ, ako rastieš a s kým spolupracuješ. 
+                 Ja ti dám nástroje, know-how a podporu. Ty si nastavíš tempo.
+               </p>
+               
+               {/* Highlighted quote */}
+               <div className="bg-white/5 rounded-xl p-6 md:p-8 border border-white/10 mt-8">
+                 <p className="text-lg sm:text-xl md:text-2xl text-[#5ECAD5] font-medium leading-relaxed">
+                   Chceš viac zo života?<br />
+                   <span className="text-white font-light">Začni tým, že ho vezmeš do vlastných rúk.</span>
+                 </p>
                </div>
              </div>
            </div>
