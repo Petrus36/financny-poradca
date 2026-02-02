@@ -46,7 +46,7 @@ export default function KontaktPage() {
             <div className="p-6">
               <div className="h-96 w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20Hrdinov%201%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sTov%C3%A1rensk%C3%A1%202206%2F13k%2C%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -60,7 +60,7 @@ export default function KontaktPage() {
               {/* Address Info */}
               <div className="mt-6 p-4 bg-gray-50 rounded-lg">
                 <h3 className="font-semibold text-[#202325] mb-2">Adresa:</h3>
-                <p className="text-[#202325]">Duklianskych Hrdinov 1, 90101 Malacky</p>
+                <p className="text-[#202325]">Továrenská 2206/13k, Malacky</p>
                 <p className="text-sm text-gray-600 mt-1">Slovakia</p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function KontaktPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[#202325]">Duklianskych Hrdinov 1, 90101 Malacky</p>
+                    <p className="text-lg font-semibold text-[#202325]">Továrenská 2206/13k, Malacky</p>
                     <p className="text-sm text-gray-600">Navštívte nás</p>
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function KontaktPage() {
               
               {/* Map iframe */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sDuklianskych%20Hrdinov%201%2C%2090101%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sTov%C3%A1rensk%C3%A1%202206%2F13k%2C%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

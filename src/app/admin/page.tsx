@@ -4,9 +4,26 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-// Hardcoded admin credentials
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'financny2024';
+// Hash function using Web Crypto API
+const hashString = async (str: string): Promise<string> => {
+  try {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  } catch (error) {
+    console.error('Hash function error:', error);
+    throw new Error('Hash computation failed. Make sure you are using HTTPS or localhost.');
+  }
+};
+
+// Hashed admin credentials (SHA-256 hashes)
+// These are the pre-computed SHA-256 hashes of the credentials
+// Username: michal.kurka
+// Password: Sch4L-monly
+const ADMIN_USERNAME_HASH = '9f239379a414e668f36ac7dcd40b39f000d8aca553ae077c0077d869124a0922';
+const ADMIN_PASSWORD_HASH = '305520419fe6dc28f23d782064c1f65c73877f0b615118cd1ed9a200dd343efb';
 
 interface FormSubmission {
   id: string;
@@ -54,6 +71,7 @@ export default function AdminPage() {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [debugHashes, setDebugHashes] = useState<{username?: string, password?: string}>({});
   const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -91,20 +109,100 @@ export default function AdminPage() {
       fetchBlogPosts();
       fetchContactSubmissions();
     }
+
+    // Verify and update hashes on component mount (for debugging)
+    if (crypto && crypto.subtle) {
+      hashString('michal.kurka').then(hash => {
+        console.log('✅ Browser computed username hash:', hash);
+        console.log('✅ Stored username hash:', ADMIN_USERNAME_HASH);
+        console.log('✅ Match:', hash === ADMIN_USERNAME_HASH);
+        if (hash !== ADMIN_USERNAME_HASH) {
+          console.warn('⚠️ Username hash mismatch! Update ADMIN_USERNAME_HASH to:', hash);
+        }
+      }).catch(err => console.error('Hash verification error:', err));
+      
+      hashString('Sch4L-monly').then(hash => {
+        console.log('✅ Browser computed password hash:', hash);
+        console.log('✅ Stored password hash:', ADMIN_PASSWORD_HASH);
+        console.log('✅ Match:', hash === ADMIN_PASSWORD_HASH);
+        if (hash !== ADMIN_PASSWORD_HASH) {
+          console.warn('⚠️ Password hash mismatch! Update ADMIN_PASSWORD_HASH to:', hash);
+        }
+      }).catch(err => console.error('Hash verification error:', err));
+    }
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      setIsLoggedIn(true);
-      sessionStorage.setItem('adminLoggedIn', 'true');
-      fetchSubmissions();
-      fetchBlogPosts();
-      fetchContactSubmissions();
-    } else {
-      setError('Nesprávne prihlasovacie údaje');
+    try {
+      // Check if Web Crypto API is available
+      if (!crypto || !crypto.subtle) {
+        setError('Web Crypto API nie je dostupná. Použite HTTPS alebo localhost.');
+        console.error('Web Crypto API not available');
+        return;
+      }
+
+      // Hash the input username and password
+      const usernameHash = await hashString(username.trim());
+      const passwordHash = await hashString(password);
+
+      // Store hashes for debugging display
+      setDebugHashes({ username: usernameHash, password: passwordHash });
+
+      // Debug logging
+      console.log('=== LOGIN ATTEMPT ===');
+      console.log('Input username:', `"${username}"`);
+      console.log('Input password:', password ? '***' : '(empty)');
+      console.log('Computed username hash:', usernameHash);
+      console.log('Computed password hash:', passwordHash);
+      console.log('Expected username hash:', ADMIN_USERNAME_HASH);
+      console.log('Expected password hash:', ADMIN_PASSWORD_HASH);
+      console.log('Username hash length:', usernameHash.length, 'Expected:', ADMIN_USERNAME_HASH.length);
+      console.log('Password hash length:', passwordHash.length, 'Expected:', ADMIN_PASSWORD_HASH.length);
+
+      // Compare hashes
+      const usernameMatch = usernameHash === ADMIN_USERNAME_HASH;
+      const passwordMatch = passwordHash === ADMIN_PASSWORD_HASH;
+      
+      console.log('Username match:', usernameMatch);
+      console.log('Password match:', passwordMatch);
+
+      if (usernameMatch && passwordMatch) {
+        console.log('✅ Login successful!');
+        setIsLoggedIn(true);
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        fetchSubmissions();
+        fetchBlogPosts();
+        fetchContactSubmissions();
+      } else {
+        let errorDetails = 'Nesprávne prihlasovacie údaje.\n\n';
+        if (!usernameMatch) {
+          errorDetails += `Username hash mismatch!\nComputed: ${usernameHash}\nExpected: ${ADMIN_USERNAME_HASH}\n\n`;
+        }
+        if (!passwordMatch) {
+          errorDetails += `Password hash mismatch!\nComputed: ${passwordHash}\nExpected: ${ADMIN_PASSWORD_HASH}\n\n`;
+        }
+        errorDetails += 'Skopírujte vyššie uvedené hash hodnoty a pošlite mi ich.';
+        setError(errorDetails);
+        console.error('❌ Login failed!');
+        if (!usernameMatch) {
+          console.error('Username hash mismatch!');
+          console.error('Computed:', usernameHash);
+          console.error('Expected:', ADMIN_USERNAME_HASH);
+          console.error('⚠️ Update ADMIN_USERNAME_HASH to:', usernameHash);
+        }
+        if (!passwordMatch) {
+          console.error('Password hash mismatch!');
+          console.error('Computed:', passwordHash);
+          console.error('Expected:', ADMIN_PASSWORD_HASH);
+          console.error('⚠️ Update ADMIN_PASSWORD_HASH to:', passwordHash);
+        }
+      }
+    } catch (error) {
+      setError('Chyba pri prihlasovaní: ' + (error instanceof Error ? error.message : 'Neznáma chyba'));
+      console.error('Login error:', error);
     }
   };
 
@@ -118,16 +216,22 @@ export default function AdminPage() {
 
   const fetchSubmissions = async () => {
     setLoading(true);
+    setError('');
     try {
       const response = await fetch('/api/form-submission');
+      const data = await response.json();
+      
       if (response.ok) {
-        const data = await response.json();
         setSubmissions(data);
       } else {
-        setError('Chyba pri načítavaní dát');
+        // Show more detailed error message
+        const errorMsg = data.error || data.details || 'Chyba pri načítavaní dát';
+        const errorDetails = data.details ? ` (${data.details})` : '';
+        setError(`${errorMsg}${errorDetails}`);
+        console.error('Error fetching submissions:', data);
       }
     } catch (error) {
-      setError('Chyba pri načítavaní dát');
+      setError('Chyba pri načítavaní dát - skontrolujte pripojenie k databáze');
       console.error('Error fetching submissions:', error);
     } finally {
       setLoading(false);
@@ -403,7 +507,17 @@ export default function AdminPage() {
             </div>
 
             {error && (
-              <div className="text-red-600 text-sm text-center">{error}</div>
+              <div className="text-red-600 text-sm">
+                <div className="mb-2">{error}</div>
+                {debugHashes.username && (
+                  <div className="mt-2 p-2 bg-gray-100 rounded text-xs font-mono break-all">
+                    <div className="font-bold mb-1">Computed Hashes:</div>
+                    <div>Username: {debugHashes.username}</div>
+                    <div className="mt-1">Password: {debugHashes.password}</div>
+                    <div className="mt-2 text-gray-600">Skopírujte tieto hodnoty a pošlite mi ich.</div>
+                  </div>
+                )}
+              </div>
             )}
 
             <div>

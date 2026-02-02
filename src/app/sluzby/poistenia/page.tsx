@@ -54,7 +54,7 @@ export default function PoistieniaPage() {
     { name: "UNIQA", logo: "/Uniqa.webp", isImage: true, isLarger: true, extraLarge: false },
     { name: "Allianz", logo: "/Alianz.png", isImage: true, extraLarge: false },
     { name: "Generali", logo: "/Generali.jpg", isImage: true, extraLarge: false },
-    { name: "Kooperativa", logo: "/Kooperativa.jpg", isImage: true, customSize: true, extraLarge: false }
+    { name: "Simplea Poistovňa", logo: "/simplea_logo.jpg", isImage: true, customSize: true, extraLarge: false }
   ];
 
   const additionalInsuranceCompanies: InsuranceCompany[] = [
