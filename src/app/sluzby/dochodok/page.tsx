@@ -218,7 +218,7 @@ export default function DochodokPage() {
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Až 180€ ročne na daniach + úľavy za príspevky</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">🎁 Štátny príspevok</h3>
+              <h3 className="text-lg sm:text-xl font-semibold text-[#202325] mb-4">🎁 Prispevky od zamestnavatela</h3>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Štát prispieva k vašim úsporám dodatočnými peniazmi</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
