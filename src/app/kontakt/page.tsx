@@ -46,21 +46,21 @@ export default function KontaktPage() {
             <div className="p-6">
               <div className="h-96 w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sTov%C3%A1rensk%C3%A1%202206%2F13k%2C%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                  src="https://www.google.com/maps?q=A13+Concept+Business+Hub,+Továrenská+2206/13K,+901+01+Malacky,+Slovakia&hl=sk&z=17&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Finančný Poradca - Malacky"
+                  title="A13 Concept Business Hub - Malacky"
                 ></iframe>
               </div>
               
               {/* Address Info */}
               <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                <h3 className="font-semibold text-[#202325] mb-2">Adresa:</h3>
-                <p className="text-[#202325]">Továrenská 2206/13k, Malacky</p>
+                <h3 className="text-xl font-bold text-[#202325] mb-2">A13 Concept Business Hub</h3>
+                <p className="text-[#202325]">Továrenská 2206/13K, 901 01 Malacky</p>
                 <p className="text-sm text-gray-600 mt-1">Slovakia</p>
               </div>
             </div>
@@ -127,7 +127,8 @@ export default function KontaktPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center lg:justify-start space-x-4">
+                {/* Email - commented out for later use */}
+                {/* <div className="flex items-center justify-center lg:justify-start space-x-4">
                   <div className="w-12 h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -137,7 +138,7 @@ export default function KontaktPage() {
                     <p className="text-lg font-semibold text-[#202325]">info@novakkrasko.sk</p>
                     <p className="text-sm text-gray-600">Napíšte nám</p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-center justify-center lg:justify-start space-x-4">
                   <div className="w-12 h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center">
@@ -146,8 +147,9 @@ export default function KontaktPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[#202325]">Továrenská 2206/13k, Malacky</p>
-                    <p className="text-sm text-gray-600">Navštívte nás</p>
+                    <p className="text-xl font-bold text-[#202325] mb-1">A13 Concept Business Hub</p>
+                    <p className="text-lg text-[#202325]">Továrenská 2206/13K, 901 01 Malacky</p>
+                    <p className="text-sm text-gray-600 mt-1">Navštívte nás</p>
                   </div>
                 </div>
               </div>
@@ -169,14 +171,14 @@ export default function KontaktPage() {
               
               {/* Map iframe */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sTov%C3%A1rensk%C3%A1%202206%2F13k%2C%20Malacky%2C%20Slovakia!5e0!3m2!1sen!2ssk!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2590.8!2d17.0225!3d48.4319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI1JzU0LjgiTiAxN8KwMDEnMjEuMCJF!5e0!3m2!1sen!2ssk!4v1234567890!5m2!1sen!2ssk"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Finančný Poradca - Malacky"
+                title="A13 Concept Business Hub - Malacky"
               ></iframe>
             </div>
             
