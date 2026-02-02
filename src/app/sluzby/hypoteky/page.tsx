@@ -52,7 +52,6 @@ export default function HypotekyPage() {
     { name: "VÚB Banka", logo: "/VÚB.webp", rate: "od 3,2%", isImage: true },
     { name: "Tatra Banka", logo: "/TatraBanka.webp", rate: "od 3,1%", isImage: true },
     { name: "SLSP", logo: "/slovenskáSporitelna.webp", rate: "od 3,3%", isImage: true },
-    { name: "Poštová Banka", logo: "/POSTOVA_BANKA_LOGO_RGB.jpg", rate: "od 3,4%", isImage: true },
     { name: "UniCredit Bank", logo: "/UniCredit-Logo.jpg", rate: "od 3,0%", isImage: true },
     { name: "Prima Banka", logo: "/PrimaBanka.jpg", rate: "od 3,2%", isImage: true, extraLarge: true }
   ];
@@ -346,15 +345,15 @@ export default function HypotekyPage() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
             {banks.map((bank, index) => (
-              <div key={index} className={`flex items-center justify-center ${index === 4 ? 'md:col-start-2' : index === 5 ? 'md:col-start-3' : ''}`}>
+              <div key={index} className={`flex items-center justify-center ${index === 4 ? 'col-span-2 md:col-start-2 md:col-span-2' : ''}`}>
                 {bank.isImage ? (
                   <Image
                     src={bank.logo}
                     alt={`${bank.name} logo`}
                     width={400}
                     height={200}
-                    className="w-auto object-contain hover:scale-110 transition-all duration-300 h-14 md:h-20"
-                    style={{ maxHeight: '6rem', height: 'auto' }}
+                    className={`w-auto object-contain hover:scale-110 transition-all duration-300 ${index === 4 ? 'h-20 md:h-32 lg:h-36' : 'h-14 md:h-20'}`}
+                    style={{ maxHeight: index === 4 ? '9rem' : '6rem', height: 'auto' }}
                   />
                 ) : (
                   <span className="text-xl">{bank.logo}</span>

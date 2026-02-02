@@ -17,7 +17,6 @@ export default function DochodokPage() {
     { name: "Generali", logo: "/VUBGenerali_logo.png", product: "Perspektíva", isImage: true, extraLarge: false },
     { name: "NN", logo: "/NN.webp", product: "Invest DDS", isImage: true, extraLarge: false },
     { name: "UNIQA", logo: "/Uniqa.webp", product: "Profit DDS", isImage: true, extraLarge: true },
-    { name: "Rentea", logo: "/Rentea_logo.jpeg", product: "Profit DDS", isImage: true, extraLarge: false }
   ];
 
   return (
@@ -188,7 +187,7 @@ export default function DochodokPage() {
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
             {retirementCompanies.map((company, index) => (
-              <div key={index} className="flex items-center justify-center">
+              <div key={`${company.name}-${index}`} className="flex items-center justify-center">
                 {company.isImage ? (
                   <Image
                     src={company.logo}
@@ -196,7 +195,7 @@ export default function DochodokPage() {
                     width={400}
                     height={200}
                     className="w-auto object-contain hover:scale-110 transition-all duration-300 h-14 md:h-20"
-                    style={{ maxHeight: '6rem', height: 'auto' }}
+                    style={{ maxHeight: '6rem' }}
                   />
                 ) : (
                   <span className="text-xl">{company.logo}</span>

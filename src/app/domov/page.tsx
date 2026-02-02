@@ -165,7 +165,6 @@ export default function DomovPage() {
     { name: "VÚB Banka", logo: "/VÚB.webp", isImage: true },
     { name: "Tatra Banka", logo: "/TatraBanka.webp", isImage: true },
     { name: "SLSP", logo: "/slovenskáSporitelna.webp", isImage: true },
-    { name: "Poštová Banka", logo: "/POSTOVA_BANKA_LOGO_RGB.jpg", isImage: true },
     { name: "UniCredit Bank", logo: "/UniCredit-Logo.jpg", isImage: true },
     { name: "Prima Banka", logo: "/PrimaBanka.jpg", isImage: true, extraLarge: true },
     { name: "ČSOB", logo: "/ČSOB_logo.webp", isImage: true },
@@ -200,7 +199,6 @@ export default function DomovPage() {
     { name: "IAD", logo: "/IAD_logo.png", isImage: true, extraLarge: true },
     // Retirement companies (from dochodok page)
     { name: "VÚB Generali", logo: "/VUBGenerali_logo.png", isImage: true },
-    { name: "Rentea", logo: "/Rentea_logo.jpeg", isImage: true },
   ];
 
   return (
@@ -233,7 +231,9 @@ export default function DomovPage() {
                   </button>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
-                  {allPartnerLogos.map((partner, index) => (
+                  {allPartnerLogos
+                    .filter(partner => !partner.name.toLowerCase().includes('poštová') && !partner.name.toLowerCase().includes('postova'))
+                    .map((partner, index) => (
                     <div key={index} className="flex items-center justify-center w-full">
                       {partner.isImage ? (
                         <Image
@@ -537,58 +537,68 @@ export default function DomovPage() {
           
           {/* Partner logos */}
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24">
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
+            <div key="uniqa-logo" className="flex items-center justify-center h-24 sm:h-28 md:h-32 lg:h-36 w-32 sm:w-40 md:w-48 lg:w-56" style={{ aspectRatio: 2/1 }}>
               <Image
-                src="/Kooperativa.jpg"
-                alt="Kooperativa"
+                key="uniqa"
+                src="/Uniqa.webp"
+                alt="UNIQA"
                 width={160}
                 height={80}
-                className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
-                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
+                className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain hover:scale-110 transition-all duration-300"
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
+                priority={false}
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
+            <div key="unicredit-logo" className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
-                src="/mBank.jpg"
-                alt="mBank"
+                key="unicredit"
+                src="/UniCredit-Logo.jpg"
+                alt="UniCredit Bank"
                 width={160}
                 height={80}
-                className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
+                priority={false}
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
+            <div key="amundi-logo" className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
-                src="/Alianz.png"
-                alt="Allianz"
+                key="amundi"
+                src="/Amundi_logo.png"
+                alt="Amundi"
                 width={400}
                 height={200}
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
+                priority={false}
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
+            <div key="simplea-logo" className="flex items-center justify-center h-28 sm:h-32 md:h-36 lg:h-40 w-32 sm:w-40 md:w-48 lg:w-56" style={{ aspectRatio: 2/1 }}>
               <Image
-                src="/Conseq.png"
-                alt="CONSEQ"
+                key="simplea"
+                src="/simplea_logo.jpg"
+                alt="Simplea Poistovňa"
                 width={160}
                 height={80}
-                className="max-h-12 sm:max-h-16 md:max-h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
-                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
+                className="h-28 sm:h-32 md:h-36 lg:h-40 w-auto object-contain hover:scale-110 transition-all duration-300"
+                sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 288px, 320px"
+                priority={false}
               />
             </div>
             
-            <div className="flex items-center justify-center h-16 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
+            <div key="tatrabanka-logo" className="flex items-center justify-center h-12 sm:h-20 md:h-24 w-32 sm:w-40 md:w-48" style={{ aspectRatio: 2/1 }}>
               <Image
-                src="/Generali.jpg"
-                alt="Generali"
+                key="tatrabanka"
+                src="/TatraBanka.webp"
+                alt="Tatra Banka"
                 width={400}
                 height={200}
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
-                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
+                className="h-12 sm:h-20 md:h-24 w-auto object-contain hover:scale-110 transition-all duration-300"
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, 192px"
+                priority={false}
               />
             </div>
           </div>
