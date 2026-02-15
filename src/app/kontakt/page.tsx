@@ -127,18 +127,20 @@ export default function KontaktPage() {
                   </div>
                 </div>
 
-                {/* Email - commented out for later use */}
-                {/* <div className="flex items-center justify-center lg:justify-start space-x-4">
+                <a
+                  href="mailto:michal.kurka@michalkurka.sk"
+                  className="flex items-center justify-center lg:justify-start space-x-4 hover:opacity-90 transition-opacity"
+                >
                   <div className="w-12 h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[#202325]">info@novakkrasko.sk</p>
+                    <p className="text-lg font-semibold text-[#202325]">michal.kurka@michalkurka.sk</p>
                     <p className="text-sm text-gray-600">Napíšte nám</p>
                   </div>
-                </div> */}
+                </a>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-4">
                   <div className="w-12 h-12 bg-[#5ECAD5] rounded-full flex items-center justify-center">

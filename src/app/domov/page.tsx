@@ -256,7 +256,7 @@ export default function DomovPage() {
         )}
 
       {/* Hero Banner Section */}
-      <section className="relative min-h-[800px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative min-h-[730px] sm:min-h-[740px] md:min-h-[700px] lg:min-h-[700px] flex items-center overflow-hidden">
         {/* Banner background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -286,10 +286,10 @@ export default function DomovPage() {
         
         {/* Text Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[800px] md:min-h-[700px] lg:min-h-[700px]">
+          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center min-h-[730px] sm:min-h-[740px] md:min-h-[700px] lg:min-h-[700px]">
             {/* Left side - Text content */}
-            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-6 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 pt-28">
-              <h1 className="font-light text-white leading-tight mb-6 md:mb-8 lg:mb-6 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
+            <div className="flex-1 text-left md:text-left lg:text-left mb-8 md:mb-0 lg:mb-0 lg:pr-8 xl:pr-16 lg:pl-0 lg:ml-8 px-4 sm:px-6 md:pt-0 lg:pt-0 md:pl-12 lg:pl-16 pt-32 sm:pt-32">
+              <h1 className="font-light text-white leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-14 drop-shadow-lg" style={{fontFamily: 'Monda, sans-serif'}}>
                 {/* Mobile: 320px - 639px */}
                 <span className="block sm:hidden text-[2.75rem] leading-[1.1] font-light mb-3 text-white" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
                 <span className="block sm:hidden text-xl leading-relaxed">Som partner pre vašu budúcnosť.</span>
@@ -307,12 +307,9 @@ export default function DomovPage() {
                 <span className="hidden lg:block text-6xl xl:text-7xl font-light mb-2" style={{fontFamily: 'Monda, sans-serif', color: '#FFFAFA'}}>Viac než len poradca.</span>
                 <span className="hidden lg:block text-3xl xl:text-4xl font-light">Som partner pre vašu budúcnosť.</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-lg lg:text-lg text-white mb-6 sm:mb-8 md:mb-10 lg:mb-8 max-w-md sm:max-w-lg md:max-w-lg mx-auto md:mx-0 lg:mx-0 font-light drop-shadow-md leading-relaxed">
-                Vďaka odbornosti a starostlivosti zhodnocujeme klientom majetok až o 20% ročne.
-              </p>
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-4 sm:px-6 md:px-8 lg:px-8 py-3 sm:py-3 md:py-4 lg:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg lg:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0 lg:mx-0 block sm:inline-block"
+                className="bg-[#5ECAD5] hover:bg-[#4BB8C4] text-white font-semibold px-6 sm:px-6 md:px-8 lg:px-8 py-3 sm:py-3 md:py-4 lg:py-4 rounded-lg transition-colors shadow-lg text-base sm:text-lg md:text-lg lg:text-lg w-auto sm:w-auto inline-block"
               >
                 Kontaktujte ma
               </button>

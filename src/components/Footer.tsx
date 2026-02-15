@@ -93,13 +93,15 @@ export default function Footer() {
                   </svg>
                   <span className="text-[#202325] text-sm md:text-base">+421 905 583 323</span>
                 </div>
-                {/* Email - commented out for later use */}
-                {/* <div className="flex items-center space-x-2">
+                <a
+                  href="mailto:michal.kurka@michalkurka.sk"
+                  className="flex items-center space-x-2 hover:text-[#5ECAD5] transition-colors"
+                >
                   <svg className="w-5 md:w-6 h-5 md:h-6 text-[#202325]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
-                  <span className="text-[#202325] text-sm md:text-base">info@novakkrasko.sk</span>
-                </div> */}
+                  <span className="text-[#202325] text-sm md:text-base">michal.kurka@michalkurka.sk</span>
+                </a>
                 <button 
                   onClick={openMapModal}
                   className="flex items-start space-x-1 hover:text-[#5ECAD5] transition-colors cursor-pointer text-left"
